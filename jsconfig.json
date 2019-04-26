@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    // "target": "es5",
+    // "allowSyntheticDefaultImports": false,
+    "baseUrl": "./src",
+
+  },
+  "exclude": [
+      "node_modules",
+      "public",
+  ],
+}
