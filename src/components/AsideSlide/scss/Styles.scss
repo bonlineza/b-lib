@@ -1,0 +1,135 @@
+
+/*------------------------------------*\
+    $ASIDE SLIDE
+\*------------------------------------*/
+.aside-slide {
+  transition: transform 550ms ease-in-out;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  // background-color: $clr-base--transp--dk;
+  min-width: 960px;
+  overflow-x: hidden;
+  z-index: 999;
+  transform: translateX(100%);
+  will-change: transform;
+  pointer-events: none;
+
+  .aside-slide & {
+    background-color: transparent;
+  }
+
+  &.aside-slide--bgc-alt {
+    & > %aside-slide__inner {
+        // background-color: $clr-base-ltst;
+    }
+  }
+
+  &.is-open {
+    transition: transform 550ms ease-in-out;;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  &.is-transparent {
+    transition: background-color 0ms;
+    background-color: transparent;
+  }
+}
+  .aside-slide__icon {
+    // @include soft--smallest;
+    height: 100%;
+    display: block;
+
+    & svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .aside-slide__clickable-area {
+    // width: $side-bar-width;
+    display: block;
+    height: 100%;
+
+    & .aside-slide__clickable-area__button {
+      display: block;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  %aside-slide__inner { // actually a child of ...__header__item
+    overflow-y: scroll;
+    // background-color: $clr-ntrl-min;
+    // width: calc(100% - #{$side-bar-width});
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+  }
+  .aside-slide__inner { @extend %aside-slide__inner;}
+  .aside-slide__inner--padded {
+    @extend %aside-slide__inner;
+  }
+
+    .aside-slide__inner__header {
+      // @extend %wrap-base;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      // @include push--smaller--top;
+    }
+
+    %base__title__font {
+      // @extend %ff--base;
+    }
+
+      %aside-slide__inner__header__item {
+        // @extend %base__title__font;
+        // color: $clr-base-dkst;
+        line-height: 1;
+        // @include font-size($fs-h2);
+        // @include push--right;
+
+        & %btn--reset {
+          display: block;
+          height: 100%;
+        }
+      }
+
+      .aside-slide__inner__header__item { @extend %aside-slide__inner__header__item;}
+      .aside-slide__inner__header__item--lt {
+        @extend %aside-slide__inner__header__item;
+        // color: $clr-base-ltr;
+      }
+      .aside-slide__inner__header__item--right {
+        @extend %aside-slide__inner__header__item;
+        position: absolute;
+        right: 0;
+      }
+
+    .aside-slide__inner__body {
+      // @extend %wrap--large;
+      // @extend %island--smaller;
+      // @include push--larger--bottom;
+    }
+
+  .aside-slide__bar {
+    position: fixed;
+    bottom: 0;
+    // left: $side-bar-width;
+    width: 100%;
+    // background-color: $clr-primary-dk;
+    z-index: 99;
+  }
+    .aside-slide__bar__inner {
+      // @include soft--small--sides;
+      // @include soft--smallest--ends;
+    }
