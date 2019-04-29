@@ -9,12 +9,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.s?css$/,
-      //   use: ['style-loader', 'raw-loader', 'sass-loader'],
-      //   include: [path.resolve(__dirname, '../css/')],
-      // },
-
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -22,6 +16,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['sass-loader'],
+        include: [path.resolve(__dirname, '../scss/')],
       },
 
       {
