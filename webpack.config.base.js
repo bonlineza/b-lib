@@ -5,6 +5,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {
       components: path.resolve(__dirname, 'src/components'),
+      'test-util': path.resolve(__dirname, 'src/test-util'),
     },
   },
   module: {
