@@ -1,0 +1,93 @@
+{
+    "extends": [
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype",
+      "import",
+      "babel",
+      "cypress",
+      "react-hooks"
+    ],
+    "rules": {
+      "prefer-arrow-callback": [0],
+      "react/no-unescaped-entities": [0],
+      "react/jsx-closing-bracket-location": [0],
+      "no-confusing-arrow": [0],
+      "function-paren-newline": 0,
+      "max-len": 0,
+      "linebreak-style": [0],
+      "react/prop-types": [0],
+      "arrow-parens": [0],
+      "no-mixed-operators": [0],
+      "react/no-array-index-key": [0],
+      "import/extensions": [0],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"]}],
+      "react/prefer-es6-class": [2, "always"],
+      "react/default-props-match-prop-types": [0],
+      "react/jsx-no-bind": [0],
+      "jsx-a11y/label-has-for": [0],
+      "jsx-a11y/anchor-is-valid": [0],
+      "no-floating-decimal": 0,
+      "no-multiple-empty-lines": 0,
+      "no-use-before-define": 0,
+      "react/no-unused-prop-types": [2, { "skipShapeProps": true }],
+      "func-names": 0,
+      "camelcase": 0,
+      "eqeqeq": 1,
+      "react/forbid-prop-types": [1, { "forbid": ["any"]}],
+      "react/jsx-indent": 0,
+      "import/no-named-as-default" : 0,
+      "import/prefer-default-export": 0,
+      "flowtype/require-parameter-type": 0,
+      "flowtype/space-after-type-colon": [ 2, "always", { "allowLineBreak": true } ],
+      "flowtype/space-before-type-colon": [
+        1,
+        "never"
+      ],
+      "flowtype/require-return-type": [0, "never", {
+        "excludeMatching": ["componentWillMount", "componentWillUnmount"]
+      }],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    },
+    "parserOptions": {
+      "ecmaVersion": 7
+    },
+    "settings": {
+      "flowtype": {
+        "onlyFilesWithFlowAnnotation": true
+      },
+      "import/resolver": {
+        "webpack": {
+            "config": "webpack.config.base"
+        }
+    }
+    },
+    "globals": {
+      "$": true,
+      "window": true,
+      "document": true,
+      "FormData": true,
+      "location": true,
+        "Cypress": true,
+          "cy": true,
+          "it": true,
+          "xhr": true,
+          "describe": true,
+          "beforeEach": true,
+          "expect": true,
+          "context": true,
+          "localStorage": true,
+      "before": true,
+      "React$Element": true,
+      "HTMLElement": true,
+      "Event": true,
+      "HTMLInputElement": true,
+      "$R": true,
+      "React$Component": true
+    }
+  }
+  

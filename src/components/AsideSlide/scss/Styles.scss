@@ -1,0 +1,122 @@
+$side-bar-width: 40px;
+
+/*------------------------------------*\
+    $ASIDE SLIDE
+\*------------------------------------*/
+.aside-slide {
+  transition: transform 550ms ease-in-out;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  background-color: grey;
+  min-width: 960px;
+  overflow-x: hidden;
+  z-index: 999;
+  transform: translateX(100%);
+  will-change: transform;
+  pointer-events: none;
+
+  .aside-slide & {
+    background-color: transparent;
+  }
+
+  &.aside-slide--bgc-alt {
+    & > %aside-slide__inner {
+        background-color: lightgray;
+    }
+  }
+
+  &.is-open {
+    transition: transform 550ms ease-in-out;;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  &.is-transparent {
+    transition: background-color 0ms;
+    background-color: transparent;
+  }
+}
+  .aside-slide__icon {
+    padding: 1em;
+    height: 100%;
+    display: block;
+
+    & svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .aside-slide__clickable-area {
+    width: $side-bar-width;
+    display: block;
+    height: 100%;
+
+    & .aside-slide__clickable-area__button {
+      display: block;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  %aside-slide__inner { // actually a child of ...__header__item
+    overflow-y: scroll;
+    background-color: white;
+    width: calc(100% - #{$side-bar-width});
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+  }
+  .aside-slide__inner { @extend %aside-slide__inner;}
+  .aside-slide__inner--padded {
+    @extend %aside-slide__inner;
+  }
+
+    .aside-slide__inner__header {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+      %aside-slide__inner__header__item {
+        margin-right: 1rem;
+
+        & %btn--reset {
+          display: block;
+          height: 100%;
+        }
+      }
+
+      .aside-slide__inner__header__item { @extend %aside-slide__inner__header__item;}
+      .aside-slide__inner__header__item--lt {
+        @extend %aside-slide__inner__header__item;
+      }
+      .aside-slide__inner__header__item--right {
+        @extend %aside-slide__inner__header__item;
+        position: absolute;
+        right: 0;
+      }
+
+    .aside-slide__inner__body {
+      margin-bottom: 2rem;
+    }
+
+  .aside-slide__bar {
+    position: fixed;
+    bottom: 0;
+    left: $side-bar-width;
+    width: 100%;
+    z-index: 99;
+  }
+    .aside-slide__bar__inner {
+      padding: 0.5em;
+    }

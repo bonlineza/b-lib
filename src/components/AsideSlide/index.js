@@ -1,8 +1,5 @@
-/** @format */
-
-// @flow
 import React from 'react';
-import GetSvg from '../../components/GetSvg';
+import './scss/Styles.scss';
 
 type PropsType = {
   isOpen: boolean,
@@ -10,6 +7,7 @@ type PropsType = {
   title: string,
   toggle: Function,
   bgcAlt?: boolean,
+  toggleButton?: Object,
   actionComponent?: Object,
   renderEmpty?: boolean,
   slideBar?: Function | null,
@@ -29,6 +27,7 @@ class AsideSlide extends React.Component<PropsType> {
   }
   static defaultProps = {
     bgcAlt: false,
+    toggleButton: null,
     actionComponent: null,
     renderEmpty: null,
     slideBar: null,
@@ -124,14 +123,11 @@ class AsideSlide extends React.Component<PropsType> {
           }`}>
           {this.state.showEmpty || !this.state.showContent ? null : (
             <div className="aside-slide__inner__header">
-              <span className="aside-slide__inner__header__item--lt">
-                <button
-                  type="button"
-                  onClick={this.props.toggle}
-                  className="btn--text--base">
-                  <GetSvg svg="close" wrapperClass="aside-slide__icon" />
-                </button>
-              </span>
+              {this.props.toggleButton ? (
+                <span className="aside-slide__inner__header__item--lt">
+                  {this.props.toggleButton}
+                </span>
+              ) : null}
               <span className="aside-slide__inner__header__item">
                 {this.props.title}
               </span>

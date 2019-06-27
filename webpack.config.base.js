@@ -2,17 +2,24 @@ const path = require('path');
 
 module.exports = {
   resolve: {
+    extensions: ['.js', '.jsx'],
     alias: {
-      components: path.resolve(__dirname, '../src/components'),
+      components: path.resolve(__dirname, 'src/components'),
+      'test-util': path.resolve(__dirname, 'src/test-util'),
     },
   },
   module: {
     rules: [
       {
-        test: /\.s?css$/,
-        use: ['style-loader', 'raw-loader', 'sass-loader'],
-        include: [path.resolve(__dirname, '../css/')],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.scss$/,
+        use: ['sass-loader'],
+        include: [path.resolve(__dirname, '../scss/')],
+      },
+
       {
         test: /\.svg$/,
         use: [
@@ -36,8 +43,5 @@ module.exports = {
         ],
       },
     ],
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
   },
 };
