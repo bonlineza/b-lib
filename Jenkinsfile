@@ -45,12 +45,30 @@ pipeline {
     }
     post {
         success {
+            sendBuildNotificationToSlack(true, currentBuild)
+        }
+        unsuccessful {
+            sendBuildNotificationToSlack(false, currentBuild)
+        }
+        always {
             dir ('node_modules'){
                 deleteDir();
             }
-        }
-        always {
             cleanWs()
         }
     }
 }
+
+def sendBuildNotificationToSlack(boolean successful, org.jenkinsci.plugins.workflow.support.steps.build.RunWrapper build){
+    def colorName = "danger"
+    def title = successful ? "SUCCESS" : "FAILURE"
+
+    def subject = "${title}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+    def summary = "${subject} after ${build.durationString} (${env.RUN_DISPLAY_URL})"
+
+    if (successful) {
+        colorName = "good"
+    }
+    slackSend(color: colorName, message: summary);
+}
+
