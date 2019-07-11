@@ -19,7 +19,9 @@ class DropOptions extends React.Component<PropsShape> {
   static defaultProps = {
     children: [],
     wrapperClass: '',
+    baseElement: () => 'Base Element',
   };
+
   constructor(props: PropsShape) {
     super(props);
     this.state = {
@@ -90,7 +92,7 @@ class DropOptions extends React.Component<PropsShape> {
             className={`drop-options__options ${
               this.state.isOpen ? 'drop-options__options--is-open' : ''
             }`}>
-            {this.getChildren()}
+            {this.state.isOpen && this.getChildren()}
           </div>
         </div>
       </div>
