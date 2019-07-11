@@ -3,10 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import DropOptions from 'components/DropOptions';
 
-const WrappedDropOptions = () => (
+const WrappedDropOptionsButtons = () => (
   <DropOptions
     wrapperClass="test-wrapper-class"
-    baseElement={() => <p>Base Element</p>}>
+    baseElement={() => <span>Base Element</span>}>
     <button type="button" onClick={() => action('Clicked Button 1')}>
       Button 1
     </button>
@@ -15,4 +15,18 @@ const WrappedDropOptions = () => (
     </button>
   </DropOptions>
 );
-storiesOf('DropOptions', module).add('default', () => <WrappedDropOptions />);
+storiesOf('DropOptions', module).add('default', () => (
+  <WrappedDropOptionsButtons />
+));
+
+const WrappedDropOptionsAnchors = () => (
+  <DropOptions
+    wrapperClass="test-wrapper-class"
+    baseElement={() => <span>Base Element</span>}>
+    <a href="#1">Anchor 1</a>
+    <a href="#2">Anchor 2</a>
+  </DropOptions>
+);
+storiesOf('DropOptions', module).add('Anchors', () => (
+  <WrappedDropOptionsAnchors />
+));
