@@ -6,6 +6,7 @@ function loadStories() {
   require('../stories/EllipsisLoader.js');
   require('../stories/SwitchView.js');
   require('../stories/ButtonGroup.js');
+  require('../stories/Overlay.js');
 }
 
 configure(loadStories, module);
