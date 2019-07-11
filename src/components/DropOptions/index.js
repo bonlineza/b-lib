@@ -52,30 +52,26 @@ class DropOptions extends React.Component<PropsShape> {
   };
 
   close = (): any =>
-    this.setState(
-      (prevState: StateShape): StateShape => ({
-        ...prevState,
-        isOpen: false,
-      }),
-    );
+    this.setState((prevState: StateShape): StateShape => ({
+      ...prevState,
+      isOpen: false,
+    }));
 
   toggleOpenState = (): any =>
-    this.setState(
-      (prevState: StateShape): StateShape => {
-        if (prevState.isOpen) {
-          // next state is false
-          this.killListener();
-        } else {
-          // next state is true
-          this.startListener();
-        }
+    this.setState((prevState: StateShape): StateShape => {
+      if (prevState.isOpen) {
+        // next state is false
+        this.killListener();
+      } else {
+        // next state is true
+        this.startListener();
+      }
 
-        return {
-          ...prevState,
-          isOpen: !prevState.isOpen,
-        };
-      },
-    );
+      return {
+        ...prevState,
+        isOpen: !prevState.isOpen,
+      };
+    });
 
   render() {
     return (
