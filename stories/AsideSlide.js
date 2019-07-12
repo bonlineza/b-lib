@@ -19,9 +19,7 @@ const WrappedAsideSlide = () => {
           </button>
         }
         actionComponent={
-          <button
-            type="button"
-            onClick={() => action('actionComponent action')}>
+          <button type="button" onClick={action('actionComponent action')}>
             Action
           </button>
         }
