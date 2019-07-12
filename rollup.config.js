@@ -1,6 +1,6 @@
 import babel from 'rollup-plugin-babel';
-import postcss from 'postcss';
 import sass from 'rollup-plugin-sass';
+import postcss from 'postcss';
 import fs from 'fs';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
