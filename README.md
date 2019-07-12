@@ -28,3 +28,10 @@ git remote add origin git@github.com:YourUsername/YourRepo.git
 Also make sure to update the package.json with your info
 
 License: MIT
+
+## BUILD RELEASE
+```bash
+yarn global add rollup
+rollup -c
+```
+files will appear in the `./build` folder

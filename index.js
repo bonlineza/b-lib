@@ -1,6 +1,6 @@
-import AsideSlide from './src/components/AsideSlide';
-import DropOptions from './src/components/DropOptions';
-import Overlay from './src/components/Overlay';
+import AsideSlide from './src/components/AsideSlide/index.js';
+import DropOptions from './src/components/DropOptions/index.js';
+import Overlay from './src/components/Overlay/index.js';
 
 exports.AsideSlide = AsideSlide;
 exports.DropOptions = DropOptions;

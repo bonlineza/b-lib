@@ -4,10 +4,9 @@
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
     "build": "build-storybook -c .storybook -o .out",
-    "lint": "eslint .",
+    "lint": "eslint ./src",
     "jest": "jest --env=jsdom",
     "test": "run-s lint jest",
-    "posttest": "npm run format",
     "eject": "react-scripts eject",
     "format": "prettier --write '**/*.{js,css,md}'"
   },
@@ -39,6 +38,7 @@
     "@babel/preset-flow": "^7.0.0",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/react": "^5.1.9",
+    "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-css-modules-transform": "^1.6.2",
     "babel-plugin-flow-react-proptypes": "^25.1.0",
@@ -50,6 +50,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
+    "cssnano": "^4.1.10",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
@@ -69,11 +70,14 @@
     "lint-staged": "^7.3.0",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.1",
+    "postcss": "^7.0.17",
     "prettier": "^1.14.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
     "react-test-renderer": "^16.0.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-sass": "^1.2.2",
     "style-loader": "^0.23.1"
   },
   "lint-staged": {
