@@ -22,16 +22,16 @@ _Put an `x` in the boxes that apply._
 - [ ] Linter passes (`yarn lint`)
 - [ ] Unit Test pass (`yarn jest`)
 - [ ] I have added at least two useful tests for new component (if applicable)
-- [ ] I have done X to tag the branch for use in third party projects
-
-## Dependant PRs
-
-_List Pull Requests below in format `#<ISSUE-NUMBER>`_
-- ...
+- [ ] I have incremented the package version and tagged the last commit of the PR with the same version number example: [0.1.29]
 
 ## Relevant Issues
 
 _List Issues below in format `#<ISSUE-NUMBER> [Full|Partial]`_
+- ...
+
+## Dependant PRs
+
+_List Pull Requests below in format `#<ISSUE-NUMBER>`_
 - ...
 
 ## Description
