@@ -489,8 +489,164 @@
     baseClass: 'modal'
   };
 
+  var SimplePopup =
+  /*#__PURE__*/
+  function (_React$Component) {
+    _inherits(SimplePopup, _React$Component);
+
+    function SimplePopup() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      _classCallCheck(this, SimplePopup);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SimplePopup)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+      _defineProperty(_assertThisInitialized(_this), "getLoader", function () {
+        if (_this.props.renderLoader) {
+          return _this.props.renderLoader();
+        }
+
+        return React__default.createElement("p", {
+          className: "u-text__base"
+        }, "LOADING");
+      });
+
+      _defineProperty(_assertThisInitialized(_this), "getContent", function () {
+        // if (this.props.isOpen) {
+        if (_this.props.description) {
+          return React__default.createElement("p", {
+            className: "u-text__base u-text--center"
+          }, _this.props.description);
+        } else if (_this.props.renderContent) {
+          return _this.props.renderContent();
+        } // }
+
+
+        return null;
+      });
+
+      _defineProperty(_assertThisInitialized(_this), "startListener", function () {
+        if (_this.props.onOpen) {
+          _this.props.onOpen();
+        }
+
+        document.addEventListener('click', _this.listenerAction);
+      });
+
+      _defineProperty(_assertThisInitialized(_this), "killListener", function () {
+        if (_this.props.onClose) {
+          _this.props.onClose();
+        }
+
+        document.removeEventListener('click', _this.listenerAction);
+      });
+
+      _defineProperty(_assertThisInitialized(_this), "listenerAction", function (event) {
+        if (!_this.reactOverlay || !_this.reactPopup) return null;
+
+        if (_this.reactOverlay.contains(event.target) && !_this.reactPopup.contains(event.target)) {
+          _this.props.close();
+        }
+
+        return null;
+      });
+
+      return _this;
+    }
+
+    _createClass(SimplePopup, [{
+      key: "componentWillReceiveProps",
+      value: function componentWillReceiveProps(nextProps) {
+        if (!this.props.isOpen && nextProps.isOpen) {
+          this.startListener();
+        } else if (this.props.isOpen && !nextProps.isOpen) {
+          this.killListener();
+        }
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var _this$props = this.props,
+            baseClass = _this$props.baseClass,
+            isOpen = _this$props.isOpen,
+            size = _this$props.size,
+            title = _this$props.title,
+            showLoader = _this$props.showLoader,
+            options = _this$props.options;
+        return React__default.createElement("div", {
+          ref: function ref(c) {
+            _this2.reactOverlay = c;
+          }
+        }, React__default.createElement(Overlay, {
+          isOpen: isOpen,
+          size: size
+        }, React__default.createElement("div", {
+          className: "".concat(baseClass),
+          ref: function ref(c) {
+            _this2.reactPopup = c;
+          }
+        }, React__default.createElement("div", {
+          className: "".concat(baseClass, "__header")
+        }, title), React__default.createElement("div", {
+          className: "".concat(baseClass, "__body")
+        }, showLoader ? this.getLoader() : this.getContent()), React__default.createElement("div", {
+          className: "".concat(baseClass, "__footer")
+        }, options.map(function (option, k) {
+          return React__default.createElement("div", {
+            key: k,
+            className: "".concat(baseClass, "__footer__item")
+          }, React__default.createElement("button", {
+            className: option.buttonClass,
+            onClick: option.cb,
+            "data-qe-id": option.dataQeId,
+            disabled: option.disabled
+          }, option.buttonText));
+        })))));
+      }
+    }]);
+
+    return SimplePopup;
+  }(React__default.Component);
+
+  _defineProperty(SimplePopup, "defaultProps", {
+    baseClass: 'simple-popup',
+    size: '--small',
+    showLoader: false,
+    description: null,
+    renderContent: null,
+    onOpen: null,
+    onClose: null
+  });
+
+  _defineProperty(SimplePopup, "propTypes", {
+    isOpen: PropTypes.bool.isRequired,
+    showLoader: PropTypes.bool,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    renderContent: PropTypes.func,
+    options: PropTypes.arrayOf(PropTypes.shape({
+      cb: PropTypes.func.isRequired,
+      buttonText: PropTypes.string.isRequired,
+      buttonClass: PropTypes.string.isRequired,
+      dataQeId: PropTypes.string
+    }).isRequired).isRequired,
+    close: PropTypes.func.isRequired,
+    size: PropTypes.string,
+    onOpen: PropTypes.func,
+    onClose: PropTypes.func
+  });
+
   exports.AsideSlide = AsideSlide;
   exports.DropOptions = DropOptions;
   exports.Overlay = Overlay;
+  exports.SimplePopup = SimplePopup;
 
 }));

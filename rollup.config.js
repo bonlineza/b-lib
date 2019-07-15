@@ -71,5 +71,5 @@ export default {
     },
   },
   plugins: [babel(customBabelConfig), sass(sassOptions)],
-  external: ['react', 'react-dom', 'prop-types', 'styled-components'],
+  external: ['b-lib', 'react', 'react-dom', 'prop-types', 'styled-components'],
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import Overlay from 'components/Overlay';
+import Overlay from '../Overlay/index';
 import './scss/SimplePopup.scss';
 
 type OptionShape = {
@@ -49,17 +49,15 @@ class SimplePopup extends React.Component<PropsShape> {
   };
 
   getContent = () => {
-    if (this.props.isOpen) {
-      if (this.props.description) {
-        return (
-          <p className="u-text__base u-text--center">
-            {this.props.description}
-          </p>
-        );
-      } else if (this.props.renderContent) {
-        return this.props.renderContent();
-      }
+    // if (this.props.isOpen) {
+    if (this.props.description) {
+      return (
+        <p className="u-text__base u-text--center">{this.props.description}</p>
+      );
+    } else if (this.props.renderContent) {
+      return this.props.renderContent();
     }
+    // }
     return null;
   };
 
@@ -107,11 +105,9 @@ class SimplePopup extends React.Component<PropsShape> {
             <div className={`${baseClass}__body`}>
               {showLoader ? this.getLoader() : this.getContent()}
             </div>
-            <div className={`${baseClass}__container__footer`}>
+            <div className={`${baseClass}__footer`}>
               {options.map((option: OptionShape, k: number) => (
-                <div
-                  key={k}
-                  className={`${baseClass}__container__footer__item`}>
+                <div key={k} className={`${baseClass}__footer__item`}>
                   <button
                     className={option.buttonClass}
                     onClick={option.cb}
