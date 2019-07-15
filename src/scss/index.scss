@@ -1,0 +1,45 @@
+/*------------------------------------*\
+  $FRAMEWORK
+\*------------------------------------*/
+/*------------------------------------*\
+  $BASE
+\*------------------------------------*/
+/**
+ * Base variables. These are included first as they provide a basis for calculations
+ * throughout the framework.
+ */
+ $fs-base:  16px!default;
+ $base-line-height:  24px!default;
+
+ /**
+  * Base font-family.
+  */
+ $base-font-family:  sans-serif!default;
+
+ /**
+  * Default colour for objects’ borders etc.
+  */
+ $clr-base:   #ccc!default;
+
+/**
+ * inuit.css will work these next ones out for use within the framework.
+ *
+ * Assign our `$base-line-height` to a new spacing var for more transparency.
+ */
+ $base-spacing-unit: $base-line-height / $fs-base!default;
+ $half-spacing-unit: $base-spacing-unit / 2!default;
+ $line-height-ratio: $base-line-height / $fs-base!default;
+
+
+ /**
+ * Tell inuit.css when breakpoints start.
+ */
+$lap-start:     481px!default;
+$desk-start:    880px!default;
+$desk-wide-start:   1280px!default;
+
+
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+@import "utilities/mixins/!all";

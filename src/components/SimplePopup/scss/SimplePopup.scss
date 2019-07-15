@@ -1,0 +1,44 @@
+
+@import '../../../scss/index';
+
+.simple-popup {
+  height: 100%;
+  background-color: white;
+  padding:0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%) translateY(-50%);
+  min-height: 15vh;
+  min-width: 35vw;
+  border-radius: 10px;
+}
+
+.simple-popup__header {
+  @include u-padding--top;
+  @include u-padding--right;
+  @include u-padding--left;
+  @include u-padding--small--bottom;
+  text-align: center;
+  font-weight: bold;
+}
+
+.simple-popup__body {
+  @include u-padding--right;
+  @include u-padding--left;
+  white-space: pre-line;
+  width: 100%;
+  word-break: break-word;
+}
+
+    .simple-popup__footer {
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+      .simple-popup__container__footer__item {
+        flex: 1;
+        min-height: 40px;
+      }
