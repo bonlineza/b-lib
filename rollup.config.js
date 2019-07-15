@@ -1,6 +1,6 @@
 import babel from 'rollup-plugin-babel';
-import postcss from 'postcss';
 import sass from 'rollup-plugin-sass';
+import postcss from 'postcss';
 import fs from 'fs';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
@@ -63,8 +63,12 @@ export default {
   output: {
     file: './build/bundle.js',
     name: 'blib',
-    format: 'iife',
-    sourcemap: 'inline',
+    format: 'umd',
+    // sourcemap: 'inline',
+    globals: {
+      react: 'React',
+      'prop-types': 'PropTypes',
+    },
   },
   plugins: [babel(customBabelConfig), sass(sassOptions)],
   external: ['react', 'react-dom', 'prop-types', 'styled-components'],
