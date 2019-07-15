@@ -4,6 +4,7 @@ function loadStories() {
   require('../stories/AsideSlide.js');
   require('../stories/DropOptions.js');
   require('../stories/Overlay.js');
+  require('../stories/SimplePopup.js');
 }
 
 configure(loadStories, module);
