@@ -1,0 +1,8 @@
+/*------------------------------------*\
+    $TYPOGRAPHIC LINK STATES MIXIN
+\*------------------------------------*/
+@mixin fc--link-states($base-clr, $hover-clr, $active-clr) {
+  color: $base-clr;
+  &:hover, &:focus:hover  { color: $hover-clr;}
+  &:focus, &:active { color: $active-clr;}
+}
