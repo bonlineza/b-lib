@@ -10,6 +10,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --write '**/*.{js,css,md}'"
   },
+  "main": "./build/bundle.js",
   "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.5.0",
