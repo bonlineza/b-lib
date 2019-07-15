@@ -49,7 +49,6 @@ class SimplePopup extends React.Component<PropsShape> {
   };
 
   getContent = () => {
-    // if (this.props.isOpen) {
     if (this.props.description) {
       return (
         <p className="u-text__base u-text--center">{this.props.description}</p>
@@ -57,7 +56,6 @@ class SimplePopup extends React.Component<PropsShape> {
     } else if (this.props.renderContent) {
       return this.props.renderContent();
     }
-    // }
     return null;
   };
 
