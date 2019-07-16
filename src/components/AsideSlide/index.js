@@ -15,6 +15,8 @@ type PropsType = {
   qeId?: string,
 };
 
+const animationDuration = 550;
+
 class AsideSlide extends React.Component<PropsType> {
   static getDerivedStateFromProps(props, state) {
     // we aren't in a transition but an open slide wants to show content
@@ -83,7 +85,7 @@ class AsideSlide extends React.Component<PropsType> {
           showEmpty: this.props.renderEmpty,
           showContent: this.props.renderEmpty,
         }));
-      }, 550);
+      }, animationDuration);
     }
     this.setState(() => ({
       showEmpty: this.props.renderEmpty,
@@ -96,7 +98,7 @@ class AsideSlide extends React.Component<PropsType> {
       this.setState(() => ({
         showEmpty: this.props.renderEmpty,
       }));
-    }, 550);
+    }, animationDuration);
   };
 
   render() {
@@ -125,7 +127,7 @@ class AsideSlide extends React.Component<PropsType> {
             <div className="aside-slide__inner__header">
               {this.props.toggleButton ? (
                 <span className="aside-slide__inner__header__item--lt">
-                  {this.props.toggleButton}
+                  {this.props.toggleButton()}
                 </span>
               ) : null}
               <span className="aside-slide__inner__header__item">

@@ -16,28 +16,29 @@ const Overlay = ({ baseClass, children, isOpen, size }: OverlayProps) => {
   return (
     <div className={`${baseClass} ${isOpen ? 'is-open' : 'is-closed'}`}>
       <div className={`${baseClass}__inner ${size ? `wrap${size}` : ''}`}>
-        {React.Children.map(
-          children,
-          (child, index) =>
-            index === activeChild &&
-            React.cloneElement(
-              child,
-              child.type !== 'div'
-                ? {
-                    next: () => {
-                      if (maxChildCount - 1 > activeChild) {
-                        setActiveChild(activeChild + 1);
-                      }
-                    },
-                    prev: () => {
-                      if (activeChild > 0) {
-                        setActiveChild(activeChild - 1);
-                      }
-                    },
-                  }
-                : {},
-            ),
-        )}
+        {isOpen &&
+          React.Children.map(
+            children,
+            (child, index) =>
+              index === activeChild &&
+              React.cloneElement(
+                child,
+                child.type !== 'div'
+                  ? {
+                      next: () => {
+                        if (maxChildCount - 1 > activeChild) {
+                          setActiveChild(activeChild + 1);
+                        }
+                      },
+                      prev: () => {
+                        if (activeChild > 0) {
+                          setActiveChild(activeChild - 1);
+                        }
+                      },
+                    }
+                  : {},
+              ),
+          )}
       </div>
     </div>
   );

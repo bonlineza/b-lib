@@ -162,6 +162,8 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
 
+  var animationDuration = 550;
+
   var AsideSlide =
   /*#__PURE__*/
   function (_React$Component) {
@@ -221,7 +223,7 @@
                 showContent: _this.props.renderEmpty
               };
             });
-          }, 550);
+          }, animationDuration);
         }
 
         _this.setState(function () {
@@ -239,7 +241,7 @@
               showEmpty: _this.props.renderEmpty
             };
           });
-        }, 550);
+        }, animationDuration);
       });
 
       _this.state = {
@@ -283,7 +285,7 @@
           className: "aside-slide__inner__header"
         }, this.props.toggleButton ? React__default.createElement("span", {
           className: "aside-slide__inner__header__item--lt"
-        }, this.props.toggleButton) : null, React__default.createElement("span", {
+        }, this.props.toggleButton()) : null, React__default.createElement("span", {
           className: "aside-slide__inner__header__item"
         }, this.props.title), this.props.actionComponent && React__default.createElement("span", {
           className: "aside-slide__inner__header__item--right"
@@ -461,7 +463,7 @@
       className: "".concat(baseClass, " ").concat(isOpen ? 'is-open' : 'is-closed')
     }, React__default.createElement("div", {
       className: "".concat(baseClass, "__inner ").concat(size ? "wrap".concat(size) : '')
-    }, React__default.Children.map(children, function (child, index) {
+    }, isOpen && React__default.Children.map(children, function (child, index) {
       return index === activeChild && React__default.cloneElement(child, child.type !== 'div' ? {
         next: function next() {
           if (maxChildCount - 1 > activeChild) {
@@ -518,15 +520,13 @@
       });
 
       _defineProperty(_assertThisInitialized(_this), "getContent", function () {
-        // if (this.props.isOpen) {
         if (_this.props.description) {
           return React__default.createElement("p", {
             className: "u-text__base u-text--center"
           }, _this.props.description);
         } else if (_this.props.renderContent) {
           return _this.props.renderContent();
-        } // }
-
+        }
 
         return null;
       });

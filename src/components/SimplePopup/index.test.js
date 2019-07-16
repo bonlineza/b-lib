@@ -55,6 +55,7 @@ describe('SimplePopup', () => {
       expect(wrapper.length).toBe(1);
     });
     it('baseClass', () => {
+      wrapper.setProps({ isOpen: true });
       expect(wrapper.find(`.${defaultBaseClass}`).length).toBe(1);
     });
   });
@@ -65,30 +66,32 @@ describe('SimplePopup', () => {
     });
     it('will render content when renderContent is supplied a valid renderer', () => {
       wrapper.setProps({
+        isOpen: true,
         renderContent: () => (
           <div className="popup-content">some div with content</div>
         ),
       });
       expect(wrapper.find(`.popup-content`).length).toBe(1);
     });
-    it('will render content when description is supplied a valid renderer', () => {
+    it('will render content when description is supplied', () => {
       wrapper.setProps({
+        isOpen: true,
         description: 'test description',
       });
       expect(wrapper.find(`p`).text()).toContain('description');
     });
     it('renders two buttons when given options prop', () => {
-      wrapper.setProps({ options: testOptions });
+      wrapper.setProps({ options: testOptions, isOpen: true });
       const buttons = wrapper.find(`button`);
       expect(buttons.length).toBe(2);
     });
     it('renders loader when showLoader prop is set to true', () => {
-      wrapper.setProps({ showLoader: true });
+      wrapper.setProps({ showLoader: true, isOpen: true });
       const loader = wrapper.find(`.popup-loader`);
       expect(loader.length).toBe(1);
     });
     it('hides loader when showLoader prop is set to false', () => {
-      wrapper.setProps({ showLoader: false });
+      wrapper.setProps({ showLoader: false, isOpen: true });
       const loader = wrapper.find(`.popup-loader`);
       expect(loader.length).toBe(0);
     });
