@@ -37,11 +37,17 @@ describe('Overlay', () => {
       wrapper.setProps({ isOpen: true });
       expect(wrapper.find(`.is-open`).length).toBe(1);
     });
-    it('first child is rendered by default', () => {
+    it('children are not rendered by default', () => {
+      const firstChild = wrapper.find(`#overlay-child-1`);
+      expect(firstChild.length).toBe(0);
+    });
+    it('children are rendered when isOpen is set', () => {
+      wrapper.setProps({ isOpen: true });
       const firstChild = wrapper.find(`#overlay-child-1`);
       expect(firstChild.length).toBe(1);
     });
     it('trigger "next" from first child renders second child', () => {
+      wrapper.setProps({ isOpen: true });
       const firstChild = wrapper.find(`#overlay-child-1`);
       const firstChildButton = firstChild.find('#next-button');
       firstChildButton.simulate('click');
@@ -49,6 +55,7 @@ describe('Overlay', () => {
       expect(secondChild.length).toBe(1);
     });
     it('trigger "prev" from second child renders first child', () => {
+      wrapper.setProps({ isOpen: true });
       let firstChild = wrapper.find(`#overlay-child-1`);
       expect(firstChild.length).toBe(1);
       firstChild.find('#next-button').simulate('click');
