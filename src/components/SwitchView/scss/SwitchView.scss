@@ -1,0 +1,25 @@
+
+/*------------------------------------*\
+    $SWITCH VIEW
+\*------------------------------------*/
+
+.switch-view {
+  display: block;
+}
+
+  .switch-view__item {
+    width: 100%;
+    text-align: center;
+
+    & button{
+      min-width: 10em;
+      border-radius: 0px;
+      border-width: 1px;
+
+      &:last-child(){
+        &:not(:first-child) {
+          border-left: 0px;
+        }
+      }
+    }
+  }

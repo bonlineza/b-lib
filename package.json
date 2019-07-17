@@ -1,6 +1,6 @@
 {
   "name": "b-lib",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
     "build": "build-storybook -c .storybook -o .out",
