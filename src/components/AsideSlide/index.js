@@ -29,7 +29,7 @@ class AsideSlide extends React.Component<PropsType> {
     bgcAlt: false,
     toggleButton: null,
     actionComponent: null,
-    renderEmpty: null,
+    renderEmpty: false,
     slideBar: null,
     innerId: '',
     qeId: '',
