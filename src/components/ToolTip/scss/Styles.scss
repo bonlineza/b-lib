@@ -1,0 +1,81 @@
+$clr-ntrl-min: #fff; //white
+$clr-ntrl-max: darken($clr-ntrl-min, 100%); //black
+
+/*------------------------------------*\
+    $HOVER TOOLTIP
+\*------------------------------------*/
+.hover-tooltip-container {
+  text-align: center;
+}
+
+%hover-tooltip {
+  position: relative;
+  &:hover > %hover-tooltip__inner {
+    transition: opacity 350ms ease-in-out;
+    opacity: 0.8;
+    height: 30px;
+    width: 140px;
+    overflow: visible;
+
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+.hover-tooltip {
+  @extend %hover-tooltip;
+  & svg {
+    pointer-events: none;
+  }
+}
+
+%hover-tooltip__inner {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transition: opacity 350ms ease-in-out,
+              height 0ms ease-in 350ms,
+              width 0ms ease-in 350ms
+              overflow 0ms ease-in 350ms;
+  position: absolute;
+  color: $clr-ntrl-min;
+  background-color: $clr-ntrl-max;
+  height: 0;
+  text-align: center;
+  border-radius: 6px;
+  top: 110%;
+  left: 50%;
+  z-index: 999;
+  transform: translateX(-50%);
+  width: 0px;
+  overflow: hidden;
+
+  &:before {
+    transition: opacity 350ms ease-in-out;
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-55%);
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid $clr-ntrl-max;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    overflow: hidden;
+    opacity: 0;
+  }
+}
+.hover-tooltip__inner {
+  @extend %hover-tooltip__inner;
+}
+
+%hover-tooltip__inner__text {
+  display: block;
+}
+.hover-tooltip__inner__text {
+  @extend %hover-tooltip__inner__text;
+}
