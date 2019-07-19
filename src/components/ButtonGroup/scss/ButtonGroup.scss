@@ -1,0 +1,179 @@
+/*------------------------------------*\
+    $BUTTON GROUP
+\*------------------------------------*/
+@import '../../../scss/utilities/mixins/!all';
+
+%button-group {
+  position: relative;
+  width: 100%;
+  min-width: 20rem; // ie11 needs this to display semi-properly
+
+  & .grouped--left {
+    position: absolute;
+    left: 0;
+    width: 50%;
+  }
+
+  & .grouped--right {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+  }
+}
+.button-group { @extend %button-group;}
+  .button-group--has-expand {
+    @extend %button-group;
+  }
+
+  .button-group__primary {
+    display: inline-block;
+    min-width: 16rem;
+    text-align: right;
+  }
+
+    .button-group__primary__item {
+      margin-right: 2px;
+      display: inline-block;
+
+      &.button-group__item--is-first {
+        & > .button-group__primary__item__btn {
+          border-radius: 5px 0 0 5px;
+        }
+      }
+
+      &.button-group__item--is-only {
+        & > .button-group__primary__item__btn {
+          border-radius: 5px 5px 5px 5px!important;
+        }
+      }
+
+      & .button-group__primary__item__btn {
+        border-radius: 0;
+      }
+
+      &:nth-last-child(1) {
+        & > .button-group__primary__item__btn {
+          border-radius: 0 5px 5px 0px;
+
+          .button-group--has-expand & {
+            border-radius: 0!important;
+          }
+        }
+      }
+    }
+      .button-group__primary__item__btn {
+        display: block;
+        width: 100%;
+      }
+
+      .button-group__primary__item__btn--text {
+        display: block;
+        width: 100%;
+      }
+
+  %button-group__secondary {
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .button-group__secondary--is-closed {
+    @extend %button-group__secondary;
+  }
+
+  .button-group__secondary--is-open {
+    @extend %button-group__secondary;
+  }
+
+    .button-group__secondary-toggle {
+      height: 100%;
+      width: 2rem;
+    }
+
+    %button-group__secondary-toggle__btn {
+      border-radius: 0 5px 5px 0;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: block;
+      min-width: 0px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+     .button-group__secondary-toggle__btn {
+        @extend %button-group__secondary-toggle__btn;
+
+        .button-group--alt & {
+          @extend %button-group__secondary-toggle__btn;
+        }
+
+        & .icon__inner > svg {
+          height: 1.5em;
+          width: 1.5em;
+        }
+     }
+
+    %button-group__popup {
+      @include menu-anchor-collapse();
+      box-shadow: 0px 0px 10px black;
+      background-color: lightgray;
+      position: absolute;
+      z-index: 9;
+      transition: all 350ms ease-in-out;
+      width: 15rem;
+      right: 0;
+      left: initial;
+      top: 75%;
+      min-width: 5rem;
+      background-color: lightgrey;
+
+      .button-group--alt & {
+        top: auto;
+        bottom: 100%;
+      }
+    }
+
+    .button-group__secondary-collapsed {
+      @extend %button-group__popup;
+
+      &:before {
+        content: '';
+        border-bottom: 10px solid black;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        height: 0;
+        right: 0.55rem;
+        position: absolute;
+        top: -10px;
+        width: 0;
+
+        .button-group--alt & {
+          top: auto;
+          bottom: -10px;
+          border-bottom: transparent;
+          border-top: 10px solid black;
+          border-left: 7px solid transparent;
+          border-right: 7px solid transparent;
+        }
+      }
+
+      .button-group__secondary--is-open & {
+        max-height: 20rem;
+        opacity: 1;
+        overflow: visible;
+      }
+    }
+
+      .button-group__secondary__item {
+        display: block;
+        text-align: right;
+      }
+
+        .button-group__secondary__item__btn {
+          display: block;
+          text-align: right;
+          width: 100%;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
