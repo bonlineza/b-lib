@@ -9,6 +9,7 @@ import PageReady, {
   Context as PageReadyContext,
 } from './src/components/PageReady/index.js';
 import EllipsisLoader from './src/components/EllipsisLoader/index.js';
+import PDFPreview from './src/components/PDFPreview/index.js';
 
 export {
   AsideSlide,
@@ -21,4 +22,5 @@ export {
   PageReadyContext,
   EllipsisLoader,
   MobileSideMenu,
+  PDFPreview,
 };
