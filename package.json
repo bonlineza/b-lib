@@ -3,14 +3,17 @@
   "version": "0.1.2",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
-    "build": "build-storybook -c .storybook -o .out",
+    "clean": "rimraf lib",
+    "build": "yarn run clean && rollup -c",
+    "build:storybook": "build-storybook -c .storybook -o .out",
+    "build:publish": "yarn run clean && yarn run build && npm publish",
     "lint": "eslint .",
     "jest": "jest --env=jsdom",
     "test": "run-s lint jest",
     "posttest": "npm run format",
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
-    "format": "prettier --write '**/*.{js,css,md}'"
+    "format": "prettier --write './src/**/*.{js,css,md}'"
   },
   "dependencies": {
     "@storybook/addon-actions": "^5.0.11",
