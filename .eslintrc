@@ -11,6 +11,7 @@
       "react-hooks"
     ],
     "rules": {
+      "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
       "prefer-arrow-callback": [0],
       "react/no-unescaped-entities": [0],
       "react/jsx-closing-bracket-location": [0],
