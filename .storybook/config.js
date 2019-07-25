@@ -6,6 +6,7 @@ function loadStories() {
   require('../stories/EllipsisLoader.js');
   require('../stories/SwitchView.js');
   require('../stories/ButtonGroup.js');
+  require('../stories/PageReady.js');
   require('../stories/Overlay.js');
   require('../stories/SimplePopup.js');
 }
