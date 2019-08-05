@@ -7,10 +7,10 @@ const WrappedDropOptionsButtons = () => (
   <DropOptions
     wrapperClass="test-wrapper-class"
     baseElement={() => <span>Base Element</span>}>
-    <button type="button" onClick={() => action('Clicked Button 1')}>
+    <button type="button" onClick={action('Clicked Button 1')}>
       Button 1
     </button>
-    <button type="button" onClick={() => action('Clicked Button 2')}>
+    <button type="button" onClick={action('Clicked Button 2')}>
       Button 2
     </button>
   </DropOptions>
