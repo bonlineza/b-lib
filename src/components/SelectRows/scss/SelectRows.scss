@@ -1,0 +1,27 @@
+.select-rows {
+
+  &:hover {
+    .select-rows--action {
+      .svg {
+        color: black;
+      }
+    }
+  }
+
+  .select-rows--action {
+    flex: 0;
+
+    .svg {
+      padding: 0;
+    }
+  }
+
+  .select-rows--value{
+    flex: 1;
+  }
+
+  .select-rows--placeholder{
+    color: grey;
+    flex: 1;
+  }
+}

@@ -11,6 +11,7 @@ import PageReady, {
 import EllipsisLoader from './src/components/EllipsisLoader/index.js';
 import PDFPreview from './src/components/PDFPreview/index.js';
 import WYSIWYG from './src/components/WYSIWYG/index.js';
+import SelectRows from './src/components/SelectRows/index.js';
 
 export {
   AsideSlide,
@@ -25,4 +26,5 @@ export {
   EllipsisLoader,
   PDFPreview,
   WYSIWYG,
+  SelectRows,
 };

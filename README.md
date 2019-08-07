@@ -21,6 +21,7 @@ Includes:
 - SwitchView
 - ToolTip
 - WYSIWYG
+- SelectRows
 
 ## Setup
 
