@@ -25,28 +25,30 @@ const testOptions = [
 
 const defaultBaseClass = 'popup-modal';
 
-const setup = ({
-  isOpen = false,
-  baseClass = defaultBaseClass,
-  options = [],
-  renderContent = null,
-}) =>
-  mount(
-    <SimplePopup
-      baseClass={baseClass}
-      isOpen={isOpen}
-      title="Test Title"
-      close={() => console.log('Close Action Called')}
-      renderLoader={() => <div className="popup-loader">Loading...</div>}
-      renderContent={renderContent}
-      options={options}
-    />,
-  );
+const defaultProps = {
+  isOpen: false,
+  baseClass: defaultBaseClass,
+  options: [],
+  title: 'Test Title',
+  renderContent: null,
+  close: jest.fn(),
+
+  renderLoader: () => <div className="popup-loader">Loading...</div>,
+};
+
+const setup = (props = {}) => {
+  const testProps = { ...defaultProps, ...props };
+  return mount(<SimplePopup {...testProps} />);
+};
 
 describe('SimplePopup', () => {
   let wrapper;
-
+  const map = {};
   beforeEach(() => {
+    document.addEventListener = jest.fn((event, cb) => {
+      map[event] = cb;
+    });
+
     wrapper = setup({ isOpen: false });
   });
 
@@ -94,6 +96,25 @@ describe('SimplePopup', () => {
       wrapper.setProps({ showLoader: false, isOpen: true });
       const loader = wrapper.find(`.popup-loader`);
       expect(loader.length).toBe(0);
+    });
+
+    it('modal does not close if clicked outside the area of the popup', () => {
+      wrapper.setProps({ isOpen: true });
+      const modalElement = wrapper
+        .find('.modal')
+        .first()
+        .getDOMNode();
+      map.click({ target: modalElement });
+
+      expect(wrapper.props().close).toHaveBeenCalled();
+      wrapper.setProps({
+        isOpen: true,
+        cannotOutsideClickClose: true,
+      });
+
+      map.click({ target: modalElement });
+      // It will be one and not zero because close ran the previous time
+      expect(wrapper.props().close).toHaveBeenCalledTimes(1);
     });
   });
 });
