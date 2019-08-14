@@ -18,7 +18,9 @@
   "main": "build/bundle.js",
   "dependencies": {
     "axios": "^0.19.0",
-    "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0"
+    "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0",
+    "google-map-react": "1.1.4",
+    "lodash": "^4.17.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
@@ -108,7 +110,7 @@
     "collectCoverage": true
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "~16.8.1",
+    "react-dom": "~16.8.1"
   }
 }
