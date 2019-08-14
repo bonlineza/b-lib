@@ -22,6 +22,7 @@ Includes:
 - ToolTip
 - WYSIWYG
 - SelectRows
+- UntilReady
 
 ## Setup
 
