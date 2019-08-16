@@ -7,6 +7,7 @@ type OptionShape = {
   buttonText: string,
   buttonClass: string,
   dataQeId?: string,
+  cannotOutsideClickClose: boolean,
 };
 
 type PropsShape = {
@@ -29,6 +30,7 @@ class SimplePopup extends React.Component<PropsShape> {
     showLoader: false,
     description: null,
     renderContent: null,
+    cannotOutsideClickClose: false,
     onOpen: null,
     onClose: null,
   };
@@ -63,6 +65,7 @@ class SimplePopup extends React.Component<PropsShape> {
     if (this.props.onOpen) {
       this.props.onOpen();
     }
+
     document.addEventListener('click', this.listenerAction);
   };
 
@@ -76,8 +79,8 @@ class SimplePopup extends React.Component<PropsShape> {
   listenerAction = (event: Object) => {
     if (!this.reactOverlay || !this.reactPopup) return null;
     if (
-      this.reactOverlay.contains(event.target) &&
-      !this.reactPopup.contains(event.target)
+      !this.reactPopup.contains(event.target) &&
+      !this.props.cannotOutsideClickClose
     ) {
       this.props.close();
     }
