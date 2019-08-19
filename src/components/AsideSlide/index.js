@@ -7,7 +7,7 @@ type PropsType = {
   title: string,
   toggle: Function,
   bgcAlt?: boolean,
-  toggleButton?: Object,
+  toggleButton?: Function,
   actionComponent?: Object,
   renderEmpty?: boolean,
   slideBar?: Function | null,
@@ -20,7 +20,7 @@ const animationDuration = 550;
 class AsideSlide extends React.Component<PropsType> {
   static getDerivedStateFromProps(props, state) {
     // we aren't in a transition but an open slide wants to show content
-    if (!state.inTransit && !props.renderEmpty && state.isOpen) {
+    if (!state.inTransit && !props.renderEmpty && props.isOpen) {
       return {
         renderEmpty: props.renderEmpty,
       };
@@ -47,6 +47,13 @@ class AsideSlide extends React.Component<PropsType> {
   }
 
   componentDidUpdate(prevProps) {
+    if (
+      prevProps.isOpen === false &&
+      this.props.isOpen &&
+      !this.props.renderEmpty
+    ) {
+      this.toggleVisibility(false);
+    }
     if (prevProps.renderEmpty === false && this.props.renderEmpty) {
       // delayed for animation
       this.delayEmptyToggle();

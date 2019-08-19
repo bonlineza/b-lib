@@ -6,17 +6,13 @@ import SimplePopup from './index';
 
 const testOptions = [
   {
-    cb: () => {
-      console.log('maybe close the popup');
-    },
+    cb: () => null,
     buttonText: 'Test Cancel Button',
     buttonClass: 'cancel-button',
     dataQeId: 'button-cancel',
   },
   {
-    cb: () => {
-      console.log('Do something else... maybe trigger the loading');
-    },
+    cb: () => null,
     buttonText: 'Test Action Button',
     buttonClass: 'action-button',
     dataQeId: 'button-submit',
