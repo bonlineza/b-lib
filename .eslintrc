@@ -68,6 +68,7 @@
     },
     "globals": {
       "$": true,
+      "afterEach": true,
       "jest": true,
       "window": true,
       "document": true,
