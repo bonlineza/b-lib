@@ -7,7 +7,6 @@ type OptionShape = {
   buttonText: string,
   buttonClass: string,
   dataQeId?: string,
-  cannotOutsideClickClose: boolean,
 };
 
 type PropsShape = {
@@ -21,6 +20,7 @@ type PropsShape = {
   size?: string,
   onOpen?: Function,
   onClose?: Function,
+  cannotOutsideClickClose?: boolean,
 };
 
 class SimplePopup extends React.Component<PropsShape> {
