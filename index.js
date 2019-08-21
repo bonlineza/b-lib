@@ -7,6 +7,7 @@ import PageReady, {
   Context as PageReadyContext,
 } from './src/components/PageReady/index.js';
 import EllipsisLoader from './src/components/EllipsisLoader/index.js';
+import RedactorWrapper from './src/components/RedactorWrapper/index.js';
 
 export {
   AsideSlide,
@@ -17,4 +18,5 @@ export {
   PageReady,
   PageReadyContext,
   EllipsisLoader,
+  RedactorWrapper,
 };

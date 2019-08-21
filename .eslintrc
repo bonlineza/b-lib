@@ -67,6 +67,7 @@
     }
     },
     "globals": {
+      "Selection": true,
       "$": true,
       "afterEach": true,
       "jest": true,
@@ -74,10 +75,10 @@
       "document": true,
       "FormData": true,
       "location": true,
-          "it": true,
-          "describe": true,
-          "beforeEach": true,
-          "expect": true,
+      "it": true,
+      "describe": true,
+      "beforeEach": true,
+      "expect": true,
       "before": true,
       "React$Element": true,
       "HTMLElement": true,

@@ -9,6 +9,7 @@ function loadStories() {
   require('../stories/PageReady.js');
   require('../stories/Overlay.js');
   require('../stories/SimplePopup.js');
+  require('../stories/RedactorWrapper.js');
 }
 
 configure(loadStories, module);
