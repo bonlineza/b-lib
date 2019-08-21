@@ -18,6 +18,7 @@
   "main": "build/bundle.js",
   "dependencies": {},
   "devDependencies": {
+    "axios": "^0.19.0",
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
@@ -74,6 +75,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "lint-staged": "^7.3.0",
+    "moxios": "^0.4.0",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.1",
     "postcss": "^7.0.17",
@@ -100,5 +102,8 @@
       "\\.(css|less|sass|scss|postcss)$": "identity-obj-proxy"
     },
     "collectCoverage": true
+  },
+  "peerDependencies": {
+    "axios": "^0.19.0"
   }
 }
