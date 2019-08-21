@@ -10,10 +10,8 @@
     "lint": "eslint ./src",
     "jest": "jest --env=jsdom",
     "test": "run-s lint jest",
-    "posttest": "npm run format",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged",
-    "format": "prettier --write './src/**/*.{js,css,md}'"
+    "precommit": "lint-staged"
   },
   "main": "build/bundle.js",
   "dependencies": {
