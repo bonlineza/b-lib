@@ -67,8 +67,16 @@ export default {
     globals: {
       react: 'React',
       'prop-types': 'PropTypes',
+      axios: 'axios',
     },
   },
   plugins: [babel(customBabelConfig), sass(sassOptions)],
-  external: ['b-lib', 'react', 'react-dom', 'prop-types', 'styled-components'],
+  external: [
+    'b-lib',
+    'react',
+    'react-dom',
+    'prop-types',
+    'styled-components',
+    'axios',
+  ],
 };
