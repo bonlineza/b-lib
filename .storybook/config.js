@@ -7,6 +7,7 @@ function loadStories() {
   require('../stories/SwitchView.js');
   require('../stories/ButtonGroup.js');
   require('../stories/PageReady.js');
+  require('../stories/ToolTip.js');
   require('../stories/Overlay.js');
   require('../stories/SimplePopup.js');
 }
