@@ -7,6 +7,20 @@ Includes:
 - Rollup
 - Components and base styles
 
+## Components in this Library
+
+- AsideSlide
+- ButtonGroup
+- DropOptions
+- EllipsisLoader
+- Map
+- Overlay
+- PageReady
+- Preview
+- SimplePopup
+- SwitchView
+- ToolTip
+
 ## Setup
 
 1. `yarn && yarn start` - To open Storybook
