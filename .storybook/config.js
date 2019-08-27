@@ -10,6 +10,7 @@ function loadStories() {
   require('../stories/ToolTip.js');
   require('../stories/Overlay.js');
   require('../stories/SimplePopup.js');
+  require('../stories/MobileSideMenu.js');
 }
 
 configure(loadStories, module);
