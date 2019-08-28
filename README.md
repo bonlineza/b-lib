@@ -13,7 +13,7 @@ Includes:
 - ButtonGroup
 - DropOptions
 - EllipsisLoader
-- Map
+- MobileSideMenu
 - Overlay
 - PageReady
 - Preview
