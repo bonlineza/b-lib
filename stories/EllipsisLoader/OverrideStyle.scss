@@ -1,0 +1,7 @@
+$override-color: #555;
+
+.override {
+  .loader__ellipsis__dot {
+    background-color: $override-color;
+  }
+}
