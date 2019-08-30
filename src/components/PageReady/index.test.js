@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import { mount } from 'enzyme';
 import moxios from 'moxios';
+import axios from 'axios';
 import 'test-util/setup';
-import PageReady, { Context } from './index';
 import defaultRequest from './request';
+import PageReady, { Context } from './index';
 
 describe('Page Ready', () => {
   beforeEach(() => {
@@ -13,6 +14,11 @@ describe('Page Ready', () => {
   afterEach(() => {
     moxios.uninstall();
   });
+
+  const getAxiosRequestInstance = (url = '', method = 'get', postBody = {}) => {
+    const requestParams = [url, method === 'post' ? { ...postBody } : {}];
+    return axios[method.toLowerCase()](...requestParams);
+  };
 
   it('tests that the prop name in the state of obj of the component is `John Doe`', done => {
     const data = {
@@ -25,12 +31,20 @@ describe('Page Ready', () => {
       response: data,
     });
 
-    const wrapper = mount(<PageReady url="https://fake.test/name/1" />);
+    const wrapper = mount(
+      <PageReady
+        getRequestInstance={() =>
+          getAxiosRequestInstance('https://fake.test/name/1')
+        }
+      />,
+    );
 
     moxios.wait(() => {
       wrapper.update();
       const {
-        data: { name },
+        data: {
+          data: { name },
+        },
       } = wrapper.state();
       expect(name).toEqual('John Doe');
       done();
@@ -59,9 +73,16 @@ describe('Page Ready', () => {
     });
 
     const wrapper = mount(
-      <PageReady url="https://fake.test/names">
+      <PageReady
+        getRequestInstance={() =>
+          getAxiosRequestInstance('https://fake.test/name/1')
+        }>
         <Context.Consumer>
-          {({ data: names }) => (
+          {({
+            data: {
+              data: { names },
+            },
+          }) => (
             <Fragment>
               {names.map(({ name, id }) => (
                 <div className="list-item" key={id}>
@@ -86,16 +107,18 @@ describe('Page Ready', () => {
   });
 
   it('test that PageReady can make post requests to end points', done => {
-    moxios.stubRequest('https://fake.test/names', {
+    moxios.stubRequest('https://fake.test/names/1', {
       status: 200,
       data: 'dummy data',
     });
 
     const wrapper = mount(
       <PageReady
-        url="https://fake.test/names"
-        postBody={{ name: 'Jason Todd' }}
-        method="post"
+        getRequestInstance={() =>
+          getAxiosRequestInstance('https://fake.test/names/1', 'post', {
+            name: 'Jason Todd',
+          })
+        }
       />,
     );
 
@@ -115,7 +138,9 @@ describe('Page Ready', () => {
     });
     const wrapper = mount(
       <PageReady
-        url="https://fake.test/names"
+        getRequestInstance={() =>
+          getAxiosRequestInstance('https://fake.test/names')
+        }
         renderCustomLoader={() => (
           <div className="custom-loader">custom loader</div>
         )}
