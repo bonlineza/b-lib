@@ -68,6 +68,9 @@
     },
     "globals": {
       "$": true,
+      "fetch": true,
+      "afterEach": true,
+      "jest": true,
       "window": true,
       "document": true,
       "FormData": true,
