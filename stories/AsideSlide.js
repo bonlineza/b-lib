@@ -13,11 +13,11 @@ const WrappedAsideSlide = () => {
       </button>
       <AsideSlide
         title="Wrapped Aside Slide"
-        toggleButton={
+        toggleButton={() => (
           <button type="button" onClick={() => setSlideOpen(!slideOpen)}>
             Toggle
           </button>
-        }
+        )}
         actionComponent={
           <button type="button" onClick={action('actionComponent action')}>
             Action
