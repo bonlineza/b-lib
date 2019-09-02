@@ -4,19 +4,14 @@ import 'test-util/setup';
 import EllipsisLoader from './index';
 
 describe('Ellipsis Loader', () => {
-  it('loader__lds-ellipsis__dot should have background color #666', () => {
-    const wrapper = shallow(<EllipsisLoader dotColor="#666" />);
-    const dotElements = wrapper.find('.loader__lds-ellipsis__dot');
-
-    dotElements.forEach(dot => {
-      const dotBackgroundColor = dot.props().style.backgroundColor;
-      expect(dotBackgroundColor).toBe('#666');
-    });
+  it('EllipsisLoader renders', () => {
+    const wrapper = shallow(<EllipsisLoader />);
+    expect(wrapper.length).toBe(1);
   });
 
-  it('test that four dots render', () => {
-    const wrapper = shallow(<EllipsisLoader dotColor="#666" />);
-    const dotElements = wrapper.find('.loader__lds-ellipsis__dot');
+  it('test that there are four dots', () => {
+    const wrapper = shallow(<EllipsisLoader />);
+    const dotElements = wrapper.find('.loader__ellipsis__dot');
 
     expect(dotElements.length).toBe(4);
   });

@@ -4,7 +4,6 @@ function loadStories() {
   require('../stories/AsideSlide.js');
   require('../stories/ButtonGroup.js');
   require('../stories/DropOptions.js');
-  require('../stories/EllipsisLoader.js');
   require('../stories/Map.js');
   require('../stories/MobileSideMenu.js');
   require('../stories/Overlay.js');
@@ -12,6 +11,7 @@ function loadStories() {
   require('../stories/PDFPreview.js');
   require('../stories/SelectRows.js');
   require('../stories/SimplePopup.js');
+  require('../stories/EllipsisLoader/index.js');
   require('../stories/SwitchView.js');
   require('../stories/ToolTip.js');
   require('../stories/UntilReady.js');

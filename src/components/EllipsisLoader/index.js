@@ -1,37 +1,17 @@
 /** @format */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import './scss/Styles.scss';
 
-const EllipsisLoader = ({ dotColor }) => (
-  <div className="loader">
-    <div className="loader__lds-ellipsis">
-      <div
-        className="loader__lds-ellipsis__dot"
-        style={{ backgroundColor: dotColor }}
-      />
-      <div
-        className="loader__lds-ellipsis__dot"
-        style={{ backgroundColor: dotColor }}
-      />
-      <div
-        className="loader__lds-ellipsis__dot"
-        style={{ backgroundColor: dotColor }}
-      />
-      <div
-        className="loader__lds-ellipsis__dot"
-        style={{ backgroundColor: dotColor }}
-      />
+const EllipsisLoader = ({ baseClassName = 'loader' }) => (
+  <div className={baseClassName}>
+    <div className={`${baseClassName}__ellipsis`}>
+      <div className={`${baseClassName}__ellipsis__dot`} />
+      <div className={`${baseClassName}__ellipsis__dot`} />
+      <div className={`${baseClassName}__ellipsis__dot`} />
+      <div className={`${baseClassName}__ellipsis__dot`} />
     </div>
   </div>
 );
-
-EllipsisLoader.propTypes = {
-  dotColor: PropTypes.string,
-};
-EllipsisLoader.defaultProps = {
-  dotColor: '#af1e2d',
-};
 
 export default EllipsisLoader;
