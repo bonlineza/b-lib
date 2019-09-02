@@ -1,11 +1,15 @@
 const path = require('path');
 
 module.exports = {
+  externals: {
+    jest: 'jest',
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
       components: path.resolve(__dirname, 'src/components'),
       'test-util': path.resolve(__dirname, 'src/test-util'),
+      test: path.resolve(__dirname, 'src/test'),
     },
   },
   module: {

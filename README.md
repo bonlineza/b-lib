@@ -16,10 +16,11 @@ Includes:
 - MobileSideMenu
 - Overlay
 - PageReady
-- Preview
+- PDFPreview
 - SimplePopup
 - SwitchView
 - ToolTip
+- WYSIWYG
 
 ## Setup
 

@@ -12,6 +12,7 @@ function loadStories() {
   require('../stories/SimplePopup.js');
   require('../stories/MobileSideMenu.js');
   require('../stories/PDFPreview.js');
+  require('../stories/WYSIWYG.js');
 }
 
 configure(loadStories, module);

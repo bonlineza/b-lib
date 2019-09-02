@@ -10,6 +10,7 @@ import PageReady, {
 } from './src/components/PageReady/index.js';
 import EllipsisLoader from './src/components/EllipsisLoader/index.js';
 import PDFPreview from './src/components/PDFPreview/index.js';
+import WYSIWYG from './src/components/WYSIWYG/index.js';
 
 export {
   AsideSlide,
@@ -17,10 +18,11 @@ export {
   SwitchView,
   ToolTip,
   Overlay,
+  MobileSideMenu,
   SimplePopup,
   PageReady,
   PageReadyContext,
   EllipsisLoader,
-  MobileSideMenu,
   PDFPreview,
+  WYSIWYG,
 };
