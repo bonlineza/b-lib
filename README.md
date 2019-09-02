@@ -26,7 +26,11 @@ Includes:
 
 ## Setup
 
-1. `yarn && yarn start` - To open Storybook
+1. `yarn` - install dependencies
+2. `yarn start` - To open Storybook
+
+### Advanced
+- define the Maps API key and run storybook using this command: `STORYBOOK_MAPS_API_KEY=[you long api key] yarn start` - see: (https://storybook.js.org/docs/configurations/env-vars/) for more info
 
 ## Commands
 
