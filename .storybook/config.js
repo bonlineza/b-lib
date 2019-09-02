@@ -1,6 +1,7 @@
 import { configure } from '@storybook/react';
 
 function loadStories() {
+  require('../stories/ActionBar.js');
   require('../stories/AsideSlide.js');
   require('../stories/ButtonGroup.js');
   require('../stories/DropOptions.js');

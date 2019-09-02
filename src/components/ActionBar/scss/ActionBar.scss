@@ -1,0 +1,31 @@
+
+/*------------------------------------*\
+    $ACTION BAR
+\*------------------------------------*/
+
+@import '../../../scss/index';
+
+.action-bar {
+  @include menu-anchor-collapse();
+  @include link--transition();
+  @include soft--sides;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: black;
+
+  &.action-bar--is-open {
+    @include push--bottom;
+    max-height: 2rem;
+    height: 2rem;
+    opacity: 1;
+  }
+}
+
+  .action-bar__text {
+    color: white;
+    height: 100%;
+    line-height: 2rem;
+    @include flush;
+  }
