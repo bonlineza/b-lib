@@ -13,6 +13,7 @@ function loadStories() {
   require('../stories/MobileSideMenu.js');
   require('../stories/PDFPreview.js');
   require('../stories/WYSIWYG.js');
+  require('../stories/SelectRows.js');
 }
 
 configure(loadStories, module);
