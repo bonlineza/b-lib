@@ -14,6 +14,7 @@ function loadStories() {
   require('../stories/PDFPreview.js');
   require('../stories/WYSIWYG.js');
   require('../stories/SelectRows.js');
+  require('../stories/UntilReady.js');
 }
 
 configure(loadStories, module);
