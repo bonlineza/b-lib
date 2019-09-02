@@ -2,7 +2,7 @@
   "name": "@bonlineza/b-lib",
   "version": "0.1.9",
   "scripts": {
-    "start": "start-storybook -p 9001 -c .storybook",
+    "start": "start-storybook -p 9001 -c .storybook -s ./public",
     "clean": "rimraf ./build/*.*",
     "build": "yarn run clean && ./node_modules/.bin/rollup -c",
     "build:storybook": "build-storybook -c .storybook -o .out",
@@ -17,7 +17,8 @@
   },
   "main": "build/bundle.js",
   "dependencies": {
-    "axios": "^0.19.0"
+    "axios": "^0.19.0",
+    "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
@@ -82,8 +83,8 @@
     "postcss": "^7.0.17",
     "prettier": "^1.14.3",
     "prop-types": "^15.7.2",
-    "react": "~16.8.1",
-    "react-dom": "~16.8.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "react-scripts": "2.0.5",
     "react-test-renderer": "^16.0.0",
     "rollup": "^1.17.0",
@@ -100,11 +101,14 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less|sass|scss|postcss)$": "identity-obj-proxy"
+      "\\.(css|less|sass|scss|postcss)$": "identity-obj-proxy",
+      "../Preview/ControlItem": "<rootDir>/__mocks__/fileMock.js",
+      "react-pdf-js": "<rootDir>/__mocks__/react-pdf-js.js"
     },
     "collectCoverage": true
   },
   "peerDependencies": {
-    "axios": "^0.19.0"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   }
 }

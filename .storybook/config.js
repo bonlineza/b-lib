@@ -11,6 +11,7 @@ function loadStories() {
   require('../stories/Overlay.js');
   require('../stories/SimplePopup.js');
   require('../stories/MobileSideMenu.js');
+  require('../stories/PDFPreview.js');
 }
 
 configure(loadStories, module);
