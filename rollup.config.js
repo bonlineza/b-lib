@@ -78,5 +78,9 @@ export default {
     'prop-types',
     'styled-components',
     'axios',
+    'google-map-react',
+    'google-map-react/utils',
+    'react-pdf-js',
+    'lodash/sortBy',
   ],
 };
