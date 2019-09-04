@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { interpretErrorMessage } from './formatErrors';
 import type RequestShape from './request';
 
@@ -7,9 +6,7 @@ import defaultRequest from './request';
 
 type PropShape = {
   predefinedAction?: Object,
-  url?: string,
-  postBody?: Object,
-  method?: string,
+  getRequestInstance: () => Promise<*>,
   onData?: Function,
   customErrorMessage?: string,
   customErrorHandler?: Function,
@@ -24,9 +21,6 @@ class PageReady extends React.Component<PropShape> {
       return true;
     },
     customErrorMessage: 'Failed to load',
-    url: '',
-    postBody: {},
-    method: 'get',
     predefinedAction: null,
     customErrorHandler: () => null,
     renderCustomLoader: () => null,
@@ -76,16 +70,11 @@ class PageReady extends React.Component<PropShape> {
         fetching: true,
       });
 
-      const requestParams = [
-        this.props.url,
-        this.props.method === 'post' ? { ...this.props.postBody } : {},
-      ];
-
-      axios[this.props.method.toLowerCase()](...requestParams)
-        .then((res: Object): any => {
-          const { data } = res;
+      this.props
+        .getRequestInstance()
+        .then(data => {
           if (this.props.onData) {
-            this.props.onData(res);
+            this.props.onData(data);
           }
           this.setState({
             ...defaultRequest,
@@ -94,7 +83,7 @@ class PageReady extends React.Component<PropShape> {
             data,
           });
         })
-        .catch((err: Object): any => {
+        .catch(err => {
           if (this.props.customErrorHandler) {
             const { status, data } = err;
             this.props.customErrorHandler(status, data);
