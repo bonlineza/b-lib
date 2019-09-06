@@ -19,7 +19,9 @@
   "dependencies": {
     "google-map-react": "1.1.4",
     "lodash": "^4.17.0",
-    "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0"
+    "react-dates": "https://github.com/bonlineza/react-dates#v16.0.1-showBeforeTodayDifferently-lib",
+    "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0",
+    "react-selectize": "^3.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",

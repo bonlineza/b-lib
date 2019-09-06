@@ -1,3 +1,5 @@
+import 'react-dates/initialize';
+
 import AsideSlide from './src/components/AsideSlide/index.js';
 import ButtonGroup from './src/components/ButtonGroup/index.js';
 import DropOptions from './src/components/DropOptions/index.js';
@@ -9,6 +11,7 @@ import PageReady, {
   Context as PageReadyContext,
 } from './src/components/PageReady/index.js';
 import PDFPreview from './src/components/PDFPreview/index.js';
+import SimpleSelect from './src/components/SimpleSelect/index.js';
 import SelectRows from './src/components/SelectRows/index.js';
 import SimplePopup from './src/components/SimplePopup/index.js';
 import SwitchView from './src/components/SwitchView/index.js';
@@ -28,6 +31,7 @@ export {
   PageReadyContext,
   PDFPreview,
   SelectRows,
+  SimpleSelect,
   SimplePopup,
   SwitchView,
   ToolTip,
