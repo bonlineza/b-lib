@@ -1,0 +1,28 @@
+@import '../../../scss/index';
+
+/*------------------------------------*\
+    $PAGINATOR
+\*------------------------------------*/
+
+  .paginator {
+    @extend %list--reset;
+    margin: 1rem 0 1rem 0;
+    display: flex;
+  }
+
+    .paginator__item {
+      padding: 0 1rem 0 1rem;
+    }
+
+      .paginator__item__btn {
+        color: black;
+
+        &:active,
+        &:hover {
+          color: red;
+        }
+        &:disabled{
+          color: grey;
+          pointer-events: none;
+        }
+      }
