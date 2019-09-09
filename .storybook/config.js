@@ -1,9 +1,18 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
+import moment from 'moment';
+import 'react-dates/initialize';
+import 'react-dates/css/storybook.scss';
+
+addDecorator(story => {
+  moment.locale('en');
+  return story();
+});
 
 function loadStories() {
   require('../stories/AsideSlide.js');
   require('../stories/ButtonGroup.js');
   require('../stories/DropOptions.js');
+  require('../stories/Filter/index');
   require('../stories/Map.js');
   require('../stories/MobileSideMenu.js');
   require('../stories/Overlay.js');

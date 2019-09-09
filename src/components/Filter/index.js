@@ -2,6 +2,7 @@ import React from 'react';
 import DateRangePicker from 'components/DateRangePicker';
 import SimpleSelect from 'components/SimpleSelect';
 import PredefinedFilter from './components/predefinedFilter';
+import './scss/Filter.scss';
 
 type DefaultPropsType = {
   predefined: Array<{
@@ -44,9 +45,7 @@ class Filter extends React.Component<PropsType> {
     isLoading: false,
     centered: false,
     addDatepicker: false,
-    datepickerCallback() {
-      return null;
-    },
+    datepickerCallback: () => null,
     clearInputButtonContent: () => null,
     name: '',
     title: '',
@@ -69,13 +68,13 @@ class Filter extends React.Component<PropsType> {
       (props.groupSelection &&
         props.groupSelection
           .filter(item => item.default && item.default === true)
-          .reduce((pv, cv) => cv)) ||
+          .reduce((pv, cv) => cv, null)) ||
       null;
     this.state = {
       value: this.props.initialText,
       grouping: defaultGrouping,
       isPredefOpen: false,
-      isEmpty: true,
+      isEmpty: !this.props.initialText,
     };
     this.timerDp = null;
     this.reactDropdown = React.createRef();
@@ -191,6 +190,7 @@ class Filter extends React.Component<PropsType> {
       groupSelection,
       datePickerLabel,
     } = this.props;
+    // return 'BLAH';
     return (
       <div className={`gw${this.props.centered ? '--center' : ''}`}>
         <div className={`g g-1/${filterFraction}`}>

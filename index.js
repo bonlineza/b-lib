@@ -3,6 +3,8 @@ import 'react-dates/initialize';
 import AsideSlide from './src/components/AsideSlide/index.js';
 import ButtonGroup from './src/components/ButtonGroup/index.js';
 import DropOptions from './src/components/DropOptions/index.js';
+import DateRangePicker from './src/components/DateRangePicker/index.js';
+import Filter from './src/components/Filter/index.js';
 import EllipsisLoader from './src/components/EllipsisLoader/index.js';
 import Map from './src/components/Map/index.js';
 import MobileSideMenu from './src/components/MobileSideMenu/index.js';
@@ -23,7 +25,9 @@ export {
   AsideSlide,
   ButtonGroup,
   DropOptions,
+  DateRangePicker,
   EllipsisLoader,
+  Filter,
   Map,
   MobileSideMenu,
   Overlay,
