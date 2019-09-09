@@ -14,7 +14,7 @@ type DefaultPropsType = {
 
 type PropsType = {
   callback: Function,
-  addFilter?: Function | boolean,
+  addFilter?: Function,
   centered?: boolean,
   isLoading?: boolean,
   predefined?: Array<{
@@ -23,9 +23,11 @@ type PropsType = {
   }>,
   addDatepicker: boolean,
   datepickerCallback?: Function,
+  clearInputButtonContent?: Function,
   title: string,
   initialText?: string,
   groupSelection?: Object[],
+  debounce?: number,
 };
 
 type StateType = {
@@ -42,19 +44,21 @@ class Filter extends React.Component<PropsType> {
     isLoading: false,
     centered: false,
     addDatepicker: false,
-    connectName: '',
-    title: '',
-    initialText: '',
-    groupSelection: null,
-    addFilter: false,
     datepickerCallback() {
       return null;
     },
+    clearInputButtonContent: () => null,
+    name: '',
+    title: '',
+    initialText: '',
+    groupSelection: null,
+    addFilter: null,
     request: {
       success: true,
       error: false,
       loading: false,
     },
+    debounce: 300,
   };
 
   defaultProps: DefaultPropsType;
@@ -95,8 +99,15 @@ class Filter extends React.Component<PropsType> {
       value,
       isEmpty: value === '',
     });
-    clearTimeout(this.timer);
-    this.timer = setTimeout((): boolean => this.handlePropogation(value), 300);
+    if (this.props.debounce) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(
+        (): boolean => this.handlePropogation(value),
+        300,
+      );
+    } else {
+      this.handlePropogation(value);
+    }
   };
 
   updateGrouping = selection => {
@@ -223,6 +234,7 @@ class Filter extends React.Component<PropsType> {
                   </span>
                 ) : null}
                 <span
+                  data-qe-id="loading-indicator"
                   className={`${baseClass}__item__container__input__suffix`}>
                   {isLoading ? isLoadingContent() : null}
                 </span>

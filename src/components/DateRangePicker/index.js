@@ -1,12 +1,12 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { DateRangePicker } from 'react-dates';
+import { DateRangePicker as ReactDates } from 'react-dates';
 
 type DataPickerChangeType = {
   startDate: number,
   endDate: number,
 };
 
-export default ({
+const DateRangePicker = ({
   datepickerChanged,
   init,
   startDatePlaceholderText,
@@ -24,7 +24,7 @@ export default ({
     }
   }, [init]);
   return (
-    <DateRangePicker
+    <ReactDates
       startDateId="0"
       endDateId="0"
       showClearDates
@@ -52,3 +52,5 @@ export default ({
     />
   );
 };
+
+export default DateRangePicker;

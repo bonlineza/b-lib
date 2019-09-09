@@ -1,11 +1,13 @@
 import React from 'react';
-import { SimpleSelect } from 'react-selectize';
+import { SimpleSelect as ReactSelect } from 'react-selectize';
 
-export default ({ onChange, value, options, hideResetButton = true }) => (
-  <SimpleSelect
+const SimpleSelect = ({ onChange, value, options, hideResetButton = true }) => (
+  <ReactSelect
     hideResetButton={hideResetButton}
     onValueChange={onChange}
     value={value}
     options={options}
   />
 );
+
+export default SimpleSelect;
