@@ -1,6 +1,6 @@
 import React from 'react';
-import DateRangePicker from 'components/DateRangePicker';
-import SimpleSelect from 'components/SimpleSelect';
+import DateRangePicker from '../DateRangePicker/index';
+import SimpleSelect from '../SimpleSelect/index';
 import PredefinedFilter from './components/predefinedFilter';
 import './scss/Filter.scss';
 
