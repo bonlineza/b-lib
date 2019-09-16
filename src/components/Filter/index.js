@@ -190,7 +190,6 @@ class Filter extends React.Component<PropsType> {
       groupSelection,
       datePickerLabel,
     } = this.props;
-    // return 'BLAH';
     return (
       <div className={`gw${this.props.centered ? '--center' : ''}`}>
         <div className={`g g-1/${filterFraction}`}>

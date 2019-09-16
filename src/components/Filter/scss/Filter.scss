@@ -43,7 +43,6 @@ $clr-ntrl-max--transp-ltr: lightgrey;
     }
 
     .list-filter__item__container {
-      flex-grow: 1;
       display: flex;
       flex-flow: column;
       & .form__label--small {
@@ -53,7 +52,6 @@ $clr-ntrl-max--transp-ltr: lightgrey;
 
       .list-filter__item__container__input {
         @extend %list-filter__item;
-        flex-grow: 5;
         position: relative;
         display: flex;
         flex-flow: row nowrap;
@@ -68,17 +66,6 @@ $clr-ntrl-max--transp-ltr: lightgrey;
           top: 50%;
           transform: translateY(-50%);
           line-height: 1;
-          & > .btn--text {
-            svg {
-              width: 1.2rem;
-              height: 1.2rem;
-            }
-            &:hover {
-              svg {
-                fill: $clr-base-dk;
-              }
-            }
-          }
         }
 
         .list-filter__item__container__input__suffix {
@@ -88,12 +75,6 @@ $clr-ntrl-max--transp-ltr: lightgrey;
           display: flex;
           align-items: center;
           justify-content: center;
-          & > i,
-          & svg {
-            display: block;
-            width: $list-filter-search-size;
-            height: $list-filter-search-size;
-          }
         }
 
     .list-filter__item--predefined {
@@ -101,6 +82,7 @@ $clr-ntrl-max--transp-ltr: lightgrey;
       flex-direction: column;
       position: relative;
       align-self: flex-end;
+
       &.is-open {
         & .list-filter__item__filter-collapsable {
           max-height: 50rem;
@@ -113,26 +95,17 @@ $clr-ntrl-max--transp-ltr: lightgrey;
         width: 100%;
       }
         .list-filter__item__filter-btn {
-          padding: 1.3em;
+          padding: 1em;
           min-width: auto;
           width: 1em;
-          height: 2.7em; // bad - magic number to fit input height
-          border-radius: 0;
-          svg {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translateX(-50%) translateY(-50%);
-            width: 2rem;
-            height: 2rem;
-          }
         }
+
       .list-filter__item__filter-collapsable {
         max-height: 0;
         opacity: 0;
         overflow: hidden;
         position: absolute;
-        top: 105%;
+        top: 100%;
         z-index: 9;
         background-color: $clr-ntrl-min;
         box-shadow: 0px 0px 10px $clr-ntrl-max--transp-ltr;
@@ -150,10 +123,3 @@ $clr-ntrl-max--transp-ltr: lightgrey;
           width: 0;
         }
       }
-        .list-filter__item__filter-collapsable__item {
-          border-bottom: 1px solid $clr-base-lt;
-        }
-          .list-filter__item__filter-collapsable__item__btn {
-            @include soft--smaller--sides;
-            @include soft--smallest--ends;
-          }
