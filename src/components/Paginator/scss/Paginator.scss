@@ -1,0 +1,11 @@
+@import '../../../scss/index';
+
+/*------------------------------------*\
+    $PAGINATOR
+\*------------------------------------*/
+
+  .paginator {
+    @extend %list--reset;
+    display: flex;
+  }
+

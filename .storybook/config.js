@@ -7,6 +7,7 @@ function loadStories() {
   require('../stories/Map.js');
   require('../stories/MobileSideMenu.js');
   require('../stories/Overlay.js');
+  require('../stories/Paginator.js');
   require('../stories/PageReady.js');
   require('../stories/PDFPreview.js');
   require('../stories/SelectRows.js');

@@ -8,6 +8,7 @@ import Overlay from './src/components/Overlay/index.js';
 import PageReady, {
   Context as PageReadyContext,
 } from './src/components/PageReady/index.js';
+import Paginator from './src/components/Paginator/index.js';
 import PDFPreview from './src/components/PDFPreview/index.js';
 import SelectRows from './src/components/SelectRows/index.js';
 import SimplePopup from './src/components/SimplePopup/index.js';
@@ -26,6 +27,7 @@ export {
   Overlay,
   PageReady,
   PageReadyContext,
+  Paginator,
   PDFPreview,
   SelectRows,
   SimplePopup,
