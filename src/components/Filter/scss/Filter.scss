@@ -1,0 +1,125 @@
+/*------------------------------------*\
+    $SIMPLE LIST
+\*------------------------------------*/
+@import '../../../scss/index';
+
+$list-filter-search-size: 30px;
+$clr-base-lt: white;
+$clr-base-dkr: darkgrey;
+$clr-base-dk: grey;
+$clr-ntrl-min: white;
+$clr-ntrl-max--transp-ltr: lightgrey;
+
+.list-filter {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+  .list-filter__title {
+    font-weight: 200;
+    color: $clr-base-dkr;
+  }
+
+  %list-filter__item {
+    display: block;
+  }
+
+  .list-filter__item {
+    @extend %list-filter__item;
+    flex-basis: 25%;
+
+    & > .simple-select {
+      width: 100%;
+    }
+  }
+
+    .list-filter__item__input {
+      & .DateInput {
+        width: 40%;
+        & > input {
+          width: 100%;
+        }
+      }
+    }
+
+    .list-filter__item__container {
+      display: flex;
+      flex-flow: column;
+      & .form__label--small {
+        display: flex;
+      }
+    }
+
+      .list-filter__item__container__input {
+        @extend %list-filter__item;
+        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+      }
+
+        .list-filter__item__container__input__appendage {
+          width: 1.2rem;
+          height: 1.2rem;
+          position: absolute;
+          right: 2.5rem;
+          top: 50%;
+          transform: translateY(-50%);
+          line-height: 1;
+        }
+
+        .list-filter__item__container__input__suffix {
+          width: $list-filter-search-size;
+          height: $list-filter-search-size;
+          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+    .list-filter__item--predefined {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      align-self: flex-end;
+
+      &.is-open {
+        & .list-filter__item__filter-collapsable {
+          max-height: 50rem;
+          opacity: 1;
+          overflow: visible;
+        }
+      }
+    }
+      .list-filter__item__filter-btn-container {
+        width: 100%;
+      }
+        .list-filter__item__filter-btn {
+          padding: 1em;
+          min-width: auto;
+          width: 1em;
+        }
+
+      .list-filter__item__filter-collapsable {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 100%;
+        z-index: 9;
+        background-color: $clr-ntrl-min;
+        box-shadow: 0px 0px 10px $clr-ntrl-max--transp-ltr;
+        transition: all 350ms ease-in-out;
+        &:before {
+          content: '';
+          border-bottom: 10px solid $clr-ntrl-min;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          height: 0;
+          left: 7%;
+          position: absolute;
+          top: -10px;
+          transform: translateX(-50%);
+          width: 0;
+        }
+      }

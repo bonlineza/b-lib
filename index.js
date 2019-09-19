@@ -1,6 +1,8 @@
 import AsideSlide from './src/components/AsideSlide/index.js';
 import ButtonGroup from './src/components/ButtonGroup/index.js';
 import DropOptions from './src/components/DropOptions/index.js';
+import DateRangePicker from './src/components/DateRangePicker/index.js';
+import Filter from './src/components/Filter/index.js';
 import EllipsisLoader from './src/components/EllipsisLoader/index.js';
 import Map from './src/components/Map/index.js';
 import MobileSideMenu from './src/components/MobileSideMenu/index.js';
@@ -10,6 +12,7 @@ import PageReady, {
 } from './src/components/PageReady/index.js';
 import Paginator from './src/components/Paginator/index.js';
 import PDFPreview from './src/components/PDFPreview/index.js';
+import SimpleSelect from './src/components/SimpleSelect/index.js';
 import SelectRows from './src/components/SelectRows/index.js';
 import SimplePopup from './src/components/SimplePopup/index.js';
 import SwitchView from './src/components/SwitchView/index.js';
@@ -21,7 +24,9 @@ export {
   AsideSlide,
   ButtonGroup,
   DropOptions,
+  DateRangePicker,
   EllipsisLoader,
+  Filter,
   Map,
   MobileSideMenu,
   Overlay,
@@ -30,6 +35,7 @@ export {
   Paginator,
   PDFPreview,
   SelectRows,
+  SimpleSelect,
   SimplePopup,
   SwitchView,
   ToolTip,
