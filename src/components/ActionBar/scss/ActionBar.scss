@@ -1,0 +1,21 @@
+
+/*------------------------------------*\
+    $ACTION BAR
+\*------------------------------------*/
+
+@import '../../../scss/index';
+
+.action-bar {
+  @include menu-anchor-collapse();
+  height: 100%;
+
+  &.action-bar--is-open {
+    @include menu-anchor-reveal();
+    max-height: 2em;
+    opacity: 1;
+  }
+}
+
+  .action-bar__text {
+    @include flush;
+  }
