@@ -9,13 +9,16 @@ Includes:
 
 ## Components in this Library
 
+- ActionBar
 - AsideSlide
 - ButtonGroup
 - DropOptions
 - EllipsisLoader
+- Filter
 - MobileSideMenu
 - Overlay
 - PageReady
+- Paginator
 - PDFPreview
 - SimplePopup
 - SwitchView
