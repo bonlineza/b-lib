@@ -110,6 +110,7 @@ class SimplePopup extends React.Component<PropsShape> {
               {options.map((option: OptionShape, k: number) => (
                 <div key={k} className={`${baseClass}__footer__item`}>
                   <button
+                    type="button"
                     className={option.buttonClass}
                     onClick={option.cb}
                     data-qe-id={option.dataQeId}
