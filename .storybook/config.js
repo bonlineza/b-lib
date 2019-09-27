@@ -27,6 +27,7 @@ function loadStories() {
   require('../stories/ToolTip.js');
   require('../stories/UntilReady.js');
   require('../stories/WYSIWYG.js');
+  require('../stories/MultiLineSelect.js')
 }
 
 configure(loadStories, module);
