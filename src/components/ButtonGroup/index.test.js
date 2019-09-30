@@ -13,11 +13,11 @@ const setup = (props = {}) => {
   const testProps = { ...defaultProps, ...props };
   return mount(
     <ButtonGroup {...testProps}>
-      <button>Button 1</button>
-      <button>Button 2</button>
-      <button>Button 3</button>
-      <button>Button 4</button>
-      <button>Button 5</button>
+      <button type="button">Button 1</button>
+      <button type="button">Button 2</button>
+      <button type="button">Button 3</button>
+      <button type="button">Button 4</button>
+      <button type="button">Button 5</button>
     </ButtonGroup>,
   );
 };

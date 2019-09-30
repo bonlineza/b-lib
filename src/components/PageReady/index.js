@@ -47,9 +47,11 @@ class PageReady extends React.Component<PropShape> {
 
     if (request.success) {
       return this.props.children;
-    } else if (request.fetching) {
+    }
+    if (request.fetching) {
       return this.props.renderCustomLoader() || <div>LOADING</div>;
-    } else if (request.failed) {
+    }
+    if (request.failed) {
       return (
         <div className="page-ready__content">
           {this.props.customErrorMessage || request.message}

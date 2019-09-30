@@ -30,11 +30,11 @@ class PDFPreview extends React.Component<PropsShape> {
   };
 
   handlePrevious = () => {
-    this.setState({ page: this.state.page - 1 });
+    this.setState(prevstate => ({ page: prevstate.page - 1 }));
   };
 
   handleNext = () => {
-    this.setState({ page: this.state.page + 1 });
+    this.setState(prevstate => ({ page: prevstate.page + 1 }));
   };
 
   renderControls = (page, pages) => {

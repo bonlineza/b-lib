@@ -22,11 +22,12 @@ type PropsType = {
     text: string,
     value: string,
   }>,
-  addDatepicker: boolean,
+  addDatepicker?: boolean,
   datepickerCallback?: Function,
   clearInputButtonContent?: Function,
-  title: string,
+  title?: string,
   initialText?: string,
+  searchInputPlaceholderText?: string,
   groupSelection?: Object[],
   debounce?: number,
 };
@@ -50,6 +51,7 @@ class Filter extends React.Component<PropsType> {
     name: '',
     title: '',
     initialText: '',
+    searchInputPlaceholderText: '',
     groupSelection: null,
     addFilter: null,
     request: {
@@ -61,6 +63,14 @@ class Filter extends React.Component<PropsType> {
   };
 
   defaultProps: DefaultPropsType;
+
+  timer = null;
+
+  state: StateType;
+
+  reactDropdown: HTMLElement;
+
+  timerDp: any;
 
   constructor(props: PropsType) {
     super(props);
@@ -80,22 +90,17 @@ class Filter extends React.Component<PropsType> {
     this.reactDropdown = React.createRef();
   }
 
-  state: StateType;
-
   setPredefined = (value: string) => {
     this.setState({
-      value,
-      isEmpty: false,
+      isEmpty: !value,
     });
     this.handlePropogation(value);
   };
 
-  timerDp: any;
-
   handleChange = (event?: Object, setValue?: string) => {
     const value = setValue !== undefined ? setValue : event.target.value;
     this.setState({
-      value,
+      // value,
       isEmpty: value === '',
     });
     if (this.props.debounce) {
@@ -126,19 +131,11 @@ class Filter extends React.Component<PropsType> {
 
   closeFilter = (): any => this.setState({ isPredefOpen: false });
 
-  timer = null;
-
-  handlePropogation(data: string): boolean {
-    return this.props.callback(data);
-  }
-
   killListener = (): any =>
     document.removeEventListener('click', this.listenerAction);
 
   startListener = (): any =>
     document.addEventListener('click', this.listenerAction);
-
-  reactDropdown: HTMLElement;
 
   clearInput = (e: Object): any => {
     e.preventDefault();
@@ -172,6 +169,10 @@ class Filter extends React.Component<PropsType> {
       this.killListener();
     }
   };
+
+  handlePropogation(data: string): boolean {
+    return this.props.callback(data);
+  }
 
   render(): React$Element<*> {
     const filterFraction =
@@ -251,7 +252,7 @@ class Filter extends React.Component<PropsType> {
         {this.props.addDatepicker ? (
           <div className="g g--auto">
             <div className="pos-relative">
-              <label htmlFor="" className="form__label--small">
+              <label htmlFor="_" className="form__label--small">
                 {datePickerLabel}
               </label>
               <div className={`${baseClass}__item__input push--small--bottom`}>
@@ -263,7 +264,7 @@ class Filter extends React.Component<PropsType> {
         {groupSelection ? (
           <div className="g g--auto">
             <div className="pos-relative">
-              <label htmlFor="" className="form__label--small">
+              <label htmlFor="_" className="form__label--small">
                 {groupSelectionLabel}
               </label>
               <div className={`${baseClass}__item__input push--small--bottom`}>

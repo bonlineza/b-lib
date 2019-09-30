@@ -2,7 +2,8 @@ import React from 'react';
 
 export default props => (
   <div className="overlay-child" id={`overlay-child-${props.id}`}>
-    Overlay Child {props.id}
+    Overlay Child&nbsp:
+    {props.id}
     <button id="next-button" type="button" onClick={props.next}>
       Next Button
     </button>

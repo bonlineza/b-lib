@@ -27,6 +27,7 @@ class AsideSlide extends React.Component<PropsType> {
     }
     return null;
   }
+
   static defaultProps = {
     bgcAlt: false,
     toggleButton: null,

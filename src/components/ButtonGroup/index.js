@@ -35,7 +35,11 @@ class ButtonGroup extends React.Component<PropsType, StateShape> {
     toggleButtonContents: <span>Menu</span>,
   };
 
+  isFirstFlag = false;
+
   defaultProps: DefaultPropsType;
+
+  reactDropdown: HTMLElement;
 
   constructor(props: PropsType) {
     super(props);
@@ -76,8 +80,6 @@ class ButtonGroup extends React.Component<PropsType, StateShape> {
   startListener = (): any =>
     document.addEventListener('click', this.listenerAction);
 
-  reactDropdown: HTMLElement;
-
   close = (): any =>
     this.setState((prevState: StateShape): StateShape => ({
       ...prevState,
@@ -109,8 +111,6 @@ class ButtonGroup extends React.Component<PropsType, StateShape> {
       this.killListener();
     }
   };
-
-  isFirstFlag = false;
 
   isFirstPrimaryButton = child => {
     if (child.props['data-meta']?.type !== 'text' && !this.isFirstFlag) {

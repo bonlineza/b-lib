@@ -59,8 +59,6 @@ class Map extends React.Component {
     this.state = {
       center: props.center,
       zoom: props.zoom,
-      hasError: false,
-      error: '',
     };
     this.size = props.initialSize;
     this.onMapLoaded = this.onMapLoaded.bind(this);
@@ -83,10 +81,6 @@ class Map extends React.Component {
     }
   }
 
-  componentDidCatch(error: any, info: any) {
-    this.setState({ hasError: true, error: info });
-  }
-
   // state may have changed during a map load - so check them markers here too
   onMapLoaded(): any {
     if (this.props.markers.length) {
@@ -97,7 +91,6 @@ class Map extends React.Component {
   zoomAndCenter = markers => {
     const { center, zoom } = findZoomAndCenter({ size: this.size }, markers);
     this.setState({
-      ...this.state,
       center,
       zoom,
     });
