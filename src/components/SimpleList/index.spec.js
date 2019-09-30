@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import SimpleList from './index';
 
 const defaultProps = {
+  name: 'list-name',
   isLoading: false,
   baseClass: 'simple-list',
   bgcAlt: false, // asd
@@ -26,6 +27,48 @@ const defaultProps = {
   updateQuery: () => null, // will trigger on page/sort/group/search/date-filter
 };
 
+const sectionProps = {
+  sections: true,
+  sectionTarget: 'objects',
+  sectionTitleKeys: ['section_ref', 'section_type', 'section_description'],
+  data: [
+    {
+      section_ref: '01',
+      section_type: 'Type',
+      section_description: 'lorem ipsum',
+      objects: [
+        {
+          id: '1',
+          name: 'Object Name',
+          description: 'Lorem ipsum',
+        },
+        {
+          id: '2',
+          name: 'Object Name',
+          description: 'Lorem ipsum',
+        },
+      ],
+    },
+    {
+      section_ref: '02',
+      section_type: 'Type',
+      section_description: 'lorem ipsum',
+      objects: [
+        {
+          id: '3',
+          name: 'Object Name 4',
+          description: 'Lorem ipsum',
+        },
+        {
+          id: '4',
+          name: 'Object Name 4',
+          description: 'Lorem ipsum',
+        },
+      ],
+    },
+  ],
+};
+
 // baseClass
 // bgc alt
 // noPointer
@@ -35,20 +78,20 @@ const defaultProps = {
 // has Section component if 'section' = true
 // has Body Component
 
-const rowsData = [
-  {
-    value: 'Item 1',
-    key: 1,
-  },
-  {
-    value: 'Item 2',
-    key: 2,
-  },
-  {
-    value: 'Item 3',
-    key: 3,
-  },
-];
+// const rowsData = [
+//   {
+//     value: 'Item 1',
+//     key: 1,
+//   },
+//   {
+//     value: 'Item 2',
+//     key: 2,
+//   },
+//   {
+//     value: 'Item 3',
+//     key: 3,
+//   },
+// ];
 
 const setup = props => {
   const newProps = { ...defaultProps, ...props };
@@ -91,42 +134,13 @@ describe('SimpleList', () => {
       expect(comp.length).toBe(1);
     });
     it('Section if "section" props is true', () => {
-      wrapper.setProps({ section: true });
-      const comp = wrapper.find('Section');
+      wrapper.setProps({ ...sectionProps });
+      const comp = wrapper.find('Sections');
       expect(comp.length).toBe(1);
     });
     it('Body', () => {
       const comp = wrapper.find('Body');
       expect(comp.length).toBe(1);
-    });
-  });
-
-  describe('Behaviour', () => {
-    it('will render placeholder and addActionIcon', () => {
-      wrapper.setProps();
-      const firstRow = wrapper.find(`.${defaultProps.rowClassName}`).first();
-      expect(firstRow.text()).toBe(
-        `${defaultProps.placeholder}${defaultProps.addActionRenderer()}`,
-      );
-    });
-    it('will render 4x rows when 3x data rows are given', () => {
-      wrapper.setProps({ single: false, rows: rowsData });
-      const rows = wrapper.find(`.${defaultProps.rowClassName}`);
-      expect(rows.length).toBe(4);
-    });
-    it('onAddClick is tiggered when the first row is clicked', () => {
-      const onAddClick = jest.fn();
-      wrapper.setProps({ onAddClick });
-      const addButton = wrapper.find(`.${defaultProps.rowClassName}`).first();
-      addButton.simulate('click');
-      expect(onAddClick.mock.calls.length).toBe(1);
-    });
-    it('onRemoveClick is triggered when second row is clicked', () => {
-      const onRemoveClick = jest.fn();
-      wrapper.setProps({ onRemoveClick, rows: rowsData });
-      const removeButton = wrapper.find(`.${defaultProps.rowClassName}`).last();
-      removeButton.simulate('click');
-      expect(onRemoveClick.mock.calls.length).toBe(1);
     });
   });
 });

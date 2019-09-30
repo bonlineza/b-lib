@@ -1,14 +1,10 @@
 import React from 'react';
-import formatString from '../helpers/formatString';
-// import GetSvg from 'components/GetSvg';
-
-// 1. custom formatter for specific rows (not much work)
-// 2. formatted
+import { formatString } from '../helpers/formatters';
 
 type SimpleListItemShape = {
   text?: string | number | Array<*>,
   flex: string,
-  itemClass: string,
+  itemClass?: string,
   customFormatter?: Object | Function | any,
 };
 
@@ -16,7 +12,7 @@ const SimpleListItem = ({
   text,
   flex,
   align,
-  itemClass, // NOTE: this should not be required
+  itemClass,
   customFormatter,
 }: SimpleListItemShape): React$Element<*> => (
   <span
@@ -36,6 +32,7 @@ const SimpleListItem = ({
 
 SimpleListItem.defaultProps = {
   text: '',
+  itemClass: 'simple-list__row__item',
   align: 'left',
   customFormatter: false,
 };

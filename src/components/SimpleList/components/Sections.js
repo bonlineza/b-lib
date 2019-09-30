@@ -1,27 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import SimpleListItem from './SimpleItem.js';
 import Paginator from '../../Paginator';
 import { SimpleListContext } from '../index';
 
-type PropsShape = {
-  changePage: Function,
-};
-
-const Sections = ({ changePage }: PropsShape): React$Element<*> => {
+const Sections = (): React$Element<*> => {
   const {
     name,
     data,
     headings,
+    isLoading,
+    changePage,
+    changePageLimit,
     onItemClick,
-    pageData: { currentPage, lastPage },
+    pageData: { currentPage, lastPage, perPage },
     sectionData: { sectionTarget, sectionTitleKeys },
   } = useContext(SimpleListContext);
   return (
-    <Paginator
-      changePageCb={changePage}
-      totalPages={lastPage}
-      currentPage={currentPage}
-      hasItems={!!data.length}>
+    <Fragment>
       <div className="simple-list__body--sectioned">
         {data.map((v: Object, vk: number): React$Element<*> => (
           <div
@@ -52,41 +47,33 @@ const Sections = ({ changePage }: PropsShape): React$Element<*> => {
                     onItemClick(v, sectionKey);
                   }}
                   data-qe-id={`${name}-table-${vk}-${sectionKey}`}>
-                  {headings && headings.length > 0
-                    ? headings.map((col: Object, ck: number): React$Element<
-                        *,
-                      > => (
-                        <SimpleListItem
-                          key={`${ck}`}
-                          itemClass="simple-list__body__row__item"
-                          flex={`${(1 / headings.length) * 100}%`}
-                          column={col.name}
-                          text={sectionItems[col.name]}
-                        />
-                      ))
-                    : Object.keys(v[sectionTarget]).map(
-                        (i: string, ik: number): React$Element<*> => (
-                          <SimpleListItem
-                            key={`${ik}`}
-                            itemClass="simple-list__body__row__item"
-                            flex={`${(1 / headings.length) * 100}%`}
-                            column={i}
-                            text={sectionItems[i]}
-                          />
-                        ),
-                      )}
+                  {headings.map((col: Object, ck: number): React$Element<*> => (
+                    <SimpleListItem
+                      key={`${ck}`}
+                      itemClass="simple-list__body__row__item"
+                      flex={`${(1 / headings.length) * 100}%`}
+                      column={col.name}
+                      text={sectionItems[col.name]}
+                    />
+                  ))}
                 </button>
               ),
             )}
           </div>
         ))}
       </div>
-    </Paginator>
+
+      <Paginator
+        onChangePage={changePage}
+        changePageLimitCb={changePageLimit}
+        totalPages={lastPage}
+        currentPage={currentPage}
+        perPage={perPage}
+        hasItems={!!data.length}
+        isLoading={isLoading}
+      />
+    </Fragment>
   );
-};
-Sections.defaultProps = {
-  propOne: '',
-  propTwo: '',
 };
 
 export default Sections;

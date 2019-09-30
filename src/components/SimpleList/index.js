@@ -2,20 +2,18 @@ import React from 'react';
 import Filter from '../Filter';
 import Header from './components/Header.js';
 import Body from './components/Body.js';
-import Section from './components/Sections.js';
+import Sections from './components/Sections.js';
 
 type DefaultPropShape = {
   addFilter: void,
   bgcAlt: boolean,
   clickAct: Function,
-  clickPropOne: string,
-  clickPropTwo: string,
   filterOpts: Array<{
     text: string,
     value: string,
   }>,
   tableTitle: string,
-  section: boolean,
+  sections: boolean,
   enableSearch: boolean,
   showDatepicker: boolean,
   children: false,
@@ -41,21 +39,23 @@ export type SimpleListPropsShape = {
     value: string,
   }>,
   tableTitle?: string,
-  section?: boolean,
+  sections?: boolean,
   sectionTarget?: string,
   sectionTitleKeys?: string[],
   enableSearch?: boolean,
-  showDatepicker: boolean,
+  showDatepicker?: boolean,
   children?: any,
   allowClick?: boolean,
   initialSearch?: string,
   groupSelection?: Object[],
+  searchValue?: string,
 };
 
 type PropsShape = SimpleListPropsShape & {
   updateQuery: Function,
 };
 
+// TODO: this is outdated....
 // before i flesh this out...
 export type SimpleListContextShape = {
   updateQuery: Function,
@@ -78,7 +78,7 @@ export const SimpleListContext = React.createContext({
     perPage: 0,
   },
   sectionData: {
-    section: null,
+    sections: null,
     sectionTarget: null,
     sectionTitleKeys: null,
   },
@@ -86,6 +86,7 @@ export const SimpleListContext = React.createContext({
   allowClick: false,
   data: [],
   isLoading: false,
+  searchValue: '',
 });
 
 class SimpleList extends React.Component<PropsShape> {
@@ -96,101 +97,137 @@ class SimpleList extends React.Component<PropsShape> {
     bgcAlt: false,
     addFilter: undefined,
     tableTitle: '',
-    section: false,
     enableSearch: true,
     showDatepicker: false,
     noPointer: false,
     children: false,
     allowClick: true,
     initialSearch: '',
+    sections: false,
     sectionTarget: '',
     sectionTitleKeys: [],
     groupSelection: null,
+    searchValue: '',
   };
 
   defaultProps: DefaultPropShape;
 
-  changePerPage = (perPage: string | number): any =>
-    this.props.updateQuery('per-page', perPage);
+  updateQuery = (searchType, searchValue) => {
+    const { updateQuery } = this.props;
+    updateQuery(searchType, searchValue);
+  };
+
+  changePerPage = (perPage: string | number): any => {
+    this.updateQuery('per-page', perPage);
+  };
 
   sortData = (column: string, sortType: 'asc' | 'desc'): any =>
-    this.props.updateQuery('sort', column, sortType);
+    this.updateQuery('sort', column, sortType);
 
   groupData = (grouping: string): any => {
-    this.props.updateQuery('group', grouping);
+    this.updateQuery('group', grouping);
   };
 
   searchData = (term: string): string => {
-    this.props.updateQuery('search', term);
+    this.updateQuery('search', term);
   };
 
   paginateData = (pageNumber: number): Function => (): any => {
-    this.props.updateQuery('paginate', pageNumber);
+    this.updateQuery('paginate', pageNumber);
   };
 
   filterDataByDate = ({ start, end }: Object): Function =>
-    this.props.updateQuery('date-filter', start, end);
+    this.updateQuery('date-filter', start, end);
 
   render() {
-    const { baseClass } = this.props;
+    const {
+      baseClass,
+      name,
+      headings,
+      sortString,
+      initial_sort,
+      clickAct: onItemClick,
+      currentPage,
+      lastPage,
+      perPage,
+      sections,
+      sectionTarget,
+      sectionTitleKeys,
+      children: childrenRenderer,
+      allowClick,
+      data,
+      isLoading,
+      bgcAlt,
+      noPointer,
+      tableTitle,
+      enableSearch,
+      addFilter,
+      filterOpts,
+      showDatepicker,
+      initialSearch,
+      groupSelection,
+      filterPlaceholder,
+      searchValue,
+    } = this.props;
     return (
       <SimpleListContext.Provider
         value={{
-          name: this.props.name,
-          headings: this.props.headings,
-          sortString: this.props.sortString,
-          initial_sort: this.props.initial_sort,
-          onItemClick: this.props.clickAct,
-          updateQuery: this.props.updateQuery,
+          name,
+          headings,
+          sortString,
+          initial_sort,
+          onItemClick,
+          updateQuery: this.updateQuery,
           onSort: this.sortData,
+          changePage: this.paginateData,
+          changePageLimit: this.changePerPage,
           pageData: {
-            currentPage: this.props.currentPage,
-            lastPage: this.props.lastPage,
-            perPage: this.props.perPage,
+            currentPage,
+            lastPage,
+            perPage,
           },
           sectionData: {
-            section: this.props.section,
-            sectionTarget: this.props.sectionTarget,
-            sectionTitleKeys: this.props.sectionTitleKeys,
+            sections,
+            sectionTarget,
+            sectionTitleKeys,
           },
-          childrenRenderer: this.props.children,
-          allowClick: this.props.allowClick,
-          data: this.props.data,
-          isLoading: this.props.isLoading,
+          childrenRenderer,
+          allowClick,
+          data,
+          isLoading,
         }}>
         <div
           ref={this.listRef}
-          className={`${baseClass} ${
-            this.props.bgcAlt ? `${baseClass}--bgc-alt` : ''
-          } ${this.props.noPointer ? `${baseClass}--no-pointer` : ''}`}>
-          {this.props.tableTitle !== '' ? (
-            <h3 className={`${baseClass}__title`}>{this.props.tableTitle}</h3>
+          className={`${baseClass} ${bgcAlt ? `${baseClass}--bgc-alt` : ''} ${
+            noPointer ? `${baseClass}--no-pointer` : ''
+          }`}>
+          {tableTitle !== '' ? (
+            <h3 className={`${baseClass}__title`}>{tableTitle}</h3>
           ) : null}
-          {this.props.enableSearch ? (
+          {enableSearch ? (
             <Filter // TODO: add a context-wrapped Filter component
               callback={this.searchData}
-              groupSelectionCB={this.groupData}
               // TODO: use context props within - when merging Filter changes into this
-              addFilter={this.props.addFilter || undefined}
-              predefined={this.props.filterOpts}
-              addDatepicker={this.props.showDatepicker}
+              addFilter={addFilter || undefined}
+              predefined={filterOpts}
+              addDatepicker={showDatepicker}
               datepickerCallback={this.filterDataByDate}
-              connectName={this.props.name}
-              initialText={this.props.initialSearch}
-              groupSelection={this.props.groupSelection}
+              connectName={name}
+              initialText={initialSearch}
+              groupSelection={groupSelection}
+              groupSelectionCB={this.groupData}
+              // new!
+              searchValue={searchValue}
+              searchInputPlaceholderText={filterPlaceholder}
             />
           ) : (
             <div />
           )}
-          <Header />
-          {this.props.section === true ? (
-            <Section changePage={this.paginateData} />
-          ) : (
-            <Body
-              changePage={this.paginateData}
-              changePageLimit={this.changePerPage}
-            />
-          )}
+          <Header
+            // updateSearchValue needs to merge the new query into the existing search params - see Assa
+            updateSearchValue={this.updateSearchValue}
+          />
+          {sections === true ? <Sections /> : <Body />}
         </div>
       </SimpleListContext.Provider>
     );

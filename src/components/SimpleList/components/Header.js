@@ -39,6 +39,7 @@ function parseSort(sortParam: string): Array<Object> {
     : [];
 }
 
+// TODO!
 // Note: Going forward - SimpleList will accept Header, Body, etc... as props, this will allow more custom rendering behaviours, as Header, Body, Paginator, Filter can be Project specific components on their own
 
 // note project will implement a AllianzHeader, which will define it's own Sort Renderer
@@ -67,6 +68,14 @@ function parseSort(sortParam: string): Array<Object> {
 //     </div>
 //   );
 // };
+
+// Exmple Project strucute
+
+// AllianzHeader
+// Header{SortComponent=AllianzSortComponent}
+
+// AllianzList
+// SimpleList{header=AllianzHeader}
 
 const Header = ({ SortComponent = null }) => {
   const { headings, onSort, sortString, name, initial_sort } = useContext(

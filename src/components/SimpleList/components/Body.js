@@ -1,18 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import Paginator from 'components/Paginator';
 import SimpleListItem from './SimpleItem.js';
 import { SimpleListContext } from '../index';
 import ButtonOrDiv from './ButtonOrDiv';
 
-type PropsShape = {
-  changePage: Function,
-  changePageLimit: Function,
-};
-
-const Body = ({ changePage, changePageLimit }: PropsShape) => {
+const Body = () => {
   const {
     name,
     headings,
+    changePage,
+    changePageLimit,
     pageData: { lastPage, currentPage, perPage },
     data,
     isLoading,
@@ -21,14 +18,7 @@ const Body = ({ changePage, changePageLimit }: PropsShape) => {
     onItemClick,
   } = useContext(SimpleListContext);
   return (
-    <Paginator
-      changePageCb={changePage}
-      totalPages={lastPage}
-      currentPage={currentPage}
-      perPage={perPage}
-      changePageLimitCb={changePageLimit}
-      hasItems={!!data.length}
-      isLoading={isLoading}>
+    <Fragment>
       <div className="simple-list__body">
         {typeof childrenRenderer === 'function'
           ? childrenRenderer(data)
@@ -54,7 +44,17 @@ const Body = ({ changePage, changePageLimit }: PropsShape) => {
               </ButtonOrDiv>
             ))}
       </div>
-    </Paginator>
+
+      <Paginator
+        onChangePage={changePage}
+        changePageLimitCb={changePageLimit}
+        totalPages={lastPage}
+        currentPage={currentPage}
+        perPage={perPage}
+        hasItems={!!data.length}
+        isLoading={isLoading}
+      />
+    </Fragment>
   );
 };
 

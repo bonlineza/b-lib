@@ -1,15 +1,15 @@
 import React from 'react';
 
 type ButtonOrDivProps = {
-  allowClick: boolean,
   children: any,
   index: string | number,
-  clickAct: Function,
-  item: any,
-  identifier: string,
+  allowClick?: boolean,
+  clickAct?: Function,
+  item?: any,
+  identifier?: string,
 };
 
-export default ({
+const ButtonOrDiv = ({
   allowClick,
   children,
   index,
@@ -35,3 +35,13 @@ export default ({
       {children}
     </div>
   );
+
+ButtonOrDiv.defaultProps = {
+  allowClick: true,
+  clickAct: () => null,
+  item: null,
+  identifier: '',
+  baseClass: 'simple-list__body__row',
+};
+
+export default ButtonOrDiv;
