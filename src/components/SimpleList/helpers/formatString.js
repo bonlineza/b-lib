@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { wrapTooltip } from 'components/ToolTip';
-
-// todo: reword date/currency parser
-// import { parseDate } from 'helpers/dates';
-// import { fC } from 'helpers/locale';
-// temp placeholders
-const parseDate = val => val;
-const fC = val => val;
-
-// TODO: this should be a generic function, and confitions and formatting functions to be passed in as config - allowing expandability and project differences
+import { formatCurrency, formatDate } from './formatters';
 
 /**
  * Detects various keywords instructing the formatter to parse as Date, Currency, SVG or Bolded
+ * keywords:
+ * \:d and optionally prepend |<Date Format> - example: '|L\d:' for the longform date format - note: the default format is Longform
+ * \:c - for a currency format
+ * \:<some-svg-key>|<some-optional-class-name>\: or \:<some-svg-key>\: - the latter skips the class name
+ * \:*<string-to-be-bolded>\:* - this warps a bolding span around a string - cam be anywhere withing a large string
  */
 export const formatString = (string: string, SvgComponent: Component) => {
   if (string === null) return '';
@@ -25,33 +22,27 @@ export const formatString = (string: string, SvgComponent: Component) => {
     case typeof string !== 'string':
       result = string;
       break;
+
     case string.includes('\\:d'):
       toRender = string.split('\\:d')[indexTarget];
       renderFormat = 'L';
-
       if (toRender.includes('|')) {
         renderFormat = toRender.split('|')[indexTarget];
       }
-
-      result = (
-        <span className="fw--bold">
-          {parseDate(parseInt(toRender, 10), renderFormat)}
-        </span>
-      );
+      result = formatDate(parseInt(toRender, 10), renderFormat);
       break;
 
     case string.includes('\\c:'):
-      result = <span>{fC(string.split('\\c:')[indexTarget])}</span>;
+      result = formatCurrency(string.split('\\c:')[indexTarget]);
       break;
+
     case string.includes('\\:'):
       toRender = string.split('\\:')[indexTarget];
       renderFormat = '';
-
       if (toRender.includes('|')) {
         renderFormat = toRender.split('|')[indexTarget];
         [toRender] = toRender.split('|');
       }
-
       result = <SvgComponent svg={toRender} wrapperClass={renderFormat} />;
       break;
 
@@ -74,5 +65,6 @@ export const formatString = (string: string, SvgComponent: Component) => {
     tooltipText = string.split('\\tp:')[indexTarget];
     result = wrapTooltip(result, tooltipText);
   }
+
   return result;
 };
