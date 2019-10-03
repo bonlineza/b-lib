@@ -1,9 +1,12 @@
 import React, { useContext, Fragment } from 'react';
+import Paginator from '../../Paginator/index.js';
 import SimpleListItem from './SimpleItem.js';
-import Paginator from '../../Paginator';
 import { SimpleListContext } from '../index';
 
-const Sections = (): React$Element<*> => {
+const Sections = ({
+  SimpleItemComponent = SimpleListItem,
+  PaginatorComponent = Paginator,
+}): React$Element<*> => {
   const {
     name,
     data,
@@ -48,7 +51,7 @@ const Sections = (): React$Element<*> => {
                   }}
                   data-qe-id={`${name}-table-${vk}-${sectionKey}`}>
                   {headings.map((col: Object, ck: number): React$Element<*> => (
-                    <SimpleListItem
+                    <SimpleItemComponent
                       key={`${ck}`}
                       itemClass="simple-list__body__row__item"
                       flex={`${(1 / headings.length) * 100}%`}
@@ -63,7 +66,7 @@ const Sections = (): React$Element<*> => {
         ))}
       </div>
 
-      <Paginator
+      <PaginatorComponent
         onChangePage={changePage}
         changePageLimitCb={changePageLimit}
         totalPages={lastPage}

@@ -18,6 +18,7 @@ type PropsType = {
   addFilter?: Function,
   centered?: boolean,
   isLoading?: boolean,
+  isLoadingContent?: Function,
   predefined?: Array<{
     text: string,
     value: string,
@@ -48,6 +49,7 @@ class Filter extends React.Component<PropsType> {
     addDatepicker: false,
     datepickerCallback: () => null,
     clearInputButtonContent: () => null,
+    isLoadingContent: () => null,
     name: '',
     title: '',
     initialText: '',
@@ -60,6 +62,7 @@ class Filter extends React.Component<PropsType> {
       loading: false,
     },
     debounce: 300,
+    PredefinedFilterComponent: PredefinedFilter,
   };
 
   defaultProps: DefaultPropsType;
@@ -190,6 +193,7 @@ class Filter extends React.Component<PropsType> {
       groupSelectionLabel,
       groupSelection,
       datePickerLabel,
+      PredefinedFilterComponent,
     } = this.props;
     return (
       <div className={`gw${this.props.centered ? '--center' : ''}`}>
@@ -199,7 +203,7 @@ class Filter extends React.Component<PropsType> {
               <span className={`${baseClass}__title`}>{title}</span>
             ) : null}
             {predefined && predefined.length ? (
-              <PredefinedFilter
+              <PredefinedFilterComponent
                 dropdownRef={this.reactDropdown}
                 onToggle={this.toggleFilter}
                 options={predefined}

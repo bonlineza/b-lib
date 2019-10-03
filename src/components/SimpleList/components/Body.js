@@ -1,10 +1,13 @@
 import React, { useContext, Fragment } from 'react';
-import Paginator from 'components/Paginator';
+import Paginator from '../../Paginator/index.js';
 import SimpleListItem from './SimpleItem.js';
 import { SimpleListContext } from '../index';
 import ButtonOrDiv from './ButtonOrDiv';
 
-const Body = ({ SimpleItemComponent = SimpleListItem }) => {
+const Body = ({
+  SimpleItemComponent = SimpleListItem,
+  PaginatorComponent = Paginator,
+}) => {
   const {
     name,
     headings,
@@ -46,7 +49,7 @@ const Body = ({ SimpleItemComponent = SimpleListItem }) => {
             ))}
       </div>
 
-      <Paginator
+      <PaginatorComponent
         onChangePage={changePage}
         changePageLimitCb={changePageLimit}
         totalPages={lastPage}

@@ -1,5 +1,5 @@
-import React from 'react';
-import Filter from '../Filter';
+import React, { Fragment } from 'react';
+import Filter from '../Filter/index.js';
 import Header from './components/Header.js';
 import Body from './components/Body.js';
 import Sections from './components/Sections.js';
@@ -72,6 +72,7 @@ export const SimpleListContext = React.createContext({
   onItemClick: null,
   updateQuery: null,
   onSort: null,
+  subFilter: null,
   pageData: {
     currentPage: 0,
     lastPage: 0,
@@ -111,6 +112,7 @@ class SimpleList extends React.Component<PropsShape> {
     HeaderComponent: Header,
     FilterComponent: Filter,
     BodyComponent: Body,
+    SectionsComponent: Sections,
   };
 
   defaultProps: DefaultPropShape;
@@ -178,6 +180,7 @@ class SimpleList extends React.Component<PropsShape> {
       HeaderComponent,
       FilterComponent,
       BodyComponent,
+      SectionsComponent,
     } = this.props;
     return (
       <SimpleListContext.Provider
@@ -215,30 +218,41 @@ class SimpleList extends React.Component<PropsShape> {
           {tableTitle !== '' ? (
             <h3 className={`${baseClass}__title`}>{tableTitle}</h3>
           ) : null}
-          {enableSearch ? (
-            <FilterComponent // TODO: add a context-wrapped Filter component
-              callback={this.searchData}
-              // TODO: use context props within - when merging Filter changes into this
-              addFilter={addFilter || undefined}
-              predefined={filterOpts}
-              addDatepicker={showDatepicker}
-              datepickerCallback={this.filterDataByDate}
-              connectName={name}
-              initialText={initialSearch}
-              groupSelection={groupSelection}
-              groupSelectionCB={this.groupData}
-              // new!
-              searchValue={searchValue}
-              searchInputPlaceholderText={filterPlaceholder}
-            />
-          ) : (
-            <div />
-          )}
-          <HeaderComponent
-            // updateSearchValue needs to merge the new query into the existing search params - see Assa
-            updateSearchValue={this.updateSearchValue}
-          />
-          {sections === true ? <Sections /> : <BodyComponent />}
+
+          <div className="simple-list__top-block">
+            {this.props.passedDownComponents &&
+              this.props.passedDownComponents.length > 0 &&
+              this.props.passedDownComponents.map((component, index) => (
+                <Fragment key={`passed-down-${index}`}>
+                  {React.cloneElement(component, { ...this.state })}
+                </Fragment>
+              ))}
+
+            {enableSearch ? (
+              <FilterComponent // TODO: add a context-wrapped Filter component
+                callback={this.searchData}
+                // TODO: use context props within - when merging Filter changes into this
+                addFilter={addFilter || undefined}
+                predefined={filterOpts}
+                addDatepicker={showDatepicker}
+                datepickerCallback={this.filterDataByDate}
+                connectName={name}
+                initialText={initialSearch}
+                groupSelection={groupSelection}
+                groupSelectionCB={this.groupData}
+                // new!
+                searchValue={searchValue}
+                searchInputPlaceholderText={filterPlaceholder}
+              />
+            ) : (
+              <div />
+            )}
+          </div>
+
+          <div className="simple-list__container">
+            <HeaderComponent />
+            {sections === true ? <SectionsComponent /> : <BodyComponent />}
+          </div>
         </div>
       </SimpleListContext.Provider>
     );

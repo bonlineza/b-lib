@@ -34,13 +34,12 @@ const SimpleListItem = ({
   <span
     className={itemClass}
     style={{
+      textAlign: align,
       minWidth: flex,
       maxWidth: flex,
       flexBasis: flex,
     }}>
-    <span style={{ textAlign: align }}>
-      {getItem(column, text, row, customFormatter, customRenderer)}
-    </span>
+    {getItem(column, text, row, customFormatter, customRenderer)}
   </span>
 );
 
