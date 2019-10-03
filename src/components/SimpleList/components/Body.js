@@ -4,7 +4,7 @@ import SimpleListItem from './SimpleItem.js';
 import { SimpleListContext } from '../index';
 import ButtonOrDiv from './ButtonOrDiv';
 
-const Body = () => {
+const Body = ({ SimpleItemComponent = SimpleListItem }) => {
   const {
     name,
     headings,
@@ -31,14 +31,15 @@ const Body = () => {
                 item={v}
                 identifier={`${name}-table-${vk}`}>
                 {headings.map((col: Object, ck: number): React$Element<*> => (
-                  <SimpleListItem
+                  <SimpleItemComponent
                     key={`${ck}`}
-                    itemClass="simple-list__body__row__item"
-                    flex={`${(1 / headings.length) * 100}%`}
-                    column={col.name}
                     text={v[col.name]}
-                    customFormatter={col.customFormatter || null}
+                    flex={`${(1 / headings.length) * 100}%`}
                     align={col.align}
+                    column={col.name}
+                    itemClass="simple-list__body__row__item"
+                    customFormatter={col.customFormatter || null}
+                    customRenderer={col.customRenderer || null}
                   />
                 ))}
               </ButtonOrDiv>

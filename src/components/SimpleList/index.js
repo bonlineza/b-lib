@@ -108,13 +108,16 @@ class SimpleList extends React.Component<PropsShape> {
     sectionTitleKeys: [],
     groupSelection: null,
     searchValue: '',
+    HeaderComponent: Header,
+    FilterComponent: Filter,
+    BodyComponent: Body,
   };
 
   defaultProps: DefaultPropShape;
 
-  updateQuery = (searchType, searchValue) => {
+  updateQuery = (searchType, ...searchValue) => {
     const { updateQuery } = this.props;
-    updateQuery(searchType, searchValue);
+    updateQuery(searchType, searchValue[0], searchValue[1]);
   };
 
   changePerPage = (perPage: string | number): any => {
@@ -138,6 +141,10 @@ class SimpleList extends React.Component<PropsShape> {
 
   filterDataByDate = ({ start, end }: Object): Function =>
     this.updateQuery('date-filter', start, end);
+
+  subFilter = (value = '', name = '') => {
+    this.updateQuery('sub-filter', name, value);
+  };
 
   render() {
     const {
@@ -168,6 +175,9 @@ class SimpleList extends React.Component<PropsShape> {
       groupSelection,
       filterPlaceholder,
       searchValue,
+      HeaderComponent,
+      FilterComponent,
+      BodyComponent,
     } = this.props;
     return (
       <SimpleListContext.Provider
@@ -178,6 +188,7 @@ class SimpleList extends React.Component<PropsShape> {
           initial_sort,
           onItemClick,
           updateQuery: this.updateQuery,
+          subFilter: this.subFilter,
           onSort: this.sortData,
           changePage: this.paginateData,
           changePageLimit: this.changePerPage,
@@ -205,7 +216,7 @@ class SimpleList extends React.Component<PropsShape> {
             <h3 className={`${baseClass}__title`}>{tableTitle}</h3>
           ) : null}
           {enableSearch ? (
-            <Filter // TODO: add a context-wrapped Filter component
+            <FilterComponent // TODO: add a context-wrapped Filter component
               callback={this.searchData}
               // TODO: use context props within - when merging Filter changes into this
               addFilter={addFilter || undefined}
@@ -223,11 +234,11 @@ class SimpleList extends React.Component<PropsShape> {
           ) : (
             <div />
           )}
-          <Header
+          <HeaderComponent
             // updateSearchValue needs to merge the new query into the existing search params - see Assa
             updateSearchValue={this.updateSearchValue}
           />
-          {sections === true ? <Sections /> : <Body />}
+          {sections === true ? <Sections /> : <BodyComponent />}
         </div>
       </SimpleListContext.Provider>
     );
