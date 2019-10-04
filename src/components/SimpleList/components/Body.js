@@ -15,7 +15,7 @@ const Body = ({
     changePageLimit,
     pageData: { lastPage, currentPage, perPage },
     data,
-    isLoading,
+    initialLoad,
     childrenRenderer,
     allowClick,
     onItemClick,
@@ -56,7 +56,7 @@ const Body = ({
         currentPage={currentPage}
         perPage={perPage}
         hasItems={!!data.length}
-        isLoading={isLoading}
+        isLoading={initialLoad}
       />
     </Fragment>
   );

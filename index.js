@@ -1,3 +1,5 @@
+import { SingleDatePicker } from 'react-dates';
+
 import AsideSlide from './src/components/AsideSlide/index.js';
 import ButtonGroup from './src/components/ButtonGroup/index.js';
 import DropOptions from './src/components/DropOptions/index.js';
@@ -13,7 +15,9 @@ import PageReady, {
 } from './src/components/PageReady/index.js';
 import Paginator from './src/components/Paginator/index.js';
 import PDFPreview from './src/components/PDFPreview/index.js';
-import SimpleList from './src/components/SimpleList/index.js';
+import SimpleList, {
+  SimpleListContext,
+} from './src/components/SimpleList/index.js';
 import SimpleListSections from './src/components/SimpleList/components/Sections';
 import SimpleListHeader from './src/components/SimpleList/components/Header.js';
 import SimpleListBody from './src/components/SimpleList/components/Body.js';
@@ -48,12 +52,14 @@ export {
   PDFPreview,
   SelectRows,
   SimpleList,
+  SimpleListContext,
   SimpleListSections,
   SimpleListHeader,
   SimpleListBody,
   SimpleListItem,
   SimpleSelect,
   SimplePopup,
+  SingleDatePicker,
   SwitchView,
   ToolTip,
   wrapTooltip,

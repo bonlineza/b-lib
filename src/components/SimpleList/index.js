@@ -86,6 +86,7 @@ export const SimpleListContext = React.createContext({
   childrenRenderer: null,
   allowClick: false,
   data: [],
+  initialLoad: false,
   isLoading: false,
   searchValue: '',
 });
@@ -98,6 +99,7 @@ class SimpleList extends React.Component<PropsShape> {
     bgcAlt: false,
     addFilter: undefined,
     tableTitle: '',
+    filterTitle: '',
     enableSearch: true,
     showDatepicker: false,
     noPointer: false,
@@ -144,6 +146,7 @@ class SimpleList extends React.Component<PropsShape> {
   filterDataByDate = ({ start, end }: Object): Function =>
     this.updateQuery('date-filter', start, end);
 
+  // CODE SMELL: perhaps make all query changes 'custom' ie the callers will inject the 'type' in stead of 'translating' them here
   subFilter = (value = '', name = '') => {
     this.updateQuery('sub-filter', name, value);
   };
@@ -166,9 +169,11 @@ class SimpleList extends React.Component<PropsShape> {
       allowClick,
       data,
       isLoading,
+      initialLoad,
       bgcAlt,
       noPointer,
       tableTitle,
+      filterTitle,
       enableSearch,
       addFilter,
       filterOpts,
@@ -209,13 +214,14 @@ class SimpleList extends React.Component<PropsShape> {
           allowClick,
           data,
           isLoading,
+          initialLoad,
         }}>
         <div
           ref={this.listRef}
           className={`${baseClass} ${bgcAlt ? `${baseClass}--bgc-alt` : ''} ${
             noPointer ? `${baseClass}--no-pointer` : ''
           }`}>
-          {tableTitle !== '' ? (
+          {tableTitle ? (
             <h3 className={`${baseClass}__title`}>{tableTitle}</h3>
           ) : null}
 
@@ -231,18 +237,18 @@ class SimpleList extends React.Component<PropsShape> {
             {enableSearch ? (
               <FilterComponent // TODO: add a context-wrapped Filter component
                 callback={this.searchData}
-                // TODO: use context props within - when merging Filter changes into this
                 addFilter={addFilter || undefined}
+                filterTitle={filterTitle}
                 predefined={filterOpts}
                 addDatepicker={showDatepicker}
                 datepickerCallback={this.filterDataByDate}
-                connectName={name}
+                name={name}
                 initialText={initialSearch}
                 groupSelection={groupSelection}
                 groupSelectionCB={this.groupData}
-                // new!
                 searchValue={searchValue}
                 searchInputPlaceholderText={filterPlaceholder}
+                isLoading={isLoading}
               />
             ) : (
               <div />

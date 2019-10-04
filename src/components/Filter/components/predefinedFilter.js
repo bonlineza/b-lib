@@ -19,15 +19,15 @@ const PredefinedFilter = ({
   onToggle,
   options,
   onSelect,
-  baseClass = 'list-filter__item',
-  filterButtonContent = () => 'Filter',
+  baseClass,
+  filterButtonContent,
 }: PredefinedFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const triggerToggle = e => {
     if (e) e.preventDefault();
+    onToggle(isOpen);
     setIsOpen(!isOpen);
-    onToggle(!isOpen);
   };
 
   const filterSelected = (event: Event, value: string) => {
@@ -68,7 +68,7 @@ const PredefinedFilter = ({
 
 PredefinedFilter.defaultProps = {
   baseClass: 'list-filter__item',
-  filterButtonContent: () => null,
+  filterButtonContent: () => 'Filters',
 };
 
 export default PredefinedFilter;
