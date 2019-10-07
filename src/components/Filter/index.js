@@ -29,7 +29,6 @@ type PropsType = {
   initialText?: string,
   searchInputPlaceholderText?: string,
   groupSelection?: Object[],
-  debounce?: number,
 };
 
 type StateType = {
@@ -60,7 +59,6 @@ class Filter extends React.Component<PropsType> {
       error: false,
       loading: false,
     },
-    debounce: 300,
     PredefinedFilterComponent: PredefinedFilter,
   };
 
@@ -73,6 +71,13 @@ class Filter extends React.Component<PropsType> {
   reactDropdown: HTMLElement;
 
   timerDp: any;
+
+  static getDerivedStateFromProps(props, state) {
+    if (state.value !== props.forceValue && props.forceValue) {
+      return { isEmpty: !props.forceValue, value: props.forceValue };
+    }
+    return null;
+  }
 
   constructor(props: PropsType) {
     super(props);
@@ -104,17 +109,9 @@ class Filter extends React.Component<PropsType> {
     const value = setValue !== undefined ? setValue : event.target.value;
     this.setState({
       value,
-      isEmpty: value === '',
+      isEmpty: !value,
     });
-    if (this.props.debounce) {
-      clearTimeout(this.timer);
-      this.timer = setTimeout(
-        (): boolean => this.handlePropogation(value),
-        300,
-      );
-    } else {
-      this.handlePropogation(value);
-    }
+    this.handlePropogation(value);
   };
 
   updateGrouping = selection => {

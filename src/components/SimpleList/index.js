@@ -119,9 +119,9 @@ class SimpleList extends React.Component<PropsShape> {
 
   defaultProps: DefaultPropShape;
 
-  updateQuery = (searchType, ...searchValue) => {
+  updateQuery = (searchType, arg1, arg2) => {
     const { updateQuery } = this.props;
-    updateQuery(searchType, searchValue[0], searchValue[1]);
+    updateQuery(searchType, arg1, arg2);
   };
 
   changePerPage = (perPage: string | number): any => {
@@ -146,7 +146,7 @@ class SimpleList extends React.Component<PropsShape> {
   filterDataByDate = ({ start, end }: Object): Function =>
     this.updateQuery('date-filter', start, end);
 
-  // CODE SMELL: perhaps make all query changes 'custom' ie the callers will inject the 'type' in stead of 'translating' them here
+  // CODE SMELL: perhaps make all query changes 'custom' ie the callers will inject the 'type' in stead of 'translating' callbacks here
   subFilter = (value = '', name = '') => {
     this.updateQuery('sub-filter', name, value);
   };
@@ -246,7 +246,7 @@ class SimpleList extends React.Component<PropsShape> {
                 initialText={initialSearch}
                 groupSelection={groupSelection}
                 groupSelectionCB={this.groupData}
-                searchValue={searchValue}
+                forceValue={searchValue}
                 searchInputPlaceholderText={filterPlaceholder}
                 isLoading={isLoading}
               />
