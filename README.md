@@ -26,6 +26,7 @@ Includes:
 - WYSIWYG
 - SelectRows
 - UntilReady
+- MultiLineSelect
 
 ## Setup
 
