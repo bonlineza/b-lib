@@ -19,6 +19,7 @@ import SwitchView from './src/components/SwitchView/index.js';
 import ToolTip from './src/components/ToolTip/index.js';
 import UntilReady from './src/components/UntilReady/index.js';
 import WYSIWYG from './src/components/WYSIWYG/index.js';
+import MultiLineSelect from './src/components/MultiLineSelect/index.js';
 
 export {
   AsideSlide,
@@ -41,4 +42,5 @@ export {
   ToolTip,
   UntilReady,
   WYSIWYG,
+  MultiLineSelect,
 };
