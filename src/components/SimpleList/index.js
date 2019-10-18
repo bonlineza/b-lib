@@ -139,9 +139,8 @@ class SimpleList extends React.Component<PropsShape> {
     this.updateQuery('search', term);
   };
 
-  paginateData = (pageNumber: number): Function => (): any => {
+  paginateData = (pageNumber: number): Function =>
     this.updateQuery('paginate', pageNumber);
-  };
 
   filterDataByDate = ({ start, end }: Object): Function =>
     this.updateQuery('date-filter', start, end);
