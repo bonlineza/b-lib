@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import SelectRows from 'components/SelectRows';
+import SelectRows from '../SelectRows/index';
 
 /**
  * Description
