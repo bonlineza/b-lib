@@ -63,8 +63,6 @@ class SimplePopup extends React.Component<PropsShape> {
     return null;
   };
 
-  listener: any;
-
   startListener = () => {
     if (this.props.onOpen) {
       this.props.onOpen();
