@@ -26,7 +26,7 @@ const Paginator = ({
   nextBtnContent,
 }: PropsShape): React$Element<*> => {
   const allowNext = currentPage < totalPages;
-  const allowPrev = currentPage > 0;
+  const allowPrev = currentPage > 1;
   return (
     <div className={`${baseClass}-container`}>
       {totalPages > 1 ? (
@@ -38,7 +38,7 @@ const Paginator = ({
               onClick={() => onChangePage(currentPage - 1)}
               className={
                 `${baseClass}__item__btn ` +
-                `${allowPrev ? `${baseClass}__item__btn--disabled` : ''}`
+                `${!allowPrev ? `${baseClass}__item__btn--disabled` : ''}`
               }>
               {prevBtnContent()}
             </button>
@@ -50,7 +50,7 @@ const Paginator = ({
               onClick={() => onChangePage(currentPage + 1)}
               className={
                 `${baseClass}__item__btn ` +
-                `${allowNext ? `${baseClass}__item__btn--disabled` : ''}`
+                `${!allowNext ? `${baseClass}__item__btn--disabled` : ''}`
               }>
               {nextBtnContent()}
             </button>
