@@ -4,10 +4,10 @@ import './scss/Styles.scss';
 // see $wrap-widths in _wraps.css for sizes
 
 type OverlayProps = {
-  baseClass: string,
-  children: [] | Object,
+  baseClass?: string,
+  children?: [] | Object,
   isOpen: boolean,
-  size: string,
+  size?: string,
 };
 
 const Overlay = ({ baseClass, children, isOpen, size }: OverlayProps) => {

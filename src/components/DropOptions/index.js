@@ -6,7 +6,7 @@ import './scss/Styles.scss';
  */
 
 type PropsShape = {
-  baseElement: Function, // JSX must return a span
+  baseElement?: Function, // JSX must return a span
   children?: any, // used to generate options
   wrapperClass?: string,
 };
@@ -79,6 +79,7 @@ class DropOptions extends React.Component<PropsShape> {
         <div className="drop-options">
           <div className="drop-options__base">
             <button
+              type="button"
               className="drop-options__base__btn"
               onClick={this.toggleOpenState}>
               {this.props.baseElement()}

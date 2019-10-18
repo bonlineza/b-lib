@@ -16,19 +16,19 @@ type DefaultPropsType = {
 type PropsType = {
   callback: Function,
   addFilter?: Function,
-  centered?: boolean,
   isLoading?: boolean,
+  isLoadingContent?: Function,
   predefined?: Array<{
     text: string,
     value: string,
   }>,
-  addDatepicker: boolean,
+  addDatepicker?: boolean,
   datepickerCallback?: Function,
-  clearInputButtonContent?: Function,
-  title: string,
+  clearInputButton?: Function,
+  filterTitle?: string,
   initialText?: string,
+  searchInputPlaceholderText?: string,
   groupSelection?: Object[],
-  debounce?: number,
 };
 
 type StateType = {
@@ -46,10 +46,12 @@ class Filter extends React.Component<PropsType> {
     centered: false,
     addDatepicker: false,
     datepickerCallback: () => null,
-    clearInputButtonContent: () => null,
+    clearInputButton: () => null,
+    isLoadingContent: () => 'LOADING',
     name: '',
-    title: '',
+    filterTitle: '',
     initialText: '',
+    searchInputPlaceholderText: '',
     groupSelection: null,
     addFilter: null,
     request: {
@@ -57,10 +59,25 @@ class Filter extends React.Component<PropsType> {
       error: false,
       loading: false,
     },
-    debounce: 300,
+    PredefinedFilterComponent: PredefinedFilter,
   };
 
   defaultProps: DefaultPropsType;
+
+  timer = null;
+
+  state: StateType;
+
+  reactDropdown: HTMLElement;
+
+  timerDp: any;
+
+  static getDerivedStateFromProps(props, state) {
+    if (state.value !== props.forceValue && props.forceValue) {
+      return { isEmpty: !props.forceValue, value: props.forceValue };
+    }
+    return null;
+  }
 
   constructor(props: PropsType) {
     super(props);
@@ -73,40 +90,28 @@ class Filter extends React.Component<PropsType> {
     this.state = {
       value: this.props.initialText,
       grouping: defaultGrouping,
-      isPredefOpen: false,
       isEmpty: !this.props.initialText,
     };
     this.timerDp = null;
     this.reactDropdown = React.createRef();
   }
 
-  state: StateType;
-
   setPredefined = (value: string) => {
+    const searchQuery = `${value}`;
     this.setState({
-      value,
-      isEmpty: false,
+      value: searchQuery,
+      isEmpty: !value,
     });
     this.handlePropogation(value);
   };
-
-  timerDp: any;
 
   handleChange = (event?: Object, setValue?: string) => {
     const value = setValue !== undefined ? setValue : event.target.value;
     this.setState({
       value,
-      isEmpty: value === '',
+      isEmpty: !value,
     });
-    if (this.props.debounce) {
-      clearTimeout(this.timer);
-      this.timer = setTimeout(
-        (): boolean => this.handlePropogation(value),
-        300,
-      );
-    } else {
-      this.handlePropogation(value);
-    }
+    this.handlePropogation(value);
   };
 
   updateGrouping = selection => {
@@ -124,21 +129,11 @@ class Filter extends React.Component<PropsType> {
     }
   };
 
-  closeFilter = (): any => this.setState({ isPredefOpen: false });
-
-  timer = null;
-
-  handlePropogation(data: string): boolean {
-    return this.props.callback(data);
-  }
-
   killListener = (): any =>
     document.removeEventListener('click', this.listenerAction);
 
   startListener = (): any =>
     document.addEventListener('click', this.listenerAction);
-
-  reactDropdown: HTMLElement;
 
   clearInput = (e: Object): any => {
     e.preventDefault();
@@ -165,7 +160,7 @@ class Filter extends React.Component<PropsType> {
       this.reactDropdown.current &&
       !this.reactDropdown.current.contains(event.target)
     ) {
-      this.closeFilter();
+      this.toggleFilter();
     }
 
     if (!this.reactDropdown) {
@@ -173,106 +168,105 @@ class Filter extends React.Component<PropsType> {
     }
   };
 
+  componentWillUnmount = () => {
+    this.killListener();
+  };
+
+  handlePropogation(data: string): boolean {
+    return this.props.callback(data);
+  }
+
   render(): React$Element<*> {
-    const filterFraction =
-      this.props.addDatepicker && this.props.groupSelection ? 3 : 2;
     const {
       name,
-      title,
+      filterTitle,
       baseClass,
+      addFilter,
       predefined,
       searchInputLabel,
       searchInputPlaceholderText,
-      clearInputButtonContent,
+      clearInputButton,
       isLoadingContent,
       isLoading,
       groupSelectionLabel,
       groupSelection,
       datePickerLabel,
+      PredefinedFilterComponent,
     } = this.props;
     return (
-      <div className={`gw${this.props.centered ? '--center' : ''}`}>
-        <div className={`g g-1/${filterFraction}`}>
-          <div className={baseClass}>
-            {title ? (
-              <span className={`${baseClass}__title`}>{title}</span>
-            ) : null}
-            {predefined && predefined.length ? (
-              <PredefinedFilter
-                dropdownRef={this.reactDropdown}
-                onToggle={this.toggleFilter}
-                options={predefined}
-                onSelect={this.setPredefined}
+      <div className={baseClass}>
+        {filterTitle ? (
+          <span className={`${baseClass}__title`}>{filterTitle}</span>
+        ) : null}
+        <div className={`${baseClass}__filter`}>
+          {predefined && predefined.length ? (
+            <PredefinedFilterComponent
+              dropdownRef={this.reactDropdown}
+              onToggle={this.toggleFilter}
+              options={predefined}
+              onSelect={this.setPredefined}
+            />
+          ) : (
+            <div className={`${baseClass}__item--hidden`} />
+          )}
+          <div className={`${baseClass}__item__container`}>
+            <label htmlFor="filter_text" className="form__label--small">
+              {searchInputLabel}
+            </label>
+            <div className={`${baseClass}__item__container__input`}>
+              <input
+                name="filter_text"
+                type="text"
+                value={this.state.value}
+                placeholder={searchInputPlaceholderText}
+                onChange={this.handleChange}
+                className="form__input"
+                data-qe-id={`${name}-table-search-field`}
               />
-            ) : (
-              <div className={`${baseClass}__item--hidden`} />
-            )}
-            <div className={`${baseClass}__item__container`}>
-              <label htmlFor="filter_text" className="form__label--small">
-                {searchInputLabel}
-              </label>
-              <div className={`${baseClass}__item__container__input`}>
-                <input
-                  name="filter_text"
-                  type="text"
-                  value={this.state.value}
-                  placeholder={searchInputPlaceholderText}
-                  onChange={this.handleChange}
-                  className="form__input"
-                  data-qe-id={`${name}-table-search-field`}
-                />
-                {!this.state.isEmpty ? (
-                  <span
-                    className={`${baseClass}__item__container__input__appendage`}>
-                    <button
-                      type="button"
-                      onClick={this.clearInput}
-                      className="btn--text">
-                      {clearInputButtonContent()}
-                    </button>
-                  </span>
-                ) : null}
-                <span
-                  data-qe-id="loading-indicator"
-                  className={`${baseClass}__item__container__input__suffix`}>
-                  {isLoading ? isLoadingContent() : null}
-                </span>
-              </div>
-            </div>
-            {this.props.addFilter ? (
-              <div className={`${baseClass}__item`}>
-                {this.props.addFilter({
-                  action: this.props.callback,
+              <span
+                className={`${baseClass}__item__container__input__appendage`}>
+                {clearInputButton({
+                  onClick: this.clearInput,
+                  isEmpty: this.state.isEmpty,
                 })}
-              </div>
-            ) : null}
+              </span>
+
+              <span
+                data-qe-id="loading-indicator"
+                className={`${baseClass}__item__container__input__suffix`}>
+                {isLoading ? isLoadingContent() : null}
+              </span>
+            </div>
           </div>
+          {addFilter ? (
+            <div className={`${baseClass}__item`}>
+              {addFilter({
+                action: this.handlePropogation,
+              })}
+            </div>
+          ) : null}
         </div>
         {this.props.addDatepicker ? (
-          <div className="g g--auto">
-            <div className="pos-relative">
-              <label htmlFor="" className="form__label--small">
-                {datePickerLabel}
-              </label>
-              <div className={`${baseClass}__item__input push--small--bottom`}>
-                <DateRangePicker datepickerChanged={this.datepickerChanged} />
-              </div>
+          <div className={`${baseClass}__date-picker`}>
+            <label htmlFor="_" className="form__label--small">
+              {datePickerLabel}
+            </label>
+            <div className={`${baseClass}__item__input push--small--bottom`}>
+              <DateRangePicker datepickerChanged={this.datepickerChanged} />
             </div>
           </div>
         ) : null}
         {groupSelection ? (
-          <div className="g g--auto">
-            <div className="pos-relative">
-              <label htmlFor="" className="form__label--small">
-                {groupSelectionLabel}
-              </label>
-              <div className={`${baseClass}__item__input push--small--bottom`}>
-                <SimpleSelect
-                  onChange={this.updateGrouping}
-                  value={this.state.grouping}
-                  options={groupSelection}
-                />
-              </div>
+          <div className={`${baseClass}__group-selection`}>
+            <label htmlFor="_" className="form__label--small">
+              {groupSelectionLabel}
+            </label>
+            <div className={`${baseClass}__item__input push--small--bottom`}>
+              <SimpleSelect
+                onChange={this.updateGrouping}
+                value={this.state.grouping}
+                options={groupSelection}
+              />
             </div>
           </div>
         ) : null}

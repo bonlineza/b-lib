@@ -20,6 +20,7 @@
     "google-map-react": "1.1.4",
     "lodash": "^4.17.0",
     "moment": "^2.18.1",
+    "numeral": "^2.0.6",
     "react-dates": "https://github.com/bonlineza/react-dates#v16.0.1-showBeforeTodayDifferently-lib",
     "react-dom-factories": "^1.0.2",
     "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0",
@@ -71,9 +72,9 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb": "17.1.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-import-resolver-webpack": "^0.8.4",
+    "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-flowtype": "^2.42.0",
     "eslint-plugin-import": "^2.8.0",
@@ -98,7 +99,8 @@
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-sass": "^1.2.2",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "webpack": "^4.0.0"
   },
   "lint-staged": {
     "*.js": [

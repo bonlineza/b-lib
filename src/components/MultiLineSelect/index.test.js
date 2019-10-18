@@ -16,13 +16,22 @@ const defaultMultiLineProps = {
 
 const ItemSelector = ({ addItem = () => null }) => (
   <Fragment>
-    <button id="item-choice-one" onClick={() => addItem('Product One')}>
+    <button
+      type="button"
+      id="item-choice-one"
+      onClick={() => addItem('Product One')}>
       Select Product One
     </button>
-    <button id="item-choice-two" onClick={() => addItem('Product Two')}>
+    <button
+      type="button"
+      id="item-choice-two"
+      onClick={() => addItem('Product Two')}>
       Select Product Two
     </button>
-    <button id="item-choice-three" onClick={() => addItem('Product Three')}>
+    <button
+      type="button"
+      id="item-choice-three"
+      onClick={() => addItem('Product Three')}>
       Select Product Three
     </button>
   </Fragment>

@@ -11,6 +11,10 @@
       "react-hooks"
     ],
     "rules": {
+      "react/jsx-one-expression-per-line": 0,
+      "react/jsx-wrap-multilines": 0,
+      "react/destructuring-assignment": [0],
+      "import/no-cycle": [0],
       "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
       "prefer-arrow-callback": [0],
       "react/no-unescaped-entities": [0],

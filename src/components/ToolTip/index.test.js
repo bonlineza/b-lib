@@ -6,7 +6,7 @@ import { wrapTooltip } from './index';
 const buttonText = 'children';
 const defaultProps = {
   text: 'text',
-  children: <button>{buttonText}</button>,
+  children: <button type="button">{buttonText}</button>,
 };
 
 const setup = (props = {}) => {

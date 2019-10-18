@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import PDFPreview from 'components/PDFPreview';
 
 const DummyControl = ({ item }) => (
-  <button onClick={item.action} className="dummy-control">
+  <button type="button" onClick={item.action} className="dummy-control">
     {item.documentAction}
   </button>
 );

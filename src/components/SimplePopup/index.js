@@ -27,13 +27,14 @@ class SimplePopup extends React.Component<PropsShape> {
   static defaultProps = {
     baseClass: 'simple-popup',
     size: '--small',
-    showLoader: false,
     description: null,
     renderContent: null,
     cannotOutsideClickClose: false,
     onOpen: null,
     onClose: null,
   };
+
+  listener: any;
 
   componentWillReceiveProps(nextProps: PropsShape) {
     if (!this.props.isOpen && nextProps.isOpen) {
@@ -55,13 +56,12 @@ class SimplePopup extends React.Component<PropsShape> {
       return (
         <p className="u-text__base u-text--center">{this.props.description}</p>
       );
-    } else if (this.props.renderContent) {
+    }
+    if (this.props.renderContent) {
       return this.props.renderContent();
     }
     return null;
   };
-
-  listener: any;
 
   startListener = () => {
     if (this.props.onOpen) {

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Paginator from 'components/Paginator';
+import Paginator from '../src/components/Paginator/index.js';
 
 const defaultProps = {
   onChangePage: action('changed page'),
