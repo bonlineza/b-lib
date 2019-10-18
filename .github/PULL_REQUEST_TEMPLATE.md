@@ -20,6 +20,7 @@ _Put an `x` in the boxes that apply._
 - [ ] Linter passes (`yarn lint`)
 - [ ] Unit Test pass (`yarn jest`)
 - [ ] I have added at least two useful tests for new component (if applicable)
+- [ ] I have added at least one Storybook story (if applicable)
 
 ## Relevant Issues
 
