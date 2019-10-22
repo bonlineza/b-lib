@@ -60,6 +60,7 @@ class Filter extends React.Component<PropsType> {
       loading: false,
     },
     PredefinedFilterComponent: PredefinedFilter,
+    DateRangePickerComponent: DateRangePicker,
   };
 
   defaultProps: DefaultPropsType;
@@ -192,6 +193,7 @@ class Filter extends React.Component<PropsType> {
       groupSelection,
       datePickerLabel,
       PredefinedFilterComponent,
+      DateRangePickerComponent,
     } = this.props;
     return (
       <div className={baseClass}>
@@ -251,8 +253,10 @@ class Filter extends React.Component<PropsType> {
             <label htmlFor="_" className="form__label--small">
               {datePickerLabel}
             </label>
-            <div className={`${baseClass}__item__input push--small--bottom`}>
-              <DateRangePicker datepickerChanged={this.datepickerChanged} />
+            <div className={`${baseClass}__item__input`}>
+              <DateRangePickerComponent
+                datepickerChanged={this.datepickerChanged}
+              />
             </div>
           </div>
         ) : null}
@@ -261,7 +265,7 @@ class Filter extends React.Component<PropsType> {
             <label htmlFor="_" className="form__label--small">
               {groupSelectionLabel}
             </label>
-            <div className={`${baseClass}__item__input push--small--bottom`}>
+            <div className={`${baseClass}__item__input`}>
               <SimpleSelect
                 onChange={this.updateGrouping}
                 value={this.state.grouping}
