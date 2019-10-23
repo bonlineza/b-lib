@@ -1,5 +1,6 @@
 import { SingleDatePicker } from 'react-dates';
 
+import ActionBar from './src/components/ActionBar/index.js';
 import AsideSlide from './src/components/AsideSlide/index.js';
 import ButtonGroup from './src/components/ButtonGroup/index.js';
 import DropOptions from './src/components/DropOptions/index.js';
@@ -36,6 +37,7 @@ export type {
 } from './src/components/SimpleList/index.js';
 
 export {
+  ActionBar,
   AsideSlide,
   ButtonGroup,
   DropOptions,
