@@ -23,6 +23,7 @@
     "numeral": "^2.0.6",
     "react-dates": "https://github.com/bonlineza/react-dates#v16.0.1-showBeforeTodayDifferently-lib",
     "react-dom-factories": "^1.0.2",
+    "react-dropzone": "^4.2.1",
     "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0",
     "react-selectize": "^3.0.1",
     "react-transition-group": "^1.1.2"

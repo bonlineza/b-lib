@@ -13,6 +13,7 @@ function loadStories() {
   require('../stories/AsideSlide.js');
   require('../stories/ButtonGroup.js');
   require('../stories/DropOptions.js');
+  require('../stories/DocumentUploader.js');
   require('../stories/Filter/index');
   require('../stories/Map.js');
   require('../stories/MobileSideMenu.js');
@@ -27,7 +28,7 @@ function loadStories() {
   require('../stories/ToolTip.js');
   require('../stories/UntilReady.js');
   require('../stories/WYSIWYG.js');
-  require('../stories/MultiLineSelect.js')
+  require('../stories/MultiLineSelect.js');
 }
 
 configure(loadStories, module);

@@ -1,0 +1,19 @@
+
+
+@import '../../../scss/index';
+
+.document-uploader{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+  .document-uploader__item{
+    display: flex;
+    width: 200px;
+    @include push--small--right;
+  }
+
+  .document-uploader__item--full-width{
+    width: 100%;
+  }
