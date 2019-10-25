@@ -119,6 +119,11 @@ class SimpleList extends React.Component<PropsShape> {
 
   defaultProps: DefaultPropShape;
 
+  constructor(props) {
+    super(props);
+    this.listRef = React.createRef();
+  }
+
   updateQuery = (searchType, arg1, arg2) => {
     const { updateQuery } = this.props;
     updateQuery(searchType, arg1, arg2);
@@ -140,7 +145,7 @@ class SimpleList extends React.Component<PropsShape> {
   };
 
   paginateData = (pageNumber: number): Function =>
-    this.updateQuery('paginate', pageNumber);
+    this.updateQuery('paginate', pageNumber, this.listRef.current);
 
   filterDataByDate = ({ start, end }: Object): Function =>
     this.updateQuery('date-filter', start, end);
