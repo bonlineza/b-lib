@@ -35,6 +35,9 @@ import MultiLineSelect from './src/components/MultiLineSelect/index.js';
 export type {
   SimpleListPropsShape,
 } from './src/components/SimpleList/index.js';
+export type {
+  DocumentUploaderProps,
+} from './src/components/DocumentUploader/index.js';
 
 export {
   AsideSlide,
