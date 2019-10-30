@@ -3,8 +3,9 @@ import { SingleDatePicker } from 'react-dates';
 import ActionBar from './src/components/ActionBar/index.js';
 import AsideSlide from './src/components/AsideSlide/index.js';
 import ButtonGroup from './src/components/ButtonGroup/index.js';
-import DropOptions from './src/components/DropOptions/index.js';
 import DateRangePicker from './src/components/DateRangePicker/index.js';
+import DropOptions from './src/components/DropOptions/index.js';
+import DocumentUploader from './src/components/DocumentUploader/index.js';
 import Filter from './src/components/Filter/index.js';
 import PredefinedFilter from './src/components/Filter/components/predefinedFilter.js';
 import EllipsisLoader from './src/components/EllipsisLoader/index.js';
@@ -35,13 +36,17 @@ import MultiLineSelect from './src/components/MultiLineSelect/index.js';
 export type {
   SimpleListPropsShape,
 } from './src/components/SimpleList/index.js';
+export type {
+  DocumentUploaderProps,
+} from './src/components/DocumentUploader/index.js';
 
 export {
   ActionBar,
   AsideSlide,
   ButtonGroup,
-  DropOptions,
   DateRangePicker,
+  DropOptions,
+  DocumentUploader,
   EllipsisLoader,
   Filter,
   PredefinedFilter,
