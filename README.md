@@ -12,6 +12,8 @@ Includes:
 - ActionBar
 - AsideSlide
 - ButtonGroup
+- DocumentUploader
+   - DocumentUploaderProps
 - DropOptions
 - EllipsisLoader
 - Filter
