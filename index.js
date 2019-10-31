@@ -46,6 +46,7 @@ import stringOccurances from './src/util/stringOccurances';
 import validateEmail from './src/util/validateEmail';
 import validatePhone from './src/util/validatePhone';
 import validateWebsite from './src/util/validateWebsite';
+import HorizontalProgressBar from './src/components/HorizontalProgressBar/index.js';
 
 export type {
   SimpleListPropsShape,
@@ -105,4 +106,5 @@ export {
   WYSIWYG,
   CategoryList,
   MultiLineSelect,
+  HorizontalProgressBar,
 };
