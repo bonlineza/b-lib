@@ -2,13 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './scss/HorizontalProgressBar.scss';
 
-const HorizontalProgressBar = ({ totalProgress, currentProgress }) => {
+const HorizontalProgressBar = ({
+  totalProgress,
+  currentProgress,
+  transitionTimeout,
+}) => {
   const [translatedBy, setTranslatedBy] = React.useState(-100);
 
   React.useEffect(() => {
-    const nextTanslatedBy = (currentProgress / totalProgress) * 100 - 100;
-    setTranslatedBy(nextTanslatedBy);
-  }, [currentProgress, totalProgress]);
+    if (currentProgress <= totalProgress) {
+      const nextTanslatedBy = (currentProgress / totalProgress) * 100 - 100;
+      setTimeout(() => {
+        setTranslatedBy(nextTanslatedBy);
+      }, transitionTimeout);
+    }
+  }, [currentProgress, totalProgress, transitionTimeout]);
 
   const transformStyle = {
     transform: `translateX(${translatedBy}%)`,
@@ -27,11 +35,13 @@ const HorizontalProgressBar = ({ totalProgress, currentProgress }) => {
 HorizontalProgressBar.propTypes = {
   totalProgress: PropTypes.number,
   currentProgress: PropTypes.number,
+  transitionTimeout: PropTypes.number,
 };
 
 HorizontalProgressBar.defaultProps = {
   totalProgress: 0,
   currentProgress: 0,
+  transitionTimeout: 0,
 };
 
 export default HorizontalProgressBar;
