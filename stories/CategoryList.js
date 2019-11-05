@@ -28,6 +28,18 @@ const categoryListData = [
   },
 ];
 
+const categoryListDataWithSeperator = [
+  ...categoryListData,
+  {
+    title: 'Category Four',
+    catName: 'category-four',
+    topSeperatorComponent: <hr />,
+    catData: {
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
+    },
+  },
+];
+
 const DefaultCategoryList = (props = {}) => {
   const defaultProps = {
     data: categoryListData,
@@ -52,4 +64,14 @@ const ClickComponent = ({ identifier, title, isOpen, toggleFn }) => (
 storiesOf('Category List', module).add(
   'Category List with custom click component',
   () => <DefaultCategoryList clickComponent={ClickComponent} />,
+);
+
+storiesOf('Category List', module).add(
+  'Category List with separator component',
+  () => (
+    <DefaultCategoryList
+      clickComponent={ClickComponent}
+      data={categoryListDataWithSeperator}
+    />
+  ),
 );
