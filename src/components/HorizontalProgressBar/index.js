@@ -2,21 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './scss/HorizontalProgressBar.scss';
 
-const HorizontalProgressBar = ({
-  totalProgress,
-  currentProgress,
-  transitionTimeout,
-}) => {
+const HorizontalProgressBar = ({ progressPercentage, transitionTimeout }) => {
   const [translatedBy, setTranslatedBy] = React.useState(-100);
 
-  React.useEffect(() => {
-    if (currentProgress <= totalProgress) {
-      const nextTanslatedBy = (currentProgress / totalProgress) * 100 - 100;
-      setTimeout(() => {
-        setTranslatedBy(nextTanslatedBy);
-      }, transitionTimeout);
+  const getProgress = (percentage = 0) => {
+    switch (true) {
+      case percentage > 100:
+        return 100;
+      case percentage < 0:
+        return 0;
+      default:
+        return percentage;
     }
-  }, [currentProgress, totalProgress, transitionTimeout]);
+  };
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      const progress = getProgress(progressPercentage);
+
+      const nextTanslatedBy = progress - 100;
+
+      setTranslatedBy(nextTanslatedBy);
+    }, transitionTimeout);
+  }, [progressPercentage, transitionTimeout]);
 
   const transformStyle = {
     transform: `translateX(${translatedBy}%)`,
@@ -33,14 +41,12 @@ const HorizontalProgressBar = ({
 };
 
 HorizontalProgressBar.propTypes = {
-  totalProgress: PropTypes.number,
-  currentProgress: PropTypes.number,
+  progressPercentage: PropTypes.number,
   transitionTimeout: PropTypes.number,
 };
 
 HorizontalProgressBar.defaultProps = {
-  totalProgress: 0,
-  currentProgress: 0,
+  progressPercentage: 0,
   transitionTimeout: 0,
 };
 
