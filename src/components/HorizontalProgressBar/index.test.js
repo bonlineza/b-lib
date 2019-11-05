@@ -9,21 +9,17 @@ describe('HorizontalProgressBar', () => {
     expect(wrapper.find('.horizontal-progress-bar').length).toBe(1);
   });
 
-  it('Horizontal Bar has currentProgress 10 and totalProgress 30', () => {
-    const wrapper = mount(
-      <HorizontalProgressBar totalProgress={30} currentProgress={10} />,
-    );
+  it('Horizontal Bar has progressPercentage of 30', () => {
+    const wrapper = mount(<HorizontalProgressBar progressPercentage={30} />);
 
-    const { totalProgress, currentProgress } = wrapper.props();
+    const { progressPercentage } = wrapper.props();
 
-    expect(totalProgress).toBe(30);
-    expect(currentProgress).toBe(10);
+    expect(progressPercentage).toBe(30);
   });
 
-  it('Horizontal Bar default props currentProgress and totalProgress to be zero', () => {
+  it('Horizontal Bar progressPercentage prop is zero by default', () => {
     const wrapper = mount(<HorizontalProgressBar />);
-    const { totalProgress, currentProgress } = wrapper.props();
-    expect(totalProgress).toBe(0);
-    expect(currentProgress).toBe(0);
+    const { progressPercentage } = wrapper.props();
+    expect(progressPercentage).toBe(0);
   });
 });
