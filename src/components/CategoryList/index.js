@@ -9,19 +9,30 @@ const CategoryList = ({
   baseClassName = 'category-list',
 }) => (
   <div className={baseClassName}>
-    {data.map((categoryItem, key) => (
-      <Fragment key={key}>
-        <CategoryItem
-          listKey={key}
-          title={categoryItem.title}
-          identifier={categoryItem.catName}
-          data={categoryItem.catData}
-          itemRenderer={itemRenderer}
-          clickComponent={clickComponent}
-          baseClassName={baseClassName}
-        />
-      </Fragment>
-    ))}
+    {data.map(
+      (
+        {
+          title = '',
+          catName = '',
+          catData = {},
+          topSeperatorComponent = null,
+        },
+        key,
+      ) => (
+        <Fragment key={key}>
+          {topSeperatorComponent}
+          <CategoryItem
+            listKey={key}
+            title={title}
+            identifier={catName}
+            data={catData}
+            itemRenderer={itemRenderer}
+            clickComponent={clickComponent}
+            baseClassName={baseClassName}
+          />
+        </Fragment>
+      ),
+    )}
   </div>
 );
 
