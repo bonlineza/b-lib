@@ -75,3 +75,11 @@ storiesOf('Category List', module).add(
     />
   ),
 );
+
+storiesOf('Category List', module).add('Category List open by default', () => (
+  <DefaultCategoryList
+    clickComponent={ClickComponent}
+    data={categoryListData}
+    isOpenByDefault
+  />
+));

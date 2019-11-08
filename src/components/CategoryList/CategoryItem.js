@@ -8,8 +8,9 @@ const CategoryItem = ({
   data = {},
   itemRenderer = null,
   baseClassName = '',
+  isOpenByDefault = false,
 }) => {
-  const [isOpen, setIsOpenState] = useState(false);
+  const [isOpen, setIsOpenState] = useState(isOpenByDefault);
 
   const ClickComponent = clickComponent;
   const ItemRenderer = itemRenderer;

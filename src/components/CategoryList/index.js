@@ -7,6 +7,7 @@ const CategoryList = ({
   itemRenderer = null,
   clickComponent = null,
   baseClassName = 'category-list',
+  isOpenByDefault = false,
 }) => (
   <div className={baseClassName}>
     {data.map(
@@ -29,6 +30,7 @@ const CategoryList = ({
             itemRenderer={itemRenderer}
             clickComponent={clickComponent}
             baseClassName={baseClassName}
+            isOpenByDefault={isOpenByDefault}
           />
         </Fragment>
       ),
