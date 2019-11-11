@@ -1,5 +1,4 @@
 import React from 'react';
-// import { formatString } from '../helpers/formatters';
 
 type SimpleListItemShape = {
   text?: string | number | Array<*>,

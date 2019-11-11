@@ -3,8 +3,11 @@ import 'test-util/setup';
 import { mount } from 'enzyme';
 import SimpleItem from './SimpleItem';
 
+const defaultValue = 'some text value';
 const defaultProps = {
-  text: 'some text value',
+  row: { column_name: defaultValue },
+  column: 'column_name',
+  text: defaultValue,
   flex: '20%',
   align: 'left',
   itemClass: 'custom__item',
@@ -36,6 +39,15 @@ describe('SimpleItem - Body', () => {
       wrapper.setProps({ customFormatter });
       const comp = wrapper.find('span').first();
       expect(comp.text()).toBe(defaultProps.text.concat(defaultProps.text));
+    });
+    it('uses a customRenderer when supplied', () => {
+      const expectedRenderId = `item-${defaultProps.column}`;
+      const customRenderer = (column, row) => (
+        <div id={`item-${column}`}>{row[column]}</div>
+      );
+      wrapper.setProps({ customRenderer });
+      const comp = wrapper.find(`#${expectedRenderId}`).first();
+      expect(comp.text()).toBe(defaultProps.text);
     });
   });
 });
