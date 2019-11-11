@@ -32,6 +32,7 @@ import ToolTip, { wrapTooltip } from './src/components/ToolTip/index.js';
 import UntilReady from './src/components/UntilReady/index.js';
 import WYSIWYG from './src/components/WYSIWYG/index.js';
 import MultiLineSelect from './src/components/MultiLineSelect/index.js';
+import CategoryList from './src/components/CategoryList/index.js';
 
 export type {
   SimpleListPropsShape,
@@ -72,5 +73,6 @@ export {
   wrapTooltip,
   UntilReady,
   WYSIWYG,
+  CategoryList,
   MultiLineSelect,
 };

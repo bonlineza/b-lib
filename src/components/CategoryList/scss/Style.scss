@@ -1,0 +1,22 @@
+.category-list {
+
+  .category-list__item {
+
+  }
+
+  .category-list__item__body {
+    transition: opacity 350ms ease-in-out, max-height 350ms ease-in-out;
+    border-width: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    &.is-open {
+      max-height: initial;
+      opacity: 1;
+      overflow: visible;
+    }
+  }
+}
