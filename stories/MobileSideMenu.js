@@ -5,16 +5,16 @@ import MobileSideMenu from 'components/MobileSideMenu';
 
 const WrappedMobileSideMenu = () => {
   const menuItems = [
-    <button onClick={() => action()('Menu item button clicked')}>
+    <button type="button" onClick={() => action()('Menu item button clicked')}>
       Menu item 1
     </button>,
-    <button onClick={() => action()('Menu item button clicked')}>
+    <button type="button" onClick={() => action()('Menu item button clicked')}>
       Menu item 2
     </button>,
-    <button onClick={() => action()('Menu item button clicked')}>
+    <button type="button" onClick={() => action()('Menu item button clicked')}>
       Menu item 3
     </button>,
-    <button onClick={() => action()('Menu item button clicked')}>
+    <button type="button" onClick={() => action()('Menu item button clicked')}>
       Menu item 4
     </button>,
   ];
