@@ -28,8 +28,9 @@ function loadStories() {
   require('../stories/ToolTip.js');
   require('../stories/UntilReady.js');
   require('../stories/WYSIWYG.js');
-  require('../stories/CategoryList.js')
-  require('../stories/MultiLineSelect.js')
+  require('../stories/CategoryList.js');
+  require('../stories/MultiLineSelect.js');
+  require('../stories/DateRangePicker.js');
 }
 
 configure(loadStories, module);
