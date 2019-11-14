@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
 import './scss/ActionBar.scss';
 
-type PropsShape = {
-  messages?: Array,
-  clearList?: Function,
-  focus?: Function,
-  baseClassName?: string,
+type ActionBarProps = {
+  /**
+   * Unique identifier under: data-qe-id
+   */
   id?: string,
-  formatter?: any,
+  /**
+   * callback function triggers when a message arrives
+   */
+  focus?: Function,
+  /**
+   * Array of message strings
+   */
+  messages?: Array<string>,
+  /**
+   * Triggers on unMount - useable for emptying message queue
+   */
+  clearList?: Function,
+  /**
+   * formatter function that processes a message string
+   */
+  formatter?: null | (string => string),
+  /**
+   * base class name
+   */
+  baseClassName?: string,
+  /**
+   * the number of milliseconds to 'show' the latest message
+   */
   visibleDuration?: number,
 };
 
-class ActionBar extends Component<PropsShape> {
-  constructor(props) {
+/**
+ * Shows a text message from a given list for a set amount of time
+ */
+class ActionBar extends Component<null, ActionBarProps, null> {
+  constructor(props: ActionBarProps) {
     super(props);
     this.state = {
       isShowing: false,
@@ -66,12 +90,12 @@ class ActionBar extends Component<PropsShape> {
 }
 
 ActionBar.defaultProps = {
+  id: 'view-showing-actionbar',
+  focus: () => null,
   messages: [],
   clearList: () => null,
-  focus: () => null,
-  baseClassName: 'action-bar',
-  id: 'view-showing-actionbar',
   formatter: null,
+  baseClassName: 'action-bar',
   visibleDuration: 2000,
 };
 

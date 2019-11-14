@@ -22,6 +22,8 @@
     "moment": "^2.18.1",
     "numeral": "^2.0.6",
     "react-dates": "https://github.com/bonlineza/react-dates#v16.0.1-showBeforeTodayDifferently-lib",
+    "react-docgen": "^4.1.1",
+    "react-docs-markdown": "^0.8.0",
     "react-dom-factories": "^1.0.2",
     "react-dropzone": "^4.2.1",
     "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0",
