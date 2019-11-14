@@ -1,32 +1,39 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { DateRangePicker as ReactDates } from 'react-dates';
+import React, { useState } from 'react';
+import { DateRangePicker } from 'react-dates';
 
 type DataPickerChangeType = {
   startDate: number,
   endDate: number,
 };
 
-const DateRangePicker = ({
+type PropsShape = {
+  datepickerChanged?: Function,
+  startDatePlaceholderText?: string,
+  endDatePlaceholderText?: string,
+  displayFormat?: string,
+  numberOfMonths?: number,
+  verticalSpacing?: number,
+  startDateId?: string,
+  endDateId?: string,
+};
+
+const DateRangeInput = ({
   datepickerChanged,
-  init,
   startDatePlaceholderText,
   endDatePlaceholderText,
   displayFormat = 'LL',
   numberOfMonths = 2,
   verticalSpacing = 10,
-}) => {
+  startDateId,
+  endDateId,
+}: PropsShape) => {
   const [currentStartDate, setStartDate] = useState(null);
   const [currentEndendDate, setEndDate] = useState(null);
   const [isFocused, setIsFocused] = useState(null);
-  useLayoutEffect(() => {
-    if (init) {
-      init();
-    }
-  }, [init]);
   return (
-    <ReactDates
-      startDateId="0"
-      endDateId="0"
+    <DateRangePicker
+      startDateId={startDateId}
+      endDateId={endDateId}
       showClearDates
       verticalSpacing={verticalSpacing}
       hideKeyboardShortcutsPanel
@@ -53,4 +60,15 @@ const DateRangePicker = ({
   );
 };
 
-export default DateRangePicker;
+DateRangeInput.defaultProps = {
+  datepickerChanged: () => false,
+  startDatePlaceholderText: 'Start Date',
+  endDatePlaceholderText: 'End Date',
+  displayFormat: 'LL',
+  numberOfMonths: 2,
+  verticalSpacing: 10,
+  startDateId: 'sd-0',
+  endDateId: 'ed-0',
+};
+
+export default DateRangeInput;
