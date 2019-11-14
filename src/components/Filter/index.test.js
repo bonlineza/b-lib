@@ -70,7 +70,7 @@ describe('Filter', () => {
       wrapper.setProps({
         addDatepicker: true,
       });
-      const picker = wrapper.find(`DateRangePicker`);
+      const picker = wrapper.find(`DateRangeInput`);
       expect(picker.length).toBe(1);
     });
     it('show SimpleSelect when in groupSelection is set', () => {
