@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import './scss/ActionBar.scss';
 
-class ActionBar extends Component {
+type PropsShape = {
+  messages?: Array,
+  clearList?: Function,
+  focus?: Function,
+  baseClassName?: string,
+  id?: string,
+  formatter?: any,
+  visibleDuration?: number,
+};
+
+class ActionBar extends Component<PropsShape> {
   constructor(props) {
     super(props);
     this.state = {
