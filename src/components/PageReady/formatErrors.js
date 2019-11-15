@@ -14,9 +14,9 @@
  ];
  */
 type ErrorFormat = {
-  field: String,
-  condition: String,
-  message: String,
+  field: string,
+  condition: string,
+  message: string,
 };
 
 export default (
