@@ -1,7 +1,17 @@
 import React from 'react';
 import './scss/SwitchView.scss';
 
-class SwitchView extends React.Component {
+type ViewItemShape = {
+  type: string,
+  label: string,
+  active: boolean,
+};
+
+type PropsShape = {
+  views: Array<ViewItemShape>,
+};
+
+class SwitchView extends React.Component<PropsShape> {
   constructor(props) {
     super(props);
     this.state = {
