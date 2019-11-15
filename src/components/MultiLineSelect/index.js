@@ -7,21 +7,32 @@ import SelectRows from '../SelectRows/index';
  * add button triggers onAdd, remove button triggers onRemove
  */
 
+type SelectorObj = {
+  selector: any,
+  selectorProps: Object,
+};
+
 type MultiLineSelectProps = {
-  selectorObj?: Object,
-  label: string,
-  placeholder: string,
-  viewOnly: boolean,
-  hasError: boolean,
-  errors?: [],
-  multiline: boolean,
+  selectorObj: Object<SelectorObj>,
+  placeholder?: string,
+  multiline?: boolean,
   onChange?: Function,
-  displayData?: null | [{ key: String, value: String }],
+  displayData?: null | [{ key: string, value: string }],
   keyField?: string,
   baseClassName?: string,
 };
 
-class MultiLineSelect extends Component {
+class MultiLineSelect extends Component<MultiLineSelectProps> {
+  static defaultProps = {
+    placeholder: '',
+    multiline: false,
+    onChange: () => false,
+    displayData: null,
+    keyField: 'id',
+    baseClassName: 'multiline-select',
+    rowClassName: 'select-rows',
+  };
+
   constructor(props: MultiLineSelectProps) {
     super(props);
     this.state = {
@@ -106,15 +117,5 @@ class MultiLineSelect extends Component {
     );
   };
 }
-
-MultiLineSelect.defaultProps = {
-  default: {},
-  multiline: false,
-  onChange: () => false,
-  displayData: null,
-  keyField: 'id',
-  baseClassName: 'multiline-select',
-  rowClassName: 'select-rows',
-};
 
 export default MultiLineSelect;
