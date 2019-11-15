@@ -54,6 +54,7 @@ class Filter extends React.Component<PropsType> {
     searchInputPlaceholderText: '',
     groupSelection: null,
     addFilter: null,
+    groupSelectionCB: () => false,
     request: {
       success: true,
       error: false,
