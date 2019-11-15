@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 
+type PropsShape = {
+  listKey?: number,
+  identifier?: string,
+  title?: string,
+  clickComponent?: any,
+  data?: Object,
+  itemRenderer?: any,
+  baseClassName?: string,
+  isOpenByDefault?: boolean,
+};
+
 const CategoryItem = ({
-  listKey = '',
-  identifier = '',
-  title = '',
-  clickComponent = null,
-  data = {},
-  itemRenderer = null,
-  baseClassName = '',
-  isOpenByDefault = false,
-}) => {
+  listKey,
+  identifier,
+  title,
+  clickComponent,
+  data,
+  itemRenderer,
+  baseClassName,
+  isOpenByDefault,
+}: PropsShape) => {
   const [isOpen, setIsOpenState] = useState(isOpenByDefault);
 
   const ClickComponent = clickComponent;
@@ -44,6 +55,17 @@ const CategoryItem = ({
       </div>
     </div>
   );
+};
+
+CategoryItem.defaultProps = {
+  listKey: '',
+  identifier: '',
+  title: '',
+  clickComponent: null,
+  data: {},
+  itemRenderer: null,
+  baseClassName: '',
+  isOpenByDefault: false,
 };
 
 export default CategoryItem;

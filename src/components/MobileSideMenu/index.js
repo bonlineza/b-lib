@@ -1,16 +1,25 @@
 import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import './scss/Styles.scss';
 
+type PropsShape = {
+  baseClassName?: string,
+  menuItems?: Array,
+  closeAction: Function,
+  footerContent?: any,
+  isOpen?: false,
+  menuTitle?: string,
+  dataIdentifier?: string,
+};
+
 const MobileSideMenu = ({
-  menuItems = [],
+  baseClassName,
+  menuItems,
   closeAction,
-  footerContent = null,
+  footerContent,
   isOpen,
   menuTitle,
   dataIdentifier,
-  baseClassName,
-}) => {
+}: PropsShape) => {
   const menuContentRef = useRef();
   useEffect(() => {
     const handleClickOutside = e => {
@@ -47,18 +56,13 @@ const MobileSideMenu = ({
   );
 };
 
-MobileSideMenu.propTypes = {
-  menuTitle: PropTypes.string,
-  menuItems: PropTypes.array,
-  dataIdentifier: PropTypes.string,
-  closeAction: PropTypes.func.isRequired,
-  baseClassName: PropTypes.string,
-};
 MobileSideMenu.defaultProps = {
-  menuItems: [],
-  menuTitle: '',
-  dataIdentifier: '',
   baseClassName: 'mobile-side-menu',
+  menuItems: [],
+  footerContent: null,
+  isOpen: false,
+  menuTitle: '',
+  dataIdentifier: 'menu-item',
 };
 
 export default MobileSideMenu;

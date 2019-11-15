@@ -3,7 +3,11 @@
 import React from 'react';
 import './scss/Styles.scss';
 
-const EllipsisLoader = ({ baseClassName = 'loader' }) => (
+type PropsShape = {
+  baseClassName?: string,
+};
+
+const EllipsisLoader = ({ baseClassName }: PropsShape) => (
   <div className={baseClassName}>
     <div className={`${baseClassName}__ellipsis`}>
       <div className={`${baseClassName}__ellipsis__dot`} />
@@ -13,5 +17,9 @@ const EllipsisLoader = ({ baseClassName = 'loader' }) => (
     </div>
   </div>
 );
+
+EllipsisLoader.defaultProps = {
+  baseClassName: 'loader',
+};
 
 export default EllipsisLoader;

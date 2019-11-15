@@ -1,5 +1,14 @@
 import React from 'react';
 
+type PropsShape = {
+  baseClass?: string,
+  id?: string,
+  children: any,
+  expand: boolean,
+  toggle: Function,
+  toggleButtonContents: any,
+};
+
 const CollapsedGroup = ({
   baseClass = 'button-group',
   id = 'action-toggle-buttongroup_secondary',
@@ -7,7 +16,7 @@ const CollapsedGroup = ({
   expand,
   toggle,
   toggleButtonContents,
-}) =>
+}: PropsShape) =>
   React.Children.count(children) > 0 ? ( // code smell: how best do we solve these massive ternaries?
     <div
       className={`${baseClass}__secondary${
@@ -40,5 +49,10 @@ const CollapsedGroup = ({
       </div>
     </div>
   ) : null;
+
+CollapsedGroup.defaultProps = {
+  baseClass: 'button-group',
+  id: 'action-toggle-buttongroup_secondary',
+};
 
 export default CollapsedGroup;

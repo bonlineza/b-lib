@@ -100,9 +100,4 @@ class PDFPreview extends React.Component<PropsShape> {
   }
 }
 
-PDFPreview.defaultProps = {
-  pdfClass: 'image-preview__inner__body__pdf',
-  navClass: 'image-preview__inner__body__paginator',
-};
-
 export default PDFPreview;
