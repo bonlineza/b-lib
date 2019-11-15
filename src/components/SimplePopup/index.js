@@ -10,13 +10,14 @@ type OptionShape = {
 };
 
 type PropsShape = {
-  isOpen: boolean,
-  showLoader: boolean,
-  title: string,
+  isOpen?: boolean,
+  baseClass?: string,
+  showLoader?: boolean,
+  title?: string,
   description?: string,
   renderContent?: Function,
-  options: Array<OptionShape>,
-  close: Function,
+  options?: Array<OptionShape>,
+  close?: Function,
   size?: string,
   onOpen?: Function,
   onClose?: Function,
@@ -25,13 +26,18 @@ type PropsShape = {
 
 class SimplePopup extends React.Component<PropsShape> {
   static defaultProps = {
+    isOpen: false,
     baseClass: 'simple-popup',
+    showLoader: false,
+    title: '',
+    description: '',
+    renderContent: () => false,
+    options: [],
+    close: () => false,
     size: '--small',
-    description: null,
-    renderContent: null,
+    onOpen: () => false,
+    onClose: () => false,
     cannotOutsideClickClose: false,
-    onOpen: null,
-    onClose: null,
   };
 
   listener: any;
