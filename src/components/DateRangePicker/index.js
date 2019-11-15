@@ -21,9 +21,9 @@ const DateRangeInput = ({
   datepickerChanged,
   startDatePlaceholderText,
   endDatePlaceholderText,
-  displayFormat = 'LL',
-  numberOfMonths = 2,
-  verticalSpacing = 10,
+  displayFormat,
+  numberOfMonths,
+  verticalSpacing,
   startDateId,
   endDateId,
 }: PropsShape) => {
