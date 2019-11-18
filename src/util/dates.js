@@ -1,13 +1,15 @@
 import moment from 'moment';
-
-// TODO: add thin wrapper to project at app level
-// import {setLocale} helpers/dates
-// import {getLocale} helpers/locale
-// setLocale(getLocale)
-
+/**
+ * @class MomentWrapper
+ * @description Singleton convenience class wrapper for the 'moment' library
+ */
 class MomentWrapper {
   static momentInstance;
 
+  /**
+   * Returns the Moment instance and sets the locale on it
+   * @param {string} locale the locale to use when getting the Moment instance
+   */
   static getInstance(locale: string): Object {
     if (!this.momentInstance) {
       if (locale) moment.locale(locale);
@@ -16,26 +18,30 @@ class MomentWrapper {
     return this.momentInstance;
   }
 
-  static setLocale(l: string) {
-    this.getInstance().locale(l);
+  /**
+   * sets or changes the locale of the current Moment instance
+   * @param {string} locale the locale to use when getting the Moment instance
+   */
+  static setLocale(locale: string) {
+    this.getInstance().locale(locale);
   }
 }
 
-export function getMoment(locale): any {
+/**
+ * Returns the Moment instance and sets the locale on it
+ * @param {string} locale the locale to use when getting the Moment instance
+ */
+export function getMoment(locale: string): any {
   return MomentWrapper.getInstance(locale);
-}
-
-export function setLocale(): any {
-  return MomentWrapper.setLocale();
 }
 
 /**
  * Formats a Unix timestamp to a Date string
- * @param {*} item - the date to be formatted in Unix epoch seconds
- * @param {*} dateFormat - the Moment DateFormat to be applied - default: L
+ * @param {number} item - the Unix epoch number to be formatted
+ * @param {string} dateFormat - the Moment DateFormat to be applied - default: L
  */
 export function parseDate(
-  item: mixed = moment().unix(),
+  item: number = moment().unix(),
   dateFormat: string = 'L',
 ): string {
   return item

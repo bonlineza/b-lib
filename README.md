@@ -38,6 +38,16 @@ Includes:
    - SimpleItem 
    - SimpleListContext 
 
+## Functions in this Library
+
+- parseDate
+- getMoment
+- getTokenFromStorage
+- hasOwn
+- validateEmail
+- validatePhone
+- validateWebsite
+
 ## Setup
 
 1. `yarn` - install dependencies
@@ -131,11 +141,8 @@ So if our project has a depedancy on `"b-lib": "1.0.3"` and we would like to tes
 ```
 # in bash
 cd /path/to/project/resources/assets/js
-
 mkdir node_modules
-
 cd node_modules
-
 git clone git@github.com:bonlineza/b-lib --branch 2.0.0
 ```
 
@@ -145,11 +152,15 @@ to the `b-lib` we can run...
 ```
 # in bash
 cd /path/to/project/resources/assets/js
-
 mkdir node_modules
-
 cd node_modules
-
 git clone git@github.com:{author}/b-lib --branch {branch-name}
 ```
 
+### Changelog
+
+#### 0.1.23
+- BREAKING: `interpretErrorMessage` function has been internally replaced in PageReady, as a prop - ensure you pass in your project specific interpreter as `errorMessageInterpreter` when updating to this version
+- Added prop `errorMessageInterpreter` to `PageReady`
+- Added Doc blocks to all function files in `src/util`
+- Added exports for `functions`: { `parseDate`, `getMoment`, `getTokenFromStorage`, `hasOwn`, `validateEmail`, `validatePhone`, `validateWebsite` }

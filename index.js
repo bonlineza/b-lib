@@ -33,6 +33,12 @@ import UntilReady from './src/components/UntilReady/index.js';
 import WYSIWYG from './src/components/WYSIWYG/index.js';
 import MultiLineSelect from './src/components/MultiLineSelect/index.js';
 import CategoryList from './src/components/CategoryList/index.js';
+import { parseDate, getMoment } from './src/util/dates';
+import getTokenFromStorage from './src/util/getToken';
+import hasOwn from './src/util/hasOwn.func';
+import validateEmail from './src/util/validateEmail';
+import validatePhone from './src/util/validatePhone';
+import validateWebsite from './src/util/validateWebsite';
 
 export type {
   SimpleListPropsShape,
@@ -41,7 +47,18 @@ export type {
   DocumentUploaderProps,
 } from './src/components/DocumentUploader/index.js';
 
+const functions = {
+  parseDate,
+  getMoment,
+  getTokenFromStorage,
+  hasOwn,
+  validateEmail,
+  validatePhone,
+  validateWebsite,
+};
+
 export {
+  functions,
   ActionBar,
   AsideSlide,
   ButtonGroup,

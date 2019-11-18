@@ -1,7 +1,5 @@
 import React from 'react';
-import { interpretErrorMessage } from './formatErrors';
 import type RequestShape from './request';
-
 import defaultRequest from './request';
 
 type PropShape = {
@@ -11,6 +9,7 @@ type PropShape = {
   customErrorMessage?: string,
   customErrorHandler?: Function,
   renderCustomLoader?: Function,
+  errorMessageInterpreter?: Function,
 };
 
 export const Context = React.createContext({ data: null });
@@ -24,6 +23,7 @@ class PageReady extends React.Component<PropShape> {
     predefinedAction: null,
     customErrorHandler: () => null,
     renderCustomLoader: () => null,
+    errorMessageInterpreter: () => 'Error receiving Data',
   };
 
   constructor(props) {
@@ -96,7 +96,7 @@ class PageReady extends React.Component<PropShape> {
             // eslint-disable-next-line react/no-unused-state
             failed: true,
             // eslint-disable-next-line react/no-unused-state
-            message: interpretErrorMessage(err),
+            message: this.props.errorMessageInterpreter(err),
           });
         });
     }
