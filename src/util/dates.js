@@ -39,6 +39,7 @@ export function getMoment(locale: string): any {
  * Formats a Unix timestamp to a Date string
  * @param {number} item - the Unix epoch number to be formatted
  * @param {string} dateFormat - the Moment DateFormat to be applied - default: L
+ * @returns {string} the formatted date string or a '-' if the input is untruthy
  */
 export function parseDate(
   item: number = moment().unix(),

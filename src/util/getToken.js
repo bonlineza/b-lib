@@ -7,7 +7,10 @@ export default function getTokenFromStorage(withBearer = false, key = '_tk') {
   if (typeof window === 'undefined') return null;
 
   const token = window.localStorage.getItem(key);
-  if (token === null) return null;
+  if (typeof token !== 'string') return null;
 
-  return withBearer ? token : token.substr(7);
+  if (withBearer) {
+    return token;
+  }
+  return token.substr(7);
 }

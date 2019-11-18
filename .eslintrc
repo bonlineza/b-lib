@@ -80,6 +80,7 @@
       "FormData": true,
       "location": true,
       "it": true,
+      "context": true,
       "describe": true,
       "beforeEach": true,
       "expect": true,
@@ -87,8 +88,7 @@
       "React$Element": true,
       "HTMLElement": true,
       "Event": true,
-      "HTMLInputElement": true,
-      "$R": true,
-      "React$Component": true
+      "React$Component": true,
+      "requestAnimationFrame": true
     }
   }

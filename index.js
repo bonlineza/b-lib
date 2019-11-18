@@ -33,9 +33,15 @@ import UntilReady from './src/components/UntilReady/index.js';
 import WYSIWYG from './src/components/WYSIWYG/index.js';
 import MultiLineSelect from './src/components/MultiLineSelect/index.js';
 import CategoryList from './src/components/CategoryList/index.js';
+import constrainSearch, {
+  sanitizeInputForConstraints,
+} from './src/util/constrainable';
 import { parseDate, getMoment } from './src/util/dates';
+import flattenObject from './src/util/flattenObject';
 import getTokenFromStorage from './src/util/getToken';
 import hasOwn from './src/util/hasOwn.func';
+import smoothScrollTo, { scrollToSelector } from './src/util/smoothScrollTo';
+import stringOccurances from './src/util/stringOccurances';
 import validateEmail from './src/util/validateEmail';
 import validatePhone from './src/util/validatePhone';
 import validateWebsite from './src/util/validateWebsite';
@@ -48,10 +54,16 @@ export type {
 } from './src/components/DocumentUploader/index.js';
 
 const functions = {
+  constrainSearch,
+  sanitizeInputForConstraints,
   parseDate,
   getMoment,
+  flattenObject,
   getTokenFromStorage,
   hasOwn,
+  smoothScrollTo,
+  scrollToSelector,
+  stringOccurances,
   validateEmail,
   validatePhone,
   validateWebsite,
