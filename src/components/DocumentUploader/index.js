@@ -3,15 +3,25 @@ import Dropzone from 'react-dropzone';
 import './scss/DocumentUploader.scss';
 
 export type DocumentUploaderProps = {
+  /** an array of objects displayed in previewRenderer */
   list?: Array<Object>,
+  /** string error message shown in `div.image-preview__footer` */
   errorMessage?: string,
+  /** if true, the loadingRenderer prop will trigger */
   isLoading?: boolean,
+  /** identifier used for `div.image-preview`'s in prop `data-qe-id` */
   dataQeId?: string,
+  /** If true, shows `<Dropzone>` (uploader)component */
   showUploader?: boolean,
+  /** Function returns prompt content to add files */
   addFileRenderer?: Function,
+  /** Function returns component that acts as loader */
   loadingRenderer?: Function,
+  /** Function returns a component that has access to data in `list` */
   previewRenderer: Function,
+  /** css class in parent div of this component */
   baseClass?: string,
+  /** callback function that runs when a file is uploaded */
   uploadHandler: Function,
 };
 
