@@ -18,27 +18,46 @@ import findZoomAndCenter from './findZoomAndCenter.js';
     ]}
   />
  */
+
+type InitialSizeType = {
+  width: number,
+  height: number,
+};
+
 type MapTypes = {
+  apiKey?: string,
   /* eslint-disable react/no-unused-prop-types */
+  /** Initial Latitude and Longitude coordinates for map */
   center?: {
     lat: number,
     lng: number,
   },
+  /** Number that changes the scale of the map */
   zoom?: number,
-  markers: Array<{
+  /** Array objects that hold data that will support in putting markers on
+   * the map. Each item has the following `DataShape`
+   * lat: number | string (latitude position of marker),
+   * lng: number | string (longitude position of marker),
+   * name: string (name of marker),
+   * isLink?: boolean,
+   * url?: string,
+   * */
+  markers?: Array<{
     lat: number | string,
     lng: number | string,
     name: string,
     isLink?: boolean,
     url?: string,
   }>,
-  mapConfig?: Object,
   markerClass: Object,
   width?: string,
   height?: string,
+  apiOptions?: Object,
+  initialSize?: Object<InitialSizeType>,
+  markerMapper?: Function,
 };
 
-class Map extends React.Component {
+class Map extends React.Component<MapTypes> {
   static defaultProps = {
     apiKey: '',
     apiOptions: {},
