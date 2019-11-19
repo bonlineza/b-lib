@@ -6,9 +6,9 @@ import './scss/ButtonGroup.scss';
 type PropsType = {
   /** If true append modifier string `--alt` to `baseClass` */
   alt?: boolean,
-  /** Array of that renders button */
+  /** Array of that renders buttons */
   children?: any,
-  /** Open on cloick of buttons outside menu */
+  /** Open on click of buttons outside menu */
   openOnFirstChild?: boolean,
   /** Number of buttons displayed outside the menu */
   numButtons?: number,
