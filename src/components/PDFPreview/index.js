@@ -2,10 +2,32 @@ import React, { Fragment } from 'react';
 import PDF from 'react-pdf-js';
 
 type PropsShape = {
+  /** Array of objects that will be used to create custom `ControlComponents`
+   * that are displayed alongside`prevPageButton` and `nextPageButton`
+   *  each object of the array must have one prop called `useComponent`
+   *  `useComponent` will be used to create `ControlComponent` via `React.cloneElement`
+   *  `ControlComponent` has access to all props within the item of that array
+   * */
   customControls: Array<*>,
+  /** object that contains, prop `extUrl` that has the relative path to the
+   * pdf to be previewed */
   data: Object,
+  /** Function that returns description of previewed pdf under `div.pdf-preview__footer` */
   description?: Function | void,
+  /** Custom button component passed down which is `React.cloneElement`ed with the
+   * the following props:
+   * - `disabled: page === 1` (button is `disabled` if `page` is 1),
+   * - `onClick: this.handlePrevious` (on click of that button runs handlePrevious
+   *     which decrements `page`)
+   * */
   prevPageButton: Object,
+  /** Custom button component passed down which is `React.cloneElement`ed with the
+   * the following props:
+   * - `disabled: page === pages` (button is `disabled` if you are on the last
+   * page of pdf),
+   * - `onClick: this.handleNext` (on click of that button runs handlePrevious
+   *     which increments `page`)
+   * */
   nextPageButton: Object,
 };
 
