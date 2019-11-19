@@ -13,13 +13,32 @@ type SelectorObj = {
 };
 
 type MultiLineSelectProps = {
+  /** An object with the following PropShape:
+   * --
+   *- `selector`: `Custom Component`passed down that receives props
+   *- `title`: title for custom component
+   *- `isSelectorActive`: indicates whether Selector is active or not,
+   *- `toggleSelector`: toggles visibility of selector,
+   *- `addItem`: add item to selection
+   * `selectorProp`: initial props passed down for custom component selector,
+   * */
   selectorObj: Object<SelectorObj>,
+  /** `placeholder` acts as title for CustomSelector and placeholder `SelectRow` */
   placeholder?: string,
+  /** if true the single prop for `SelectRows` is false */
   multiline?: boolean,
+  /** callback function triggered when row is add. the parameter for this function
+   * contains `this.state.rows` which is the data present from selector */
   onChange?: Function,
+  /** if this prop has a value, then this passed into the prop `rows` of
+   * `<SelectRows>` instead of `state.rows` */
   displayData?: null | [{ key: string, value: string }],
+  /** Identifier for row items */
   keyField?: string,
+  /** Base class name root div in this component */
   baseClassName?: string,
+  /** Row class name for `RowSelect` */
+  rowClassName?: string,
 };
 
 class MultiLineSelect extends Component<MultiLineSelectProps> {
