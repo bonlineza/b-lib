@@ -28,18 +28,15 @@ import SimpleSelect from './src/components/SimpleSelect/index.js';
 import SelectRows from './src/components/SelectRows/index.js';
 import SimplePopup from './src/components/SimplePopup/index.js';
 import SwitchView from './src/components/SwitchView/index.js';
-import ToolTip, { wrapTooltip } from './src/components/ToolTip/index.js';
+import ToolTip from './src/components/ToolTip/index.js';
+import { wrapTooltip } from './src/components/ToolTip/wrapTooltip.js';
 import UntilReady from './src/components/UntilReady/index.js';
 import WYSIWYG from './src/components/WYSIWYG/index.js';
 import MultiLineSelect from './src/components/MultiLineSelect/index.js';
 import CategoryList from './src/components/CategoryList/index.js';
 
-export type {
-  SimpleListPropsShape,
-} from './src/components/SimpleList/index.js';
-export type {
-  DocumentUploaderProps,
-} from './src/components/DocumentUploader/index.js';
+export type { SimpleListPropsShape } from './src/components/SimpleList/index.js';
+export type { DocumentUploaderProps } from './src/components/DocumentUploader/index.js';
 
 export {
   ActionBar,
