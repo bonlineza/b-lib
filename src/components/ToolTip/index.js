@@ -2,7 +2,9 @@ import React, { Fragment } from 'react';
 import './scss/Styles.scss';
 
 type PropsShape = {
+  /** text that appears in the tooltip when hovering on target element */
   text: string,
+  /** When hovered, tooltip when be visible */
   children: any,
 };
 
@@ -16,9 +18,5 @@ const Tooltip = ({ text, children }: PropsShape) => (
     </Fragment>
   </span>
 );
-
-export function wrapTooltip(element, text) {
-  return <Tooltip text={text}>{element}</Tooltip>;
-}
 
 export default Tooltip;

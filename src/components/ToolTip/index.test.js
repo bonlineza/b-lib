@@ -1,7 +1,7 @@
 import React from 'react';
 import 'test-util/setup';
 import { shallow } from 'enzyme';
-import { wrapTooltip } from './index';
+import { wrapTooltip } from './wrapTooltip';
 
 const buttonText = 'children';
 const defaultProps = {
