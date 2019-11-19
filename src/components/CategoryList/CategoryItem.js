@@ -33,7 +33,7 @@ const CategoryItem = ({
       {clickComponent ? (
         <ClickComponent
           listKey={listKey}
-          identifier={`${baseClassName}__item-${identifier}`}
+          identifier={identifier}
           title={title}
           isOpen={isOpen}
           toggleFn={toggle}
