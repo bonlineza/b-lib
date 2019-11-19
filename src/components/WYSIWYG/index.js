@@ -1,15 +1,37 @@
 import React, { Fragment } from 'react';
 
 type PropsShape = {
+  /** String which is set to the initial state of `state.content`.
+   * `state.content` is bound to component `<Editor />`'s prop `content` */
   content?: string,
+  /** Acts a placeholder for `<Editor />``. value gets passed into
+   * placeholder prop of `Editor` */
   placeholder?: string,
+  /** Callback function that triggers when `editorOnChange` is run.
+   * The first parameter of this function has `content` of editor */
   onChange: Function,
+  /** Callback function that triggers when Editor is focused */
   onEditorFocus?: Function,
+  /** String css class for `input element` of `Editor` component */
   inputClass?: string,
+  /** Boolean, if true the,markdown can be created or deleted in`Editor`  */
   isEditing?: boolean,
+  /** String css class that is applied to `<p>` with `dangerouslySetInnerHTML` */
   paragraphClass?: string,
+  /** identifier for editor input */
   editorId?: string,
+  /** Input component that should accept the following props and perform logic
+   * accordingly:
+   *```
+   *  content,
+   * onChange,
+   * onEditorFocus,
+   * editorId,
+   * inputClass,
+   * ```
+   * */
   editorClass: Function | Object,
+  /** Function to sanitise `dangerouslySetInnerHTML` */
   htmlSanitiser?: Function,
 };
 
@@ -22,7 +44,6 @@ class WYSIWYG extends React.Component<PropsShape> {
     isEditing: false,
     paragraphClass: 'text--dk--flushed--wysiwyg',
     editorId: 'editor',
-    customSanitiseHtmlConfig: null,
     htmlSanitiser: null,
   };
 
