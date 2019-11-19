@@ -4,7 +4,7 @@ const reactDocgen = require('react-docgen');
 const docsToMarkdown = require('react-docs-markdown');
 
 const componentsPath = path.resolve(__dirname, '../src/components');
-const outputPath = path.resolve(__dirname, '../Documentation');
+const outputPath = path.resolve(__dirname, '../docs');
 
 console.log(componentsPath);
 
