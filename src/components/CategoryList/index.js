@@ -15,18 +15,20 @@ type PropsShape = {
    * --
    * `title(string):` String title of category
    * --
-   * `catName(string):` catName gets passed into the identifier prop in `<CatItem />` which is then used as a data-id
+   * `catName(string):` catName gets passed into the identifier prop in
+   * `<CatItem />` which is then used as a `data-id`
    * --
    * `catData(array)`: Array of data within category
    */
   data?: Array<ArrayItemShape>,
   /**
-   * itemRenderer renders items  `<CategoryList />`  `data` prop
+   * itemRenderer renders items `data` prop
    *
    */
   itemRenderer?: any,
   /**
-   * `passed down custom component which can be used for toggling visibility of itemRenderer`
+   * `passed down custom component which can be used for toggling visibility of
+   * itemRenderer. Receives the following props`
    * ---
    * `listKey(number): index for items in category`
    * ---
@@ -40,7 +42,7 @@ type PropsShape = {
    * */
   clickComponent?: any,
   /**
-   * parent css class for categoryList
+   * css class for root div in this component
    */
   baseClassName?: string,
   /**
