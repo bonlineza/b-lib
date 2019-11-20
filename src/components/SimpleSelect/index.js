@@ -2,13 +2,22 @@ import React from 'react';
 import { SimpleSelect as ReactSelect } from 'react-selectize';
 import './scss/SimpleSelect.scss';
 
+type ItemShape = {
+  value: any,
+  label: string,
+};
+
 type PropShapes = {
-  onChange?: Function,
-  /** value passed into `value`  prop of `SimpleSelect` */
-  value?: any,
-  /** Array of object with value `{ label, value }`. Selection of options */
-  options?: Array,
-  /** If true, hides reset button to clear value */
+  /** `(selectedValue){}` invoked when the user selects an option (by click on enter).
+   * `onChange` accepts the an object with the `shape` which will equate to
+   * the current `value` prop */
+  onChange?: Function<ItemShape>,
+  /** the selected value, i.e. one of the objects in the options array */
+  value?: Object<ItemShape>,
+  /** list of items by default each option object MUST have `label` & `value` property,
+   * otherwise you must implement the render* & filterOptions methods */
+  options?: Array<ItemShape>,
+  /** If true, hides the reset button, even if the select element is not empty */
   hideResetButton?: boolean,
 };
 
@@ -28,7 +37,7 @@ const SimpleSelect = ({
 
 SimpleSelect.defaultProps = {
   onChange: () => false,
-  value: null,
+  value: {},
   options: [],
   hideResetButton: true,
 };
