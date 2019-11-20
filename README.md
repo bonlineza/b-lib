@@ -152,6 +152,11 @@ git clone git@github.com:{author}/b-lib --branch {branch-name}
 ```
 
 ## Changelog
+
+### 1.0.1
+- Added generated Markdown Documentation for each Component
+- Added GitHub Pages Landing Page to `docs/index.md`
+
 ### 1.0.0
 - BREAKING: `interpretErrorMessage` function has been internally replaced in PageReady, as a prop - ensure you pass in your project specific interpreter as `errorMessageInterpreter` when updating to this version
 - Added prop `errorMessageInterpreter` to `PageReady`
@@ -171,3 +176,4 @@ git clone git@github.com:{author}/b-lib --branch {branch-name}
   `validatePhone`,
   `validateWebsite`,
 }
+
