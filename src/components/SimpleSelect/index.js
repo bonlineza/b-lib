@@ -19,6 +19,8 @@ type PropShapes = {
   options?: Array<ItemShape>,
   /** If true, hides the reset button, even if the select element is not empty */
   hideResetButton?: boolean,
+  /** controls the visibility of the dropdown menu */
+  open?: boolean,
 };
 
 const SimpleSelect = ({
@@ -26,12 +28,14 @@ const SimpleSelect = ({
   value,
   options,
   hideResetButton,
+  open,
 }: PropShapes) => (
   <ReactSelect
     hideResetButton={hideResetButton}
     onValueChange={onChange}
     value={value}
     options={options}
+    {...(open ? { open: true } : {})}
   />
 );
 
@@ -40,6 +44,7 @@ SimpleSelect.defaultProps = {
   value: {},
   options: [],
   hideResetButton: true,
+  open: false,
 };
 
 export default SimpleSelect;
