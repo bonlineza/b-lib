@@ -22,33 +22,82 @@ type DefaultPropShape = {
   onScroll: Function,
 };
 
-export type SimpleListPropsShape = {
+type HeadingType = {
   name: string,
-  headings: [
-    {
-      name: string,
-      sortable: boolean,
-      text: string,
-    },
-  ],
-  addFilter?: Function, // returns some JSX to render an additional filter
+  sortable: boolean,
+  text: string,
+};
+
+export type SimpleListPropsShape = {
+  /** string that is used as a reference to connect to store `ConnectedSimpleList`
+   * of respective project it is  being used in
+   * */
+  name: string,
+  /** css class for root of div of component */
+  baseClass?: string,
+  /** Headers for list, has following prop shape:
+   * --
+   * `name`: string (name of Header), [required]
+   * `sortable`: boolean (if true, `sort button` is rendered, [required]
+   * on click of that button, columns in that column are reordered `[asc, desc]` ),
+   * `text: string`, (text that appears in header)[required]
+   * */
+  headings: Array<HeadingType>,
+  /** returns some JSX to render an additional filter */
+  addFilter?: Function,
+  /** if true, appends `baseClass` with `--bgc-alt` */
   bgcAlt?: boolean,
+  /** Callback function that is trigger clicking on a row */
   clickAct?: Function,
+  /** Array of object that are mapped to create filter options in the `<FilterComponent />`.
+   * Value is placed in `predefined` prop of `<FilterComponent />`
+   * When clicking on the `Filter Component` they are appear for selection
+   * Clicking on a `Filter Option` will append the value to the search bar
+   * */
   filterOpts?: Array<{
     text: string,
     value: string,
   }>,
+  /** String of `SimpleList` table */
   tableTitle?: string,
+  /** If true `<Sections />` component will be rendered and if false `<Body />`
+   *  component will be rendered */
   sections?: boolean,
+  /** This is to be used alongside the `sections` prop, it is used to isolate the
+   * data for the current inner list, therefore it will be the key of sections
+   * where sections is in the shape: `{ string: Array }` */
   sectionTarget?: string,
+  /** Array of string which are the titles which match the isolated data for
+   * the current inner list obtained from `sections`
+   * props and `sectionTarget` prop */
   sectionTitleKeys?: string[],
+  /** If true `Filter Component` renders */
   enableSearch?: boolean,
+  /** Passed into `addDatePicker`prop `<FilterComponent />`.
+   * If true `DatePicker` renders in  `<FilterComponent />` */
   showDatepicker?: boolean,
+  /** If maps out logic that this component has wrapped. Mapping out children */
   children?: any,
+  /** bool added to context so it can be used by an component wrapped in the provider */
   allowClick?: boolean,
+  /** Add initial value to input of `<FilterComponent>` passed into prop `initialText` */
   initialSearch?: string,
+  /** options for SimpleSelect in `<FilterComponent>` passed into prop `groupSelection` */
   groupSelection?: Object[],
+  /** value of input `<FilterComponent>` */
   searchValue?: string,
+  /** String acting as Title displayed on top of input for `<FilterComponent>` */
+  filterTitle?: string,
+  /** If true appends `--no-pointer` to `baseClass` in root div of this component */
+  noPointer?: boolean,
+  /** jsx to act as `HeaderComponent` right above `<BodyComponent>/<SectionComponent>` */
+  HeaderComponent?: any,
+  /** can either be a custom filter component or if not the default `<Filter />` */
+  FilterComponent?: any,
+  /** renders `<Body>` by default */
+  BodyComponent?: any,
+  /** renders `<Sections>` by default */
+  SectionsComponent?: any,
 };
 
 type PropsShape = SimpleListPropsShape & {

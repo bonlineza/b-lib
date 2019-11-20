@@ -4,6 +4,7 @@ import React from 'react';
 import './scss/Styles.scss';
 
 type PropsShape = {
+  /** css class name for the base div of this component */
   baseClassName?: string,
 };
 

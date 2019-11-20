@@ -7,13 +7,30 @@ type DataPickerChangeType = {
 };
 
 type PropsShape = {
+  /** callback function that runs on date change. Holds `Moment Obj` in
+   * paramenter */
   datepickerChanged?: Function,
+  /** placeholder text for start date input */
   startDatePlaceholderText?: string,
+  /** placeholder text for end date input */
   endDatePlaceholderText?: string,
+  /** Display LongDateFormat specified
+   *  The following formats are acceptable:
+   *  - `LTS:` Time (with seconds) i.e `08:30:00 PM`
+   *  - `LT:` Time (without seconds) i.e `08:30 PM`
+   *  - `LL:` Month name, day of month, year `September 4 1986`
+   *  - `LLL:` Month name, day of month, year, time `September 4 1986 8:30 PM`
+   *  - `LLLL:` Day of week, month name, day of month, year, time `Thursday, September 4 1986 8:30 PM`
+   *
+   * */
   displayFormat?: string,
+  /** Number of months shown for selection */
   numberOfMonths?: number,
+  /** vertical spacing for days in open calendar selection */
   verticalSpacing?: number,
+  /** identifier for start date input */
   startDateId?: string,
+  /** identifier for end date input */
   endDateId?: string,
 };
 

@@ -2,14 +2,27 @@ import React from 'react';
 import './scss/Paginator.scss';
 
 type PropsShape = {
+  /** callback function triggered when page is changed */
   onChangePage: number => any,
+  /** Used to determine whether the disabled props is true or not for the
+   * `next page button` and `prev page button`
+   * if props `currentPage` < `totalPages` `next page button` is not disabled
+   * if props `currentPage > 1` `prev page button` is not disabled
+   * */
   currentPage: number,
+  /** Indicates the total number of pages: number */
   totalPages: number,
+  /** If true it will show is `isLoadingContent` */
   isLoading?: boolean,
+  /** renders content when state is loading */
   isLoadingContent?: Function,
+  /** renders content when result set is empty */
   isEmptyContent?: Function,
+  /** css class for root div of this component */
   baseClass?: string,
+  /** Renders jsx prevButton */
   prevBtnContent?: Function,
+  /** Renders jsx nextButton */
   nextBtnContent?: Function,
 };
 

@@ -2,16 +2,31 @@ import React from 'react';
 import './scss/Styles.scss';
 
 type PropsType = {
+  /** Controls whether `AsideSlide` is open or not  on initial load */
   isOpen: boolean,
+  /** all jsx that this component has wrapped */
   children: any,
+  /** String rendered within component */
   title: string,
+  /** Function that toggles AsideSlide whether is it open or not */
   toggle: Function,
+  /** if true, uses this css class `aside-slide--bgc-alt`  */
   bgcAlt?: boolean,
+  /** Function that also toggles whether `<AsideSlide />` is open or closed.
+   * Function is triggered on click of button located in the component
+   * */
   toggleButton?: Function,
-  actionComponent?: Object,
+  /** button element that is rendered in the
+   * `<div class"aside-slide__inner__header__item--right">` of this component */
+  actionComponent?: any,
   renderEmpty?: boolean,
+  /** Function that returns jsx that acts as sidebar.
+   * If true, css modifier class `aside-slide__inner--padded` is used.
+   * */
   slideBar?: Function | null,
+  /** identifier appended to the wrapper div of `div.aside-slide__inner` */
   innerId?: string,
+  /** identifier appended to parent div for data attribute */
   qeId?: string,
 };
 

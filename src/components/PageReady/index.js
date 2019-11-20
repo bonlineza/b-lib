@@ -3,11 +3,19 @@ import type RequestShape from './request';
 import defaultRequest from './request';
 
 type PropShape = {
+  /** dispatch action for store */
   predefinedAction?: Object,
+  /** function that returns an promise. on success, the promise has the data from request */
   getRequestInstance: () => Promise<*>,
+  /** Triggers when promise is successful. in the function's parameter, it will
+   * have data from the promise */
   onData?: Function,
+  /** String to display custom error message */
   customErrorMessage?: string,
+
+  /** this function triggers on catch of error from the Promise of `getRequestInstance`.  */
   customErrorHandler?: Function,
+  /** Renders custom loader if set */
   renderCustomLoader?: Function,
   errorMessageInterpreter?: Function,
 };

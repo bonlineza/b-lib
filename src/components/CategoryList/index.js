@@ -2,11 +2,52 @@ import React, { Fragment } from 'react';
 import CategoryItem from './CategoryItem.js';
 import './scss/Style.scss';
 
+type ArrayItemShape = {
+  title: string,
+  catName: string,
+  catData: Array,
+};
+
 type PropsShape = {
-  data?: Array,
+  /**
+   * Array of data which is rendered in itemRenderer
+   * Data shape of `ArrayItemShape` is the following:
+   * --
+   * `title(string):` String title of category
+   * --
+   * `catName(string):` catName gets passed into the identifier prop in
+   * `<CatItem />` which is then used as a `data-id`
+   * --
+   * `catData(array)`: Array of data within category
+   */
+  data?: Array<ArrayItemShape>,
+  /**
+   * itemRenderer renders items `data` prop
+   *
+   */
   itemRenderer?: any,
+  /**
+   * `passed down custom component which can be used for toggling visibility of
+   * itemRenderer. Receives the following props`
+   * ---
+   * `listKey(number): index for items in category`
+   * ---
+   * `identifier(id): this can be used as data id`
+   * ---
+   * `title(string): Title for your click component`
+   * ---
+   * `isOpen(boolean): props which tracks whether the categoryItem is open or not`
+   * ---
+   * `toggleFn(function): togglesIsOpen state`
+   * */
   clickComponent?: any,
+  /**
+   * css class for root div in this component
+   */
   baseClassName?: string,
+  /**
+   * bool value to determine when the category items are open by default
+   */
   isOpenByDefault?: boolean,
 };
 

@@ -4,12 +4,20 @@ import CollapsedGroup from './collapsedGroup';
 import './scss/ButtonGroup.scss';
 
 type PropsType = {
+  /** If true append modifier string `--alt` to `baseClass` */
   alt?: boolean,
+  /** Array of that renders buttons */
   children?: any,
+  /** Open on click of buttons outside menu */
   openOnFirstChild?: boolean,
+  /** Number of buttons displayed outside the menu */
   numButtons?: number,
+  /** if true added `disabled prop` to all rendered buttons */
   disableButtons?: boolean,
+  /** Renders content in menu button */
   toggleButtonContents?: React$Element,
+  /** css class for parent div of this component */
+  baseClass?: string,
 };
 
 type DefaultPropsType = {
@@ -18,6 +26,7 @@ type DefaultPropsType = {
   alt: false,
   numButtons: number,
   disableButtons: boolean,
+  baseClass?: string,
 };
 
 type StateShape = {

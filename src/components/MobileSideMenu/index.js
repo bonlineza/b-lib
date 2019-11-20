@@ -2,12 +2,20 @@ import React, { useRef, useEffect } from 'react';
 import './scss/Styles.scss';
 
 type PropsShape = {
+  /** css class name assigned to root div. All child css class names are appended
+   from this baseClassName  */
   baseClassName?: string,
+  /** array of item that contain jsx */
   menuItems?: Array,
+  /** Method to close `MobileSideMenu` */
   closeAction: Function,
+  /** Jsx renders with `div.`${baseClassName}__content__footer` */
   footerContent?: any,
+  /** if true, MobileSideMenu is visible */
   isOpen?: false,
+  /** title of menu  */
   menuTitle?: string,
+  /** data identifier for menu items  */
   dataIdentifier?: string,
 };
 

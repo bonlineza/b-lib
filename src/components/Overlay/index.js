@@ -4,9 +4,15 @@ import './scss/Styles.scss';
 // see $wrap-widths in _wraps.css for sizes
 
 type OverlayProps = {
+  /** css class for root div. child element css classes will have this `baseClass`
+   * preprended
+   * */
   baseClass?: string,
+  /** Content that `<Overlay />` has wrapped */
   children?: [] | Object,
+  /** if true Overlay is visible */
   isOpen: boolean,
+  /** Size of the div.${baseClass}__inner */
   size?: string,
 };
 

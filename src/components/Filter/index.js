@@ -9,26 +9,61 @@ type DefaultPropsType = {
     text: string,
     value: string,
   }>,
-  centered: boolean,
   addDatepicker: boolean,
 };
 
 type PropsType = {
+  /** css class assigned to root div of this component */
+  baseClass?: string,
+  /** callback function triggered when a value is changed in SimpleSelect */
+  groupSelectionCB?: Function,
+  /** `name` is prepended to the value of the prop `data-qe-uid` */
+  name?: string,
+  /** Callback that is triggered from `handlePropogation` which triggered from
+   * the function in addFilter */
   callback: Function,
+  /** a function that renders custom component that can run `handlePropogration` */
   addFilter?: Function,
+  /** if true, the props, `isLoadingContent` will render which a custom loader
+   * component */
   isLoading?: boolean,
+  /** A function that renders a custom loader component passed down */
   isLoadingContent?: Function,
+  /** An object array. Works with `<PredefinedFilterComponent />` to append
+   * one of the array items to the search bar value. each item of the array
+   * has following shape `{ text:string, value:string }` */
   predefined?: Array<{
     text: string,
     value: string,
   }>,
+  /** if true, the component will render the date picker */
   addDatepicker?: boolean,
+  /** callback function that runs when the date changes */
   datepickerCallback?: Function,
+  /** Function that renders the click input button. parameter in function contains
+   * object with the following shape:  `{ onClick, isEmpty }`,
+   * --
+   * `onClick` runs the function `this.clearInput`
+   * --
+   * `isEmpty` holds the state, isEmpty from this comeponent,
+   * */
   clearInputButton?: Function,
+  /** Title the component */
   filterTitle?: string,
+  /** set the initial state for `state.value` */
   initialText?: string,
+  /** placeholder text for  input[name="filter_text"] */
   searchInputPlaceholderText?: string,
+  /** options for SimpleSelect  */
   groupSelection?: Object[],
+  /** this can be custom component that is passed down. the default value for
+   * this prop is `<PredefinedFilter />`.
+   * */
+  PredefinedFilterComponent?: any,
+  /** this can be custom component that is passed down. the default value for
+   * this prop is `<DateRangePicker />`.
+   * */
+  DateRangePickerComponent?: any,
 };
 
 type StateType = {
@@ -43,7 +78,6 @@ class Filter extends React.Component<PropsType> {
     baseClass: 'list-filter',
     predefined: [],
     isLoading: false,
-    centered: false,
     addDatepicker: false,
     datepickerCallback: () => null,
     clearInputButton: () => null,
@@ -55,11 +89,6 @@ class Filter extends React.Component<PropsType> {
     groupSelection: null,
     addFilter: null,
     groupSelectionCB: () => false,
-    request: {
-      success: true,
-      error: false,
-      loading: false,
-    },
     PredefinedFilterComponent: PredefinedFilter,
     DateRangePickerComponent: DateRangePicker,
   };

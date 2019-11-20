@@ -6,8 +6,11 @@ import './scss/Styles.scss';
  */
 
 type PropsShape = {
-  baseElement?: Function, // JSX must return a span
-  children?: any, // used to generate options
+  /** Function that return jsx in the clickable button used to open the dropdown */
+  baseElement?: Function,
+  /** Generates options */
+  children?: any,
+  /** CSS class append to where div.drop-options-container is */
   wrapperClass?: string,
 };
 

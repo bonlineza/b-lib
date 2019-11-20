@@ -1,11 +1,18 @@
 import React from 'react';
 
 type PropsShape = {
+  /** all jsx that this component has wrapped */
   children: any,
-  ready: boolean, // when true display children, over-rides waiting
-  waiting: boolean, // when true display some waiting text
+  /** when true display `children`, over-rides `waiting` */
+  ready: boolean,
+  /** when true display some waiting text */
+  waiting: boolean,
+  /** fallback text for if `!waiting && !ready` */
   notReadyOrWaitingText?: string, // fallback for if !waiting && !ready
+  /** Function that render custom component that acts as loader */
   loadingRenderer?: Function,
+  /** css class given to root div of this component. All child css classes will
+   * have `baseClass` prepended to it */
   baseClass?: string,
 };
 

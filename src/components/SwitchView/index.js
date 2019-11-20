@@ -8,6 +8,15 @@ type ViewItemShape = {
 };
 
 type PropsShape = {
+  /** array of objects with are used to generate `control-buttons` that switch
+   * between the different view. `views` has the following `PropShape`:
+   * `type: string`: the type of view ,
+   * `label: string`: button text for control button,
+   * `active: boolean`: if true, the `<element type="..">` with the corresponding
+   * `type` will be the `element` that is visible
+   * onClick on of the `control-button`, the children element (`<element type="..">`) with the corresponding
+   * `type` will be the `element` that is visible
+   * */
   views: Array<ViewItemShape>,
 };
 

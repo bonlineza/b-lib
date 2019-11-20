@@ -10,17 +10,37 @@ type OptionShape = {
 };
 
 type PropsShape = {
+  /** if true, component will be visible */
   isOpen?: boolean,
+  /** css class given to root div of this component. All child css classes will
+   * have `baseClass` prepended to it */
   baseClass?: string,
+  /** if true, loader shows */
   showLoader?: boolean,
+  /** String title for modal */
   title?: string,
+  /** String that displays in `div.${baseClass}__body` of modal */
   description?: string,
+  /** Function that renders jsx in place of `description` */
   renderContent?: Function,
+  /** Array of object that used to render the footer buttons of modal. Each object
+   * has the following `PropShape`:
+   * - `cb`: Function (callback function triggered on click),
+   * - `buttonText`: string (text for button),
+   * - `buttonClass`: string (css class assign to button element),
+   * - `dataQeId`: string (unique identifier for button),
+   * */
   options?: Array<OptionShape>,
+  /** Function triggered to hide visibility of modal */
   close?: Function,
+  /** Size set for `<Overlay>`'s `size` prop */
   size?: string,
+  /** Callback function triggered when modal transitions to visible */
   onOpen?: Function,
+  /** Callback function triggered when modal transitions not visible */
   onClose?: Function,
+  /** if true, modal cannot close when clicking outside the bound field of
+   * `div.${baseClass}` */
   cannotOutsideClickClose?: boolean,
 };
 
