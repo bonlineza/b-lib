@@ -19,12 +19,13 @@ type PropsShape = {
   onRemoveClick?: Function,
   /** css class name given to each `button element` mapped out from `row` array */
   rowClassName?: string,
-  /** button text for `add item button` */
+  /** button text for `add item button element` */
   placeholder?: string,
-  /** function that renders jsx after text `add item button` */
+  /** function that returns jsx(content) in the `add item button element` after
+   * its `placeholder` */
   addActionRenderer?: Function,
-  /** function that renders jsx after text of mapped out `button element`
-   * from `row` prop */
+  /** function that renders jsx(content) in for each mapped out row item
+   * `(button element)`. This will display after the button's text */
   removeActionRenderer?: Function,
 };
 
