@@ -14,8 +14,9 @@ type PropsShape = {
   totalPages: number,
   /** If true it will show is `isLoadingContent` */
   isLoading?: boolean,
-  /** Function that renderers jsx */
+  /** renders content when state is loading */
   isLoadingContent?: Function,
+  /** renders content when result set is empty */
   isEmptyContent?: Function,
   /** css class for root div of this component */
   baseClass?: string,
