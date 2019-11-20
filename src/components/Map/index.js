@@ -25,6 +25,9 @@ type InitialSizeType = {
 };
 
 type MapTypes = {
+  /** To use the Maps JavaScript API you must have an API key.
+   * The API key is a unique identifier that is used to authenticate
+   * requests associated with your project for usage  */
   apiKey?: string,
   /* eslint-disable react/no-unused-prop-types */
   /** Initial Latitude and Longitude coordinates for map */
@@ -35,12 +38,18 @@ type MapTypes = {
   /** Number that changes the scale of the map */
   zoom?: number,
   /** Array objects that hold data that will support in putting markers on
-   * the map. Each item has the following `DataShape`
-   * lat: number | string (latitude position of marker),
-   * lng: number | string (longitude position of marker),
-   * name: string (name of marker),
-   * isLink?: boolean,
-   * url?: string,
+   * the map. Data of each item is passed props into `CustomComponent`
+   * which is mapped in the inner of `<GoogleMaps>`. The data shape of each item is the following:
+   * --
+   * `lat: number | string` (latitude position of marker),
+   * --
+   * `lng: number | string` (longitude position of marker),
+   * --
+   * `name: string` (name of marker),
+   * --
+   * `isLink?: boolean` (boolean prop passed to `CustomMarkerComponent` for whatever logic that component has),
+   * --
+   * `url?: string` (string prop passed to `CustomMarkerComponent` for whatever logic that component has),
    * */
   markers?: Array<{
     lat: number | string,
@@ -49,12 +58,31 @@ type MapTypes = {
     isLink?: boolean,
     url?: string,
   }>,
-  markerClass: Object,
+  /** `CustomMarkerComponent` mapped out on the Google Maps, inheriting the following
+   * props:
+   * - lat: (explanation above in `markers`)
+   * - lng: (explanation above in `markers`)
+   * - name: (explanation above in `markers`)
+   * - isLink: (explanation above in `markers`)
+   * - url: (explanation above in `markers`)
+   * */
+  markerClass: any,
+  /** Sets width of map with any legitimate metric i.e px, vw, % etc */
   width?: string,
+  /** Sets height of map with any legitimate metric i.e px, vw, % etc */
   height?: string,
+  /**  object with props for custom setting for map. Object is passed into
+   * `options` prop of `GoogleMap`. View [here](https://github.com/google-map-react/old-examples/blob/master/web/flux/components/examples/x_options/options_map_page.jsx)
+   * for an example
+   * */
   apiOptions?: Object,
+  /** Object with the following shape:
+   * --
+   * - `width: String`: (must have legitimate metric),
+   * - `height: String`: (must have legitimate metric),
+   * Sets the initial size for the map before mount as it is needed
+   * */
   initialSize?: Object<InitialSizeType>,
-  markerMapper?: Function,
 };
 
 class Map extends React.Component<MapTypes> {
@@ -68,7 +96,6 @@ class Map extends React.Component<MapTypes> {
       width: 800, // Map width in pixels
       height: 350, // Map height in pixels
     },
-    markerMapper: item => item,
     width: '100%',
     height: '100%',
   };
