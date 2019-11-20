@@ -63,9 +63,13 @@ export type SimpleListPropsShape = {
   /** If true `<Sections />` component will be rendered and if false `<Body />`
    *  component will be rendered */
   sections?: boolean,
-  /** TODO: investigate the purpose of `sectionTarget` */
+  /** This is to be used alongside the `sections` prop, it is used to isolate the
+   * data for the current inner list, therefore it will be the key of sections
+   * where sections is in the shape: `{ string: Array }` */
   sectionTarget?: string,
-  /** TODO: investigate the purpose of `sectionTitleKeys` */
+  /** Array of string which are the titles which match the isolated data for
+   * the current inner list obtained from `sections`
+   * props and `sectionTarget` prop */
   sectionTitleKeys?: string[],
   /** If true `Filter Component` renders */
   enableSearch?: boolean,
