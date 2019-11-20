@@ -39,17 +39,15 @@ type MapTypes = {
   zoom?: number,
   /** Array objects that hold data that will support in putting markers on
    * the map. Data of each item is passed props into `CustomComponent`
-   * which is mapped in the inner of `<GoogleMaps>`. The data shape of each item is the following:
-   * --
-   * `lat: number | string` (latitude position of marker),
-   * --
-   * `lng: number | string` (longitude position of marker),
-   * --
-   * `name: string` (name of marker),
-   * --
-   * `isLink?: boolean` (boolean prop passed to `CustomMarkerComponent` for whatever logic that component has),
-   * --
-   * `url?: string` (string prop passed to `CustomMarkerComponent` for whatever logic that component has),
+   * which is mapped in the inner of `<GoogleMaps>`. The data shape of each
+   * item is the following:
+   * - lat: (latitude position of marker)
+   * - lng: (longitude position of marker)
+   * - name: (name of marker)
+   * - isLink: (boolean prop passed to `CustomMarkerComponent` for whatever
+   * logic that component has)
+   * - url: (string prop passed to `CustomMarkerComponent` for whatever
+   * logic that component has)
    * */
   markers?: Array<{
     lat: number | string,
