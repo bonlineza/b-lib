@@ -4,7 +4,7 @@ import './scss/Styles.scss';
 type PropsShape = {
   /** text that appears in the tooltip when hovering on target element */
   text: string,
-  /** When hovered, tooltip when be visible */
+  /** When hovered, tooltip will be visible */
   children: any,
 };
 
