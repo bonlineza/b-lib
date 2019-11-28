@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import UntilReady from 'components/UntilReady';
+import Readme from '../docs/UntilReady.md';
 
 const defaultProps = {
   ready: false,
@@ -19,10 +20,15 @@ const setup = (props = {}) => {
 };
 
 const UntilReadyLoading = () => setup({ waiting: true });
-storiesOf('UntilReady', module).add('loading', () => <UntilReadyLoading />);
-
 const UntilReadyReady = () => setup({ waiting: false, ready: true });
-storiesOf('UntilReady', module).add('ready', () => <UntilReadyReady />);
-
 const UntilReadyError = () => setup({ waiting: false, ready: false });
-storiesOf('UntilReady', module).add('error', () => <UntilReadyError />);
+
+storiesOf('UntilReady', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('loading', () => <UntilReadyLoading />)
+  .add('ready', () => <UntilReadyReady />)
+  .add('error', () => <UntilReadyError />);

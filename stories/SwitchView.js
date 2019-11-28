@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import SwitchView from 'components/SwitchView';
+import Readme from '../docs/SwitchView.md';
 
 const SwitchViewButtons = () => (
   <Fragment>
@@ -27,10 +28,6 @@ const SwitchViewButtons = () => (
   </Fragment>
 );
 
-storiesOf('SwitchView', module).add('Two Buttons - Two Views', () => (
-  <SwitchViewButtons />
-));
-
 const SwitchViewNoButtons = () => (
   <Fragment>
     <SwitchView
@@ -48,6 +45,11 @@ const SwitchViewNoButtons = () => (
   </Fragment>
 );
 
-storiesOf('SwitchView', module).add('No Buttons - One View', () => (
-  <SwitchViewNoButtons />
-));
+storiesOf('SwitchView', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('Two Buttons - Two Views', () => <SwitchViewButtons />)
+  .add('No Buttons - One View', () => <SwitchViewNoButtons />);

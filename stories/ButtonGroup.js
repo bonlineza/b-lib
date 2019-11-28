@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import ButtonGroup from 'components/ButtonGroup';
+import Readme from '../docs/ButtonGroup.md';
 
 const DefaultButtonGroup = () => (
   <ButtonGroup>
@@ -19,7 +20,6 @@ const DefaultButtonGroup = () => (
     </button>
   </ButtonGroup>
 );
-storiesOf('ButtonGroup', module).add('default', () => <DefaultButtonGroup />);
 
 const ThreeAltButtonGroup = () => (
   <ButtonGroup alt numButtons={3}>
@@ -37,6 +37,12 @@ const ThreeAltButtonGroup = () => (
     </button>
   </ButtonGroup>
 );
-storiesOf('ButtonGroup', module).add('Three Button Alt', () => (
-  <ThreeAltButtonGroup />
-));
+
+storiesOf('ButtonGroup', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <DefaultButtonGroup />)
+  .add('Three Button Alt', () => <ThreeAltButtonGroup />);

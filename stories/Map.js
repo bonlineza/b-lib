@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Map from 'components/Map';
+import Readme from '../docs/Map.md';
 
 const mapOptions = {
   panControl: true,
@@ -203,28 +204,30 @@ const defaultProps = {
 
 const DefaultMap = props => <Map {...defaultProps} {...props} />;
 
-storiesOf('Map', module).add('Two Markers', () => <DefaultMap />);
-
-storiesOf('Map', module).add('Four Markers', () => (
-  <DefaultMap
-    markers={[
-      ...defaultMapItems
-        .concat({
-          key: 3,
-          title: 'Marker 3',
-          lat: 16,
-          lng: 16,
-        })
-        .concat({
-          key: 4,
-          title: 'Marker 4',
-          lat: 36,
-          lng: 36,
-        }),
-    ]}
-  />
-));
-
-storiesOf('Map', module).add('Map Options', () => (
-  <DefaultMap apiOptions={mapOptions} />
-));
+storiesOf('Map', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('Two Markers', () => <DefaultMap />)
+  .add('Four Markers', () => (
+    <DefaultMap
+      markers={[
+        ...defaultMapItems
+          .concat({
+            key: 3,
+            title: 'Marker 3',
+            lat: 16,
+            lng: 16,
+          })
+          .concat({
+            key: 4,
+            title: 'Marker 4',
+            lat: 36,
+            lng: 36,
+          }),
+      ]}
+    />
+  ))
+  .add('Map Options', () => <DefaultMap apiOptions={mapOptions} />);

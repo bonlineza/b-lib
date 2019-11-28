@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import PDFPreview from 'components/PDFPreview';
+import Readme from '../docs/PDFPreview.md';
 
 const DummyControl = ({ item }) => (
   <button type="button" onClick={item.action} className="dummy-control">
@@ -44,8 +45,6 @@ const BasicPDFPreview = () => (
   />
 );
 
-storiesOf('PDFPreview', module).add('Basic', () => <BasicPDFPreview />);
-
 const WithControlsPDFPreview = () => (
   <PDFPreview
     data={{
@@ -67,6 +66,11 @@ const WithControlsPDFPreview = () => (
   />
 );
 
-storiesOf('PDFPreview', module).add('With Custom Controls', () => (
-  <WithControlsPDFPreview />
-));
+storiesOf('PDFPreview', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('Basic', () => <BasicPDFPreview />)
+  .add('With Custom Controls', () => <WithControlsPDFPreview />);

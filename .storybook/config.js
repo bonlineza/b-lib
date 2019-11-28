@@ -3,6 +3,9 @@ import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/css/storybook.scss';
 
+import { addReadme } from 'storybook-readme';
+
+addDecorator(addReadme);
 addDecorator(story => {
   moment.locale('en');
   return story();

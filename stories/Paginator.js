@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Paginator from '../src/components/Paginator/index.js';
+import Paginator from '../src/components/Paginator';
+import Readme from '../docs/Paginator.md';
 
 const defaultProps = {
   onChangePage: action('changed page'),
@@ -32,6 +33,10 @@ const DefaultPaginator = (props = {}) => {
   );
 };
 
-storiesOf('Paginator', module).add('Simple Example', () => (
-  <DefaultPaginator />
-));
+storiesOf('Paginator', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('Simple Example', () => <DefaultPaginator />);

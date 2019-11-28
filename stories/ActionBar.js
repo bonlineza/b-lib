@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import ActionBar from 'components/ActionBar';
+import ActionBar from '../src/components/ActionBar';
+import Readme from '../docs/ActionBar.md';
 
 const defaultProps = {
   messages: [],
@@ -40,10 +41,13 @@ const DefaultActionBar = props => {
   );
 };
 
-storiesOf('ActionBar', module).add('default with no messages', () => (
-  <DefaultActionBar />
-));
-
-storiesOf('ActionBar', module).add('with one message', () => (
-  <DefaultActionBar messages={['One Test message']} />
-));
+storiesOf('ActionBar', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default with no messages', () => <DefaultActionBar />)
+  .add('with one message', () => (
+    <DefaultActionBar messages={['One Test message']} />
+  ));

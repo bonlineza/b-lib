@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import SelectRows from 'components/SelectRows';
+import Readme from '../docs/SelectRows.md';
 
 const rowsData = [
   {
@@ -47,10 +48,13 @@ const DefaultSelectRows = props => {
   );
 };
 
-storiesOf('SelectRows', module).add('Add Multiple Items', () => (
-  <DefaultSelectRows {...defaultProps} />
-));
-
-storiesOf('SelectRows', module).add('Can Only have single Item', () => (
-  <DefaultSelectRows {...defaultProps} single rows={[]} />
-));
+storiesOf('SelectRows', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('Add Multiple Items', () => <DefaultSelectRows {...defaultProps} />)
+  .add('Can Only have single Item', () => (
+    <DefaultSelectRows {...defaultProps} single rows={[]} />
+  ));

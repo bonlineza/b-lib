@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import SimplePopup from 'components/SimplePopup';
 import { action } from '@storybook/addon-actions';
+import SimplePopup from 'components/SimplePopup';
+import Readme from '../docs/SimplePopup.md';
 
 const DefaultSimplePopup = (props = {}) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,8 +42,13 @@ const DefaultSimplePopup = (props = {}) => {
   );
 };
 
-storiesOf('SimplePopup', module).add('default', () => <DefaultSimplePopup />);
-
-storiesOf('SimplePopup', module).add('cannot close from outside', () => (
-  <DefaultSimplePopup cannotOutsideClickClose />
-));
+storiesOf('SimplePopup', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <DefaultSimplePopup />)
+  .add('cannot close from outside', () => (
+    <DefaultSimplePopup cannotOutsideClickClose />
+  ));

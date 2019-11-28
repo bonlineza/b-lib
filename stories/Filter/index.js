@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import Filter from 'components/Filter';
+import Readme from '../../docs/Filter.md';
 import './styles.scss';
 
 const defaultProps = {
@@ -37,27 +38,29 @@ const DefaultFilter = props => {
   );
 };
 
-storiesOf('Filter Component', module).add('default', () => <DefaultFilter />);
-storiesOf('Filter Component', module).add('with Datepicker', () => (
-  <DefaultFilter addDatepicker />
-));
-storiesOf('Filter Component', module).add('with Predefined filters', () => (
-  <DefaultFilter
-    predefined={[
-      {
-        text: 'Option 1',
-        value: '1',
-      },
-      {
-        text: 'Option 2',
-        value: '2',
-      },
-    ]}
-  />
-));
-storiesOf('Filter Component', module).add(
-  'with Group selection options',
-  () => (
+storiesOf('Filter Component', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <DefaultFilter />)
+  .add('with Datepicker', () => <DefaultFilter addDatepicker />)
+  .add('with Predefined filters', () => (
+    <DefaultFilter
+      predefined={[
+        {
+          text: 'Option 1',
+          value: '1',
+        },
+        {
+          text: 'Option 2',
+          value: '2',
+        },
+      ]}
+    />
+  ))
+  .add('with Group selection options', () => (
     <DefaultFilter
       groupSelection={[
         {
@@ -71,5 +74,4 @@ storiesOf('Filter Component', module).add(
         },
       ]}
     />
-  ),
-);
+  ));

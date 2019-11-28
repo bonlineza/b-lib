@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import DocumentUploader from 'components/DocumentUploader';
 import EllipsisLoader from 'components/EllipsisLoader';
+import Readme from '../docs/DocumentUploader.md';
 
 const defaultProps = {
   list: [],
@@ -29,20 +30,22 @@ const DefaultUploader = props => {
   return <DocumentUploader {...testProps} />;
 };
 
-storiesOf('DocumentUploader', module).add('default', () => DefaultUploader());
-
-storiesOf('DocumentUploader', module).add('1 image', () =>
-  DefaultUploader({
-    list: [
-      {
-        name: 'Document 1',
-        url: '/face.png',
-        lastUpdated: 12345678,
-      },
-    ],
-  }),
-);
-
-storiesOf('DocumentUploader', module).add('isLoading', () =>
-  DefaultUploader({ isLoading: true }),
-);
+storiesOf('DocumentUploader', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => DefaultUploader())
+  .add('1 image', () =>
+    DefaultUploader({
+      list: [
+        {
+          name: 'Document 1',
+          url: '/face.png',
+          lastUpdated: 12345678,
+        },
+      ],
+    }),
+  )
+  .add('isLoading', () => DefaultUploader({ isLoading: true }));
