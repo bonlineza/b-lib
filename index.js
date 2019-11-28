@@ -47,8 +47,12 @@ import validateEmail from './src/util/validateEmail';
 import validatePhone from './src/util/validatePhone';
 import validateWebsite from './src/util/validateWebsite';
 
-export type { SimpleListPropsShape } from './src/components/SimpleList/index.js';
-export type { DocumentUploaderProps } from './src/components/DocumentUploader/index.js';
+export type {
+  SimpleListPropsShape,
+} from './src/components/SimpleList/index.js';
+export type {
+  DocumentUploaderProps,
+} from './src/components/DocumentUploader/index.js';
 
 const functions = {
   constrainSearch,

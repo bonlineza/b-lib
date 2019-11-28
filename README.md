@@ -1,5 +1,6 @@
 # Bonline Component Library
 ### Includes:
+- [Documentation](https://bonlineza.github.io/b-lib/)
 - Storybook
 - Testing suite
 - Rollup

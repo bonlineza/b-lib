@@ -5,7 +5,7 @@
     "start": "start-storybook -p 9001 -c .storybook -s ./public",
     "clean": "rimraf ./build/*.*",
     "build": "yarn run clean && ./node_modules/.bin/rollup -c",
-    "build:storybook": "build-storybook -c .storybook -o .out",
+    "build:storybook": "build-storybook -c .storybook -o docs/storybook",
     "build:publish": "yarn run clean && yarn run build && yarn login && yarn publish",
     "lint": "eslint ./src",
     "jest": "jest --env=jsdom",
