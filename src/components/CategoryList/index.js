@@ -5,7 +5,7 @@ import './scss/Style.scss';
 type ArrayItemShape = {
   title: string,
   catName: string,
-  catData: Array,
+  catData: any,
 };
 
 type PropsShape = {

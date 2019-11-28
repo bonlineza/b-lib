@@ -153,6 +153,14 @@ git clone git@github.com:{author}/b-lib --branch {branch-name}
 ```
 
 ## Changelog
+### 1.0.3
+- Added Storybook static build to GH-Pages
+- Added Documentation Links in GH-Pages
+- Fixed a few incorrect type definitions causing test warnings
+
+### 1.0.2
+- Added tests and stories for SimpleSelect
+- Fixed broken reference in ToolTip
 
 ### 1.0.1
 - Added generated Markdown Documentation for each Component

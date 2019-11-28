@@ -5,7 +5,7 @@ type PropsShape = {
   identifier?: string,
   title?: string,
   clickComponent?: any,
-  data?: Object,
+  data?: any,
   itemRenderer?: any,
   baseClassName?: string,
   isOpenByDefault?: boolean,

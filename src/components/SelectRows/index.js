@@ -8,7 +8,7 @@ type RowType = {
 
 type PropsShape = {
   /** If true, only one item can be added to the props row */
-  single?: Boolean,
+  single?: boolean,
   /** Array of objects with each object having the follow prop shape:
    * `{ key, value }`. each item is used to render a `button element`. onClick
    * `onRemoveClick` is triggered */

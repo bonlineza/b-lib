@@ -12,7 +12,7 @@ type PropsShape = {
   /** Jsx renders with `div.`${baseClassName}__content__footer` */
   footerContent?: any,
   /** if true, MobileSideMenu is visible */
-  isOpen?: false,
+  isOpen?: boolean,
   /** title of menu  */
   menuTitle?: string,
   /** data identifier for menu items  */
