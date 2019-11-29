@@ -1,8 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './scss/HorizontalProgressBar.scss';
 
-const HorizontalProgressBar = ({ progressPercentage, transitionTimeout }) => {
+type PropsShape = {
+  /**
+   * Whole number out of 100 which sets how full you want the bar to be
+   */
+  progressPercentage?: number,
+  /**
+   * Number that sets the milliseconds taken to start the transition
+   */
+  transitionTimeout?: number,
+};
+
+const HorizontalProgressBar = ({
+  progressPercentage,
+  transitionTimeout,
+}: PropsShape) => {
   const [translatedBy, setTranslatedBy] = React.useState(-100);
 
   const getProgress = (percentage = 0) => {
@@ -38,11 +51,6 @@ const HorizontalProgressBar = ({ progressPercentage, transitionTimeout }) => {
       />
     </div>
   );
-};
-
-HorizontalProgressBar.propTypes = {
-  progressPercentage: PropTypes.number,
-  transitionTimeout: PropTypes.number,
 };
 
 HorizontalProgressBar.defaultProps = {
