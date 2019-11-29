@@ -32,6 +32,7 @@ function loadStories() {
   require('../stories/MultiLineSelect.js');
   require('../stories/DateRangePicker.js');
   require('../stories/SimpleSelect.js');
+  require('../stories/HorizontalProgressBar/index');
 }
 
 configure(loadStories, module);

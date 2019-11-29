@@ -1,0 +1,14 @@
+$override-bar-color: #ffff00;
+$override-background-color: #0000ff;
+
+
+.override-progress-bar {
+  .horizontal-progress-bar {
+    background-color: $override-background-color;
+  }
+
+
+  .horizontal-progress-bar__progress {
+    background-color: $override-bar-color;
+  }
+}

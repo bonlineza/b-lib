@@ -1,0 +1,26 @@
+$bar-height: 20px;
+$bar-border-radius: 5px;
+$default-bar-clr: #af1e2d;
+$default-background-clr: #666666;
+
+.horizontal-progress-bar {
+  position: relative;
+  background-color: $default-background-clr;
+  height: $bar-height;
+  border-radius: $bar-border-radius;
+  overflow: hidden;
+}
+
+
+.horizontal-progress-bar__progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: $default-bar-clr;
+  border-radius: $bar-border-radius;
+  transition: transform ease-in-out 1s;
+  width: 100%;
+  transform: translateX(-100%);
+}
+

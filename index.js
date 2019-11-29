@@ -46,13 +46,10 @@ import stringOccurances from './src/util/stringOccurances';
 import validateEmail from './src/util/validateEmail';
 import validatePhone from './src/util/validatePhone';
 import validateWebsite from './src/util/validateWebsite';
+import HorizontalProgressBar from './src/components/HorizontalProgressBar/index.js';
 
-export type {
-  SimpleListPropsShape,
-} from './src/components/SimpleList/index.js';
-export type {
-  DocumentUploaderProps,
-} from './src/components/DocumentUploader/index.js';
+export type { SimpleListPropsShape } from './src/components/SimpleList/index.js';
+export type { DocumentUploaderProps } from './src/components/DocumentUploader/index.js';
 
 const functions = {
   constrainSearch,
@@ -105,4 +102,5 @@ export {
   WYSIWYG,
   CategoryList,
   MultiLineSelect,
+  HorizontalProgressBar,
 };
