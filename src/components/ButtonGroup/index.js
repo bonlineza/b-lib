@@ -33,6 +33,9 @@ type StateShape = {
   expand: boolean,
 };
 
+/**
+ * ButtonGroup is a wrapper that transforms given buttons into a small set of buttons with a dropdown menu based on the configuration given
+ */
 class ButtonGroup extends React.Component<PropsType, StateShape> {
   static defaultProps = {
     baseClass: 'button-group',

@@ -1,12 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import SelectRows from '../SelectRows/index';
 
-/**
- * Description
- * show one or many rows that are removable - top one is always 'addable' in multi-mode
- * add button triggers onAdd, remove button triggers onRemove
- */
-
 type SelectorObj = {
   selector: any,
   selectorProps: Object,
@@ -41,6 +35,11 @@ type MultiLineSelectProps = {
   rowClassName?: string,
 };
 
+/**
+ * MultiLineSelect
+ * show one or many rows that are removable - top one is always 'addable' in multi-mode
+ * add button triggers onAdd, remove button triggers onRemove
+ */
 class MultiLineSelect extends Component<MultiLineSelectProps> {
   static defaultProps = {
     placeholder: '',

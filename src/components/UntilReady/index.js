@@ -16,6 +16,10 @@ type PropsShape = {
   baseClass?: string,
 };
 
+/**
+ * UntilReady can be used to control the display of a loading state in a standardised way
+ * this component has been largely replaced by 'PageReady' as it also abstracts the request handling
+ */
 const UntilReady = ({
   children,
   ready,

@@ -1,5 +1,8 @@
 # DropOptions
 
+DropOptions provides a sinple replacement for a 'select' component when heavy customisability is required
+
+
 ## Props
 | Name         | Type     | Default              | Required | Description                                                                |
 | ------------ | -------- | -------------------- | -------- | -------------------------------------------------------------------------- |

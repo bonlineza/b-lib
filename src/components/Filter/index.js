@@ -73,6 +73,10 @@ type StateType = {
   isEmpty: boolean,
 };
 
+/**
+ * Filter can show PredefinedFilters, text search, DateRangePicker and
+ * GroupSelection components commonly used to drill down data lists
+ */
 class Filter extends React.Component<PropsType> {
   static defaultProps = {
     baseClass: 'list-filter',

@@ -12,6 +12,9 @@ type PropsShape = {
   transitionTimeout?: number,
 };
 
+/**
+ * HorizontalProgressBar is a visual component to indicate any type of progress
+ */
 const HorizontalProgressBar = ({
   progressPercentage,
   transitionTimeout,

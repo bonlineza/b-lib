@@ -8,6 +8,9 @@ type PropsShape = {
   baseClassName?: string,
 };
 
+/**
+ * EllipsisLoader is a placeholder animation for indicating that data is Loading
+ */
 const EllipsisLoader = ({ baseClassName }: PropsShape) => (
   <div className={baseClassName}>
     <div className={`${baseClassName}__ellipsis`}>

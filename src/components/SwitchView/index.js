@@ -20,6 +20,10 @@ type PropsShape = {
   views: Array<ViewItemShape>,
 };
 
+/**
+ * SwitchView is a 'tabbed' display that shows buttons for each
+ * configured 'view' and renders them when clicked or chosen as default
+ */
 class SwitchView extends React.Component<PropsShape> {
   constructor(props) {
     super(props);

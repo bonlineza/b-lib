@@ -1,5 +1,8 @@
 # Overlay
 
+Overlay is a simple component designed as a modal background, but also allows multiple children to control which child is rendered (next/prev)
+
+
 ## Props
 | Name      | Type                     | Default | Required | Description                                                                                |
 | --------- | ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------ |

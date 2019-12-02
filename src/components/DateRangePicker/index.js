@@ -34,6 +34,9 @@ type PropsShape = {
   endDateId?: string,
 };
 
+/**
+ * DateRangePicker is a simple wrapper for DateRangePicker from 'react-dates' with a few commonly used defaults
+ */
 const DateRangeInput = ({
   datepickerChanged,
   startDatePlaceholderText,

@@ -1,5 +1,8 @@
 # MobileSideMenu
 
+MobileSideMenu provides a simple scaffold for implementing a menu, especially for Mobile websites
+
+
 ## Props
 | Name           | Type     | Default            | Required | Description                                                                                               |
 | -------------- | -------- | ------------------ | -------- | --------------------------------------------------------------------------------------------------------- |

@@ -1,5 +1,10 @@
 # SelectRows
 
+SelectRows can render a list of items which are designed to be removed and added via custom actions
+onAddClick can trigger anything the developer requires but should also update the 'rows' prop in the parent
+onRemoveClick should simply remove the selected item from the list (by updating the 'rows' prop in the parent)
+
+
 ## Props
 | Name                 | Type                 | Default       | Required | Description                                                                                                                                                                  |
 | -------------------- | -------------------- | ------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -32,6 +32,10 @@ type PropsType = {
 
 const animationDuration = 550;
 
+/**
+ * AsideSlide is a slider component, which is designed to appear using a css transistion from the side of the screen.
+ * It wraps any component and also provides title and close button slots
+ */
 class AsideSlide extends React.Component<PropsType> {
   static getDerivedStateFromProps(props, state) {
     // we aren't in a transition but an open slide wants to show content
