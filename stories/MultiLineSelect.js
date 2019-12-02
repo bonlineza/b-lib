@@ -24,6 +24,7 @@ const Selector = ({
       isOpen={isSelectorActive}
       toggle={toggleSelector}>
       <button
+        type="button"
         onClick={() => {
           addItem('Product One');
           toggleSelector();
@@ -31,6 +32,7 @@ const Selector = ({
         Select Product One
       </button>
       <button
+        type="button"
         onClick={() => {
           addItem('Product Two');
           toggleSelector();
@@ -38,6 +40,7 @@ const Selector = ({
         Select Product Two
       </button>
       <button
+        type="button"
         onClick={() => {
           addItem('Product Three');
           toggleSelector();
