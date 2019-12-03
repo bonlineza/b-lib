@@ -1,5 +1,10 @@
 
 ## Changelog
+### 1.1.0
+- Added HorizontalProgressBar Component
+- Updated line breaks in some Readmes 
+- Re-generated Storybook build 
+
 ### 1.0.4
 - Added `Readme` storybook addon
 - Added Class Descriptions doc blocks in Readmes
