@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import AsideSlide from 'components/AsideSlide';
+import Readme from '../docs/AsideSlide.md';
 
 const WrappedAsideSlide = () => {
   const [slideOpen, setSlideOpen] = useState(false);
@@ -31,4 +32,10 @@ const WrappedAsideSlide = () => {
   );
 };
 
-storiesOf('AsideSlide', module).add('default', () => <WrappedAsideSlide />);
+storiesOf('AsideSlide', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <WrappedAsideSlide />);

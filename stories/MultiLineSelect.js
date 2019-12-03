@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import MultiLineSelect from 'components/MultiLineSelect';
 import AsideSlide from 'components/AsideSlide';
+import Readme from '../docs/MultiLineSelect.md';
 
 const defaultMultiLineProps = {
   label: 'Dummy Label',
@@ -64,10 +65,14 @@ const WrappedMultiLineSelect = (props = {}) => {
 
   return <MultiLineSelect {...finalProps} />;
 };
-storiesOf('MultiLineSelect', module).add('default', () => (
-  <WrappedMultiLineSelect />
-));
 
-storiesOf('MultiLineSelect', module).add('Can only select one item', () => (
-  <WrappedMultiLineSelect multiline={false} />
-));
+storiesOf('MultiLineSelect', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <WrappedMultiLineSelect />)
+  .add('Can only select one item', () => (
+    <WrappedMultiLineSelect multiline={false} />
+  ));

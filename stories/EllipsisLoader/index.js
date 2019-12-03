@@ -1,13 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import EllipsisLoader from 'components/EllipsisLoader';
+import Readme from '../../docs/EllipsisLoader.md';
 import './OverrideStyle.scss';
 
 const WrappedEllipsisLoader = () => <EllipsisLoader />;
-
-storiesOf('EllipsisLoader', module).add('default', () => (
-  <WrappedEllipsisLoader />
-));
 
 const WrappedEllipsisLoaderCustomColor = () => (
   <div className="override">
@@ -15,6 +12,11 @@ const WrappedEllipsisLoaderCustomColor = () => (
   </div>
 );
 
-storiesOf('EllipsisLoader', module).add('custom color', () => (
-  <WrappedEllipsisLoaderCustomColor />
-));
+storiesOf('EllipsisLoader', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <WrappedEllipsisLoader />)
+  .add('custom color', () => <WrappedEllipsisLoaderCustomColor />);

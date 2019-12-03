@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import WYSIWYG from 'components/WYSIWYG';
 import CustomEditor from 'test/components/TextareaEditor';
+import Readme from '../docs/WYSIWYG.md';
 
 const defaultProps = {
   isEditing: false,
@@ -34,4 +35,10 @@ const DefaultWYSIWYG = () => {
   );
 };
 
-storiesOf('WYSIWYG', module).add('default', () => <DefaultWYSIWYG />);
+storiesOf('WYSIWYG', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <DefaultWYSIWYG />);

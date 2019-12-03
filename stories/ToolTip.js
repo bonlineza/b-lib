@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { wrapTooltip } from 'components/ToolTip/wrapTooltip';
+import Readme from '../docs/ToolTip.md';
 
 const WrappedTextToolTip = () => (
   <Fragment>
@@ -10,8 +11,6 @@ const WrappedTextToolTip = () => (
     </div>
   </Fragment>
 );
-
-storiesOf('ToolTip', module).add('default', () => <WrappedTextToolTip />);
 
 const WrappedButtonToolTip = () => (
   <Fragment>
@@ -28,6 +27,11 @@ const WrappedButtonToolTip = () => (
   </Fragment>
 );
 
-storiesOf('ToolTip', module).add('ButtonToolTip', () => (
-  <WrappedButtonToolTip />
-));
+storiesOf('ToolTip', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <WrappedTextToolTip />)
+  .add('ButtonToolTip', () => <WrappedButtonToolTip />);

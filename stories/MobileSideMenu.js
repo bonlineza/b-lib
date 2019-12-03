@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import MobileSideMenu from 'components/MobileSideMenu';
+import Readme from '../docs/MobileSideMenu.md';
 
 const WrappedMobileSideMenu = () => {
   const menuItems = [
@@ -40,6 +41,11 @@ const WrappedMobileSideMenu = () => {
     </Fragment>
   );
 };
-storiesOf('MobileSideMenu', module).add('default', () => (
-  <WrappedMobileSideMenu />
-));
+
+storiesOf('MobileSideMenu', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <WrappedMobileSideMenu />);

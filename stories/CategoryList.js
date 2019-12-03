@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import CategoryList from 'components/CategoryList';
+import Readme from '../docs/CategoryList.md';
 
 const itemRenderer = ({ data = {} }) => <div>{data.description}</div>;
 
@@ -51,35 +52,32 @@ const DefaultCategoryList = (props = {}) => {
   return <CategoryList {...testProps} />;
 };
 
-storiesOf('Category List', module).add('Category List default', () => (
-  <DefaultCategoryList />
-));
-
 const ClickComponent = ({ identifier, title, isOpen, toggleFn }) => (
   <button type="button" data-id={identifier} onClick={toggleFn}>
     {`${title} ${isOpen ? '-' : '+'}`}
   </button>
 );
 
-storiesOf('Category List', module).add(
-  'Category List with custom click component',
-  () => <DefaultCategoryList clickComponent={ClickComponent} />,
-);
-
-storiesOf('Category List', module).add(
-  'Category List with separator component',
-  () => (
+storiesOf('Category List', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('Category List default', () => <DefaultCategoryList />)
+  .add('Category List with custom click component', () => (
+    <DefaultCategoryList clickComponent={ClickComponent} />
+  ))
+  .add('Category List with separator component', () => (
     <DefaultCategoryList
       clickComponent={ClickComponent}
       data={categoryListDataWithSeperator}
     />
-  ),
-);
-
-storiesOf('Category List', module).add('Category List open by default', () => (
-  <DefaultCategoryList
-    clickComponent={ClickComponent}
-    data={categoryListData}
-    isOpenByDefault
-  />
-));
+  ))
+  .add('Category List open by default', () => (
+    <DefaultCategoryList
+      clickComponent={ClickComponent}
+      data={categoryListData}
+      isOpenByDefault
+    />
+  ));

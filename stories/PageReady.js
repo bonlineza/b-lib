@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import PageReady, { Context } from 'components/PageReady';
+import Readme from '../docs/PageReady.md';
 
 const getSuccessRequestInstance = () =>
   new Promise(resolve => {
@@ -39,8 +40,6 @@ const getPageReady = props => (
 const DefaultPageReady = () =>
   getPageReady({ getRequestInstance: getSuccessRequestInstance });
 
-storiesOf('PageReady', module).add('default', () => <DefaultPageReady />);
-
 const getFailedRequestInstance = () =>
   fetch('https://local.test/546456').then(function(response) {
     return response.json();
@@ -52,6 +51,11 @@ const FailedPageReady = () =>
     customErrorMessage: 'Custom error message',
   });
 
-storiesOf('PageReady', module).add('custom error message', () => (
-  <FailedPageReady />
-));
+storiesOf('PageReady', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <DefaultPageReady />)
+  .add('custom error message', () => <FailedPageReady />);

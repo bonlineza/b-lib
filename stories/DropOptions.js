@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import DropOptions from 'components/DropOptions';
+import Readme from '../docs/DropOptions.md';
 
 const WrappedDropOptionsButtons = () => (
   <DropOptions
@@ -15,9 +16,6 @@ const WrappedDropOptionsButtons = () => (
     </button>
   </DropOptions>
 );
-storiesOf('DropOptions', module).add('default', () => (
-  <WrappedDropOptionsButtons />
-));
 
 const WrappedDropOptionsAnchors = () => (
   <DropOptions
@@ -27,6 +25,12 @@ const WrappedDropOptionsAnchors = () => (
     <a href="#2">Anchor 2</a>
   </DropOptions>
 );
-storiesOf('DropOptions', module).add('Anchors', () => (
-  <WrappedDropOptionsAnchors />
-));
+
+storiesOf('DropOptions', module)
+  .addParameters({
+    readme: {
+      sidebar: Readme,
+    },
+  })
+  .add('default', () => <WrappedDropOptionsButtons />)
+  .add('Anchors', () => <WrappedDropOptionsAnchors />);
