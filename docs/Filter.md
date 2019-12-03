@@ -1,6 +1,7 @@
 # Filter
 
-Filter can show PredefinedFilters, text search, DateRangePicker and GroupSelection components commonly used to drill down data lists
+Filter can show PredefinedFilters, text search, DateRangePicker and
+GroupSelection components commonly used to drill down data lists
 
 
 ## Props

@@ -1,6 +1,6 @@
 # ToolTip
 
-TooTip is a component that simplifies the implementation of ToolTips
+ToolTip is a component that simplifies the implementation of ToolTips
 
 
 ## Props

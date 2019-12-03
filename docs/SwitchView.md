@@ -1,6 +1,7 @@
 # SwitchView
 
-SwitchView is a 'tabbed' display that shows buttons for each configured 'view' and renders them when clicked or chosen as default
+SwitchView is a 'tabbed' display that shows buttons for each
+configured 'view' and renders them when clicked or chosen as default
 
 
 ## Props
