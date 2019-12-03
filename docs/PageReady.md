@@ -1,5 +1,9 @@
 # PageReady
 
+PageReady is a component that triggers a request promise and manages it's state based on the promise state
+it's commonly used to provide a standard wrapper for triggering requests when a component is mounted
+
+
 ## Props
 | Name                    | Type                      | Default                             | Required | Description                                                                                             |
 | ----------------------- | ------------------------- | ----------------------------------- | -------- | ------------------------------------------------------------------------------------------------------- |

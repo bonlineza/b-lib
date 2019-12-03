@@ -1,5 +1,8 @@
 # EllipsisLoader
 
+EllipsisLoader is a placeholder animation for indicating that data is Loading
+
+
 ## Props
 | Name          | Type   | Default  | Required | Description                                       |
 | ------------- | ------ | -------- | -------- | ------------------------------------------------- |

@@ -1,5 +1,9 @@
 # WYSIWYG
 
+WYSIWYG is a simple wrapper for a wysiwyg/rich-text style component
+it was designed to be used by a Form component that also manages the 'Editing' state
+
+
 ## Props
 | Name           | Type                   | Default                      | Required | Description                                                                                                                                                                    |
 | -------------- | ---------------------- | ---------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

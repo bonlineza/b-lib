@@ -25,6 +25,9 @@ export type DocumentUploaderProps = {
   uploadHandler: Function,
 };
 
+/**
+ * Displays a list of Documents and provides a Dropzone to upload aditional Documents
+ */
 class DocumentUploader extends React.Component<DocumentUploaderProps> {
   static defaultProps = {
     showUploader: true,

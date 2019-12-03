@@ -51,6 +51,9 @@ type PropsShape = {
   isOpenByDefault?: boolean,
 };
 
+/**
+ * CategoryList displays a list of 'categories' which can be toggled to show each sub-list of items
+ */
 const CategoryList = ({
   data,
   itemRenderer,

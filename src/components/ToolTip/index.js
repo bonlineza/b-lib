@@ -8,6 +8,9 @@ type PropsShape = {
   children: any,
 };
 
+/**
+ * ToolTip is a component that simplifies the implementation of ToolTips
+ */
 const Tooltip = ({ text, children }: PropsShape) => (
   <span className="hover-tooltip">
     <Fragment>

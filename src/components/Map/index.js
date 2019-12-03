@@ -83,6 +83,9 @@ type MapTypes = {
   initialSize?: Object<InitialSizeType>,
 };
 
+/**
+ * Map is an implementation of 'goolge-maps-react' - providing commonly used defaults
+ */
 class Map extends React.Component<MapTypes> {
   static defaultProps = {
     apiKey: '',

@@ -31,6 +31,10 @@ type PropsShape = {
   nextPageButton: Object,
 };
 
+/**
+ * PDFPreview implments 'react-pdf-js' and provides a scaffold for showing Newxt/Prev button
+ * customControls: can be used to trigger any other required actions
+ */
 class PDFPreview extends React.Component<PropsShape> {
   static defaultProps = {
     description: () => null,

@@ -1,5 +1,8 @@
 # SimpleSelect
 
+SimpleSelect is an implementation of 'reat-selectize' - providing a few defaults and a common interface
+
+
 ## Props
 | Name            | Type                      | Default     | Required | Description                                                                                                                                                                            |
 | --------------- | ------------------------- | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

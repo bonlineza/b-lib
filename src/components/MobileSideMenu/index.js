@@ -19,6 +19,9 @@ type PropsShape = {
   dataIdentifier?: string,
 };
 
+/**
+ * MobileSideMenu provides a simple scaffold for implementing a menu, especially for Mobile websites
+ */
 const MobileSideMenu = ({
   baseClassName,
   menuItems,

@@ -44,6 +44,10 @@ type PropsShape = {
   cannotOutsideClickClose?: boolean,
 };
 
+/**
+ * SimplePopup abstracts the complexities of writing a (suprisingly complex) Popup component
+ * this is highly recommended for all you Popup uses
+ */
 class SimplePopup extends React.Component<PropsShape> {
   static defaultProps = {
     isOpen: false,

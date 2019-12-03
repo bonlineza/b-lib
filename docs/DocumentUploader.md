@@ -1,5 +1,8 @@
 # DocumentUploader
 
+Displays a list of Documents and provides a Dropzone to upload aditional Documents
+
+
 ## Props
 | Name            | Type                | Default                | Required | Description                                                    |
 | --------------- | ------------------- | ---------------------- | -------- | -------------------------------------------------------------- |

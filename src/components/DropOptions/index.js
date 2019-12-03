@@ -18,6 +18,9 @@ type StateShape = {
   isOpen: boolean,
 };
 
+/**
+ * DropOptions provides a sinple replacement for a 'select' component when heavy customisability is required
+ */
 class DropOptions extends React.Component<PropsShape> {
   static defaultProps = {
     children: [],

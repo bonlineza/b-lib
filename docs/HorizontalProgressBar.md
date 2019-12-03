@@ -1,5 +1,8 @@
 # HorizontalProgressBar
 
+HorizontalProgressBar is a visual component to indicate any type of progress
+
+
 ## Props
 | Name               | Type   | Default | Required | Description                                                        |
 | ------------------ | ------ | ------- | -------- | ------------------------------------------------------------------ |

@@ -1,5 +1,8 @@
 # ButtonGroup
 
+ButtonGroup is a wrapper that transforms given buttons into a small set of buttons with a dropdown menu based on the configuration given
+
+
 ## Props
 | Name                 | Type          | Default           | Required | Description                                           |
 | -------------------- | ------------- | ----------------- | -------- | ----------------------------------------------------- |

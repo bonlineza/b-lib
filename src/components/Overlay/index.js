@@ -16,6 +16,9 @@ type OverlayProps = {
   size?: string,
 };
 
+/**
+ * Overlay is a simple component designed as a modal background, but also allows multiple children to control which child is rendered (next/prev)
+ */
 const Overlay = ({ baseClass, children, isOpen, size }: OverlayProps) => {
   const [activeChild, setActiveChild] = useState(0);
   const maxChildCount = React.Children.count(children);

@@ -23,6 +23,9 @@ type PropShapes = {
   open?: boolean,
 };
 
+/**
+ * SimpleSelect is an implementation of 'reat-selectize' - providing a few defaults and a common interface
+ */
 const SimpleSelect = ({
   onChange,
   value,

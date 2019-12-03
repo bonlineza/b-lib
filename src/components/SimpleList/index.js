@@ -140,6 +140,9 @@ export const SimpleListContext = React.createContext({
   searchValue: '',
 });
 
+/**
+ * SimpleList provides a structure to display/sort/search/filter long lists of tabulated ajax data
+ */
 class SimpleList extends React.Component<PropsShape> {
   static defaultProps = {
     baseClass: 'simple-list',

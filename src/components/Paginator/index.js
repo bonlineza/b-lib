@@ -26,6 +26,9 @@ type PropsShape = {
   nextBtnContent?: Function,
 };
 
+/**
+ * Paginator is used to control Next/Prev pagination tasks, should be used with lists (it is used by SimpleList->Body)
+ */
 const Paginator = ({
   onChangePage,
   currentPage,
