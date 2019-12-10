@@ -17,6 +17,7 @@
     "docs": "node ./scripts/doc-gen.js"
   },
   "main": "build/bundle.js",
+  "files": ["build/*"],
   "dependencies": {
     "google-map-react": "1.1.4",
     "lodash": "^4.17.0",
