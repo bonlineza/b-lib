@@ -62,7 +62,7 @@ export default [
   {
     input: './src/functions.js',
     output: {
-      file: './functions.js',
+      file: './build/functions.js',
       name: 'blib',
       format: 'umd',
       globals: {
@@ -77,11 +77,11 @@ export default [
         'react-pdf-js': 'PDF',
       },
     },
-    plugins: [babel(customBabelConfig), sass(sassOptions)],
+    plugins: [babel(customBabelConfig)],
   },
 
   {
-    input: './index.js',
+    input: './src/index.js',
     output: {
       file: './build/bundle.js',
       name: 'blib',
