@@ -58,37 +58,60 @@ const customBabelConfig = {
   exclude: /node_modules/,
 };
 
-export default {
-  input: './index.js',
-  output: {
-    file: './build/bundle.js',
-    name: 'blib',
-    format: 'umd',
-    globals: {
-      react: 'React',
-      'prop-types': 'PropTypes',
-      axios: 'axios',
-      'react-dates': 'reactDates',
-      'react-selectize': 'reactSelectize',
-      'google-map-react': 'GoogleMap',
-      'google-map-react/utils': 'utils',
-      'lodash/sortBy': 'sortBy',
-      'react-pdf-js': 'PDF',
+export default [
+  {
+    input: './src/functions.js',
+    output: {
+      file: './functions.js',
+      name: 'blib',
+      format: 'umd',
+      globals: {
+        react: 'React',
+        'prop-types': 'PropTypes',
+        axios: 'axios',
+        'react-dates': 'reactDates',
+        'react-selectize': 'reactSelectize',
+        'google-map-react': 'GoogleMap',
+        'google-map-react/utils': 'utils',
+        'lodash/sortBy': 'sortBy',
+        'react-pdf-js': 'PDF',
+      },
     },
+    plugins: [babel(customBabelConfig), sass(sassOptions)],
   },
-  plugins: [babel(customBabelConfig), sass(sassOptions)],
-  external: [
-    'b-lib',
-    'react',
-    'react-dom',
-    'prop-types',
-    'styled-components',
-    'axios',
-    'google-map-react',
-    'google-map-react/utils',
-    'react-pdf-js',
-    'lodash/sortBy',
-    'react-dates',
-    'react-selectize',
-  ],
-};
+
+  {
+    input: './index.js',
+    output: {
+      file: './build/bundle.js',
+      name: 'blib',
+      format: 'umd',
+      globals: {
+        react: 'React',
+        'prop-types': 'PropTypes',
+        axios: 'axios',
+        'react-dates': 'reactDates',
+        'react-selectize': 'reactSelectize',
+        'google-map-react': 'GoogleMap',
+        'google-map-react/utils': 'utils',
+        'lodash/sortBy': 'sortBy',
+        'react-pdf-js': 'PDF',
+      },
+    },
+    plugins: [babel(customBabelConfig), sass(sassOptions)],
+    external: [
+      'b-lib',
+      'react',
+      'react-dom',
+      'prop-types',
+      'styled-components',
+      'axios',
+      'google-map-react',
+      'google-map-react/utils',
+      'react-pdf-js',
+      'lodash/sortBy',
+      'react-dates',
+      'react-selectize',
+    ],
+  },
+];
