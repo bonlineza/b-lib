@@ -51,24 +51,7 @@ import HorizontalProgressBar from './src/components/HorizontalProgressBar/index.
 export type { SimpleListPropsShape } from './src/components/SimpleList/index.js';
 export type { DocumentUploaderProps } from './src/components/DocumentUploader/index.js';
 
-const functions = {
-  constrainSearch,
-  sanitizeInputForConstraints,
-  parseDate,
-  getMoment,
-  flattenObject,
-  getTokenFromStorage,
-  hasOwn,
-  smoothScrollTo,
-  scrollToSelector,
-  stringOccurances,
-  validateEmail,
-  validatePhone,
-  validateWebsite,
-};
-
 export {
-  functions,
   ActionBar,
   AsideSlide,
   ButtonGroup,
