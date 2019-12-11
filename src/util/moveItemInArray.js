@@ -3,9 +3,10 @@
  * is the chosen array element and toIndex is the array position for
  * you want the element to go
  * @return array
- * @param array
- * @param fromIndex
- * @param toIndex
+ * @param {array} array: array for which items will be shifted
+ * @param {number} fromIndex: index of array item that is going to move
+ * @param {number} toIndex: position for which the chosen index item is going to
+ * shift to
  */
 
 export default function moveItemInArray(array, fromIndex, toIndex) {

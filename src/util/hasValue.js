@@ -4,7 +4,7 @@
  *
  *
  * @return boolean
- * @param value
+ * @param {any} value: this checked to see whether it has a value
  */
 
 export default value => value !== null && value !== undefined && value !== '';
