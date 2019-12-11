@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import sass from 'rollup-plugin-sass';
 import postcss from 'postcss';
 import fs from 'fs';
+
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
 
@@ -19,6 +20,37 @@ const sassOptions = {
       .process(css)
       .then(result => result.css),
 };
+
+const globalsConfig = {
+  react: 'React',
+  'prop-types': 'PropTypes',
+  axios: 'axios',
+  'react-dates': 'reactDates',
+  'react-selectize': 'reactSelectize',
+  'google-map-react': 'GoogleMap',
+  'google-map-react/utils': 'utils',
+  'lodash/sortBy': 'sortBy',
+  'react-pdf-js': 'PDF',
+  'react-dropzone': 'Dropzone',
+  moment: 'moment',
+};
+
+const externalsConfig = [
+  'b-lib',
+  'react',
+  'react-dom',
+  'prop-types',
+  'styled-components',
+  'axios',
+  'google-map-react',
+  'google-map-react/utils',
+  'react-pdf-js',
+  'lodash/sortBy',
+  'react-dates',
+  'react-selectize',
+  'moment',
+  'react-dropzone',
+];
 
 const customBabelConfig = {
   babelrc: false,
@@ -58,37 +90,28 @@ const customBabelConfig = {
   exclude: /node_modules/,
 };
 
-export default {
-  input: './index.js',
-  output: {
-    file: './build/bundle.js',
-    name: 'blib',
-    format: 'umd',
-    globals: {
-      react: 'React',
-      'prop-types': 'PropTypes',
-      axios: 'axios',
-      'react-dates': 'reactDates',
-      'react-selectize': 'reactSelectize',
-      'google-map-react': 'GoogleMap',
-      'google-map-react/utils': 'utils',
-      'lodash/sortBy': 'sortBy',
-      'react-pdf-js': 'PDF',
+export default [
+  {
+    input: './src/functions.js',
+    output: {
+      file: './build/functions.js',
+      name: 'blib',
+      format: 'umd',
+      globals: globalsConfig,
     },
+    plugins: [babel(customBabelConfig)],
+    external: externalsConfig,
   },
-  plugins: [babel(customBabelConfig), sass(sassOptions)],
-  external: [
-    'b-lib',
-    'react',
-    'react-dom',
-    'prop-types',
-    'styled-components',
-    'axios',
-    'google-map-react',
-    'google-map-react/utils',
-    'react-pdf-js',
-    'lodash/sortBy',
-    'react-dates',
-    'react-selectize',
-  ],
-};
+
+  {
+    input: './src/index.js',
+    output: {
+      file: './build/bundle.js',
+      name: 'blib',
+      format: 'umd',
+      globals: globalsConfig,
+    },
+    plugins: [babel(customBabelConfig), sass(sassOptions)],
+    external: externalsConfig,
+  },
+];
