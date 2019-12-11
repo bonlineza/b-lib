@@ -8,7 +8,7 @@
  * @param delay
  */
 
-export function debounced(delay) {
+export default function debounced(delay) {
   let timer = null;
   return function(fn, ...args) {
     const context = this;
