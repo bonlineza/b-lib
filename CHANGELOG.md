@@ -1,5 +1,10 @@
 
 ## Changelog
+
+### 2.0.0
+- BREAKING: `Functions` are now bundled separately and can be imported via: `import { parseDate } from @bonlineza/b-lib/functions`
+- Moved Documentation generation modules to `devDependencies`
+
 ### 1.1.0
 - Added HorizontalProgressBar Component
 - Updated line breaks in some Readmes 
