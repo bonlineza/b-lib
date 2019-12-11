@@ -2,11 +2,11 @@
  * Shifts element array to designated position in array. fromIndex
  * is the chosen array element and toIndex is the array position for
  * you want the element to go
- * @return array
  * @param {array} array: array for which items will be shifted
  * @param {number} fromIndex: index of array item that is going to move
- * @param {number} toIndex: position for which the chosen index item is going to
- * shift to
+ * @param {number} toIndex: Designated position in array for which the element
+ * is shifted to
+ * @return array
  */
 
 export default function moveItemInArray(array, fromIndex, toIndex) {
