@@ -1,1 +1,1 @@
-require('./build/functions');
+module.exports = require('./build/functions');
