@@ -1,10 +1,10 @@
 /**
  * Shifts element array to designated position in array.
- * @param {array} array: array for which items will be shifted
+ * @param {array} array: array to which items will be shifted
  * @param {number} fromIndex: index of array item that is going to move
  * @param {number} toIndex: Designated position in array for which the element
  * is shifted to
- * @returns array
+ * @returns {array} the new rearranged array
  */
 export default function moveItemInArray(array, fromIndex, toIndex) {
   if (fromIndex === toIndex) return array;

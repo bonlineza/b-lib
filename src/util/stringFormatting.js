@@ -1,7 +1,7 @@
 /**
  * Replaces underscores with spaces
  * @param {string} str: string to modify
- * @returns string
+ * @returns {string} the new modified string
  */
 export function replaceUnderscoreWithSpace(str) {
   return str.replace(/_/g, ' ');
@@ -10,7 +10,7 @@ export function replaceUnderscoreWithSpace(str) {
 /**
  * Capitalizes first character of every word
  * @param {string} str: string to modify
- * @returns string
+ * @returns {string} the new modified string
  */
 export function toTitleCase(str) {
   return str.replace(
@@ -23,7 +23,7 @@ export function toTitleCase(str) {
  * Replaces underscores with spaces and capitalizes the first character of
  * each word
  * @param {string} str: string to modify
- * @returns string
+ * @returns {string} the new modified string
  */
 export function snakeCaseToTitleCase(str) {
   return toTitleCase(replaceUnderscoreWithSpace(str));
@@ -32,7 +32,7 @@ export function snakeCaseToTitleCase(str) {
 /**
  * Removes white spaces in string
  * @param {string} str: string to modify
- * @returns string
+ * @returns {string} the new modified string
  */
 export function removeWhiteSpaces(str) {
   return str.replace(/\s/g, '');
