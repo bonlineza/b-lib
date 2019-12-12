@@ -18,6 +18,7 @@ import {
   snakeCaseToTitleCase,
   toTitleCase,
   replaceUnderscoreWithSpace,
+  removeWhiteSpaces,
 } from './util/stringFormatting';
 
 export {
@@ -41,4 +42,5 @@ export {
   snakeCaseToTitleCase,
   toTitleCase,
   replaceUnderscoreWithSpace,
+  removeWhiteSpaces,
 };

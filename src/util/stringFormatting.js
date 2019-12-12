@@ -30,3 +30,12 @@ export function toTitleCase(str) {
 export function snakeCaseToTitleCase(str) {
   return toTitleCase(replaceUnderscoreWithSpace(str));
 }
+/**
+ * Function that accepts string as parameter and returns string without
+ * white spaces
+ * @param {string} str: string for which the white space have been removed
+ * @return string
+ */
+export function removeWhiteSpaces(str) {
+  return str.replace(/\s/g, '');
+}

@@ -2,6 +2,7 @@ import {
   replaceUnderscoreWithSpace,
   toTitleCase,
   snakeCaseToTitleCase,
+  removeWhiteSpaces,
 } from './stringFormatting';
 
 describe('replaceUnderscoreWithSpace', () => {
@@ -19,5 +20,11 @@ describe('toTitleCase', () => {
 describe('snakeCaseToTitleCase', function() {
   it('function takes "fatty_pants" as a parameter returns "Fatty Pants" ', () => {
     expect(snakeCaseToTitleCase('fatty_pants')).toBe('Fatty Pants');
+  });
+});
+
+describe('removeWhiteSpaces', () => {
+  it('function accepts "leave days" returns "leavedays', () => {
+    expect(removeWhiteSpaces('leave days')).toBe('leavedays');
   });
 });

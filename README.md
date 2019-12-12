@@ -48,6 +48,7 @@
 - isObjectEmpty
 - moveItemInArray
 - parseDate
+- removeWhiteSpaces
 - replaceUnderscoreWithSpace,
 - sanitizeInputForConstraints
 - scrollToSelector
