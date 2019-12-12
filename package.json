@@ -1,6 +1,6 @@
 {
   "name": "@bonlineza/b-lib",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook -s ./public",
     "clean": "rimraf ./build/*.*",
@@ -18,7 +18,9 @@
   },
   "main": "build/bundle.js",
   "files": [
-    "build/*"
+    "build/*",
+    "init.js",
+    "functions.js"
   ],
   "dependencies": {
     "google-map-react": "1.1.4",
