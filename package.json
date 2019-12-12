@@ -1,6 +1,6 @@
 {
   "name": "@bonlineza/b-lib",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook -s ./public",
     "clean": "rimraf ./build/*.*",
@@ -20,7 +20,8 @@
   "files": [
     "build/*",
     "init.js",
-    "functions.js"
+    "functions.js",
+    "src/components/DateRangePicker/initialize.js"
   ],
   "dependencies": {
     "google-map-react": "1.1.4",

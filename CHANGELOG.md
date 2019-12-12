@@ -1,5 +1,8 @@
 
 ## Changelog
+### 2.1.3
+- Fix: Added missing `initialize.js` from `DateRangePicker` to the `npm tarball`
+
 ### 2.1.2
 - Added missing `initialize.js` from `DateRangePicker` to the `npm tarball`
 - Moved `react-dom-factories` back to the normal package dependencies
