@@ -77,6 +77,7 @@ export const scrollToElement = element => {
     }
   }
 };
+
 /**
  * Scroll to top of given query selector resolved element
  * @param {string} selector query selector string to query a DOM element by
