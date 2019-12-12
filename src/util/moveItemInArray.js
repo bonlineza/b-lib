@@ -8,7 +8,6 @@
  * is shifted to
  * @return array
  */
-
 export default function moveItemInArray(array, fromIndex, toIndex) {
   if (fromIndex === toIndex) return array;
 

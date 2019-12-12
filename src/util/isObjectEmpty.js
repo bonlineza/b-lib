@@ -5,5 +5,4 @@
  * @return boolean
  * any keys
  */
-
 export default (obj = {}) => !Object.keys(obj).length;
