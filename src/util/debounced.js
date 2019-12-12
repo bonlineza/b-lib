@@ -1,7 +1,7 @@
 /**
  * Creates closure for delaying function
  * @param {number} delay the number of milliseconds to delay the function call
- * @returns {Function} function to perform debouncing with delay
+ * @returns {Function} function to perform debouncing
  */
 export default function debounced(delay) {
   let timer = null;
