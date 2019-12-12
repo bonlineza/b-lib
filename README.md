@@ -39,18 +39,27 @@
 
 ## Functions in this Library
 - constrainSearch
-- sanitizeInputForConstraints
-- parseDate
-- getMoment
+- debounced
 - flattenObject
+- getMoment
 - getTokenFromStorage
 - hasOwn
-- smoothScrollTo,
+- hasValue
+- isObjectEmpty
+- moveItemInArray
+- parseDate
+- removeWhiteSpaces
+- replaceUnderscoreWithSpace,
+- sanitizeInputForConstraints
 - scrollToSelector
+- smoothScrollTo,
+- snakeCaseTitleCase
 - stringOccurances
+- toTitleCase
 - validateEmail
 - validatePhone
 - validateWebsite
+
 
 ## Setup
 1. `yarn` - install dependencies
