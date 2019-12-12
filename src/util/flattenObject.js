@@ -1,10 +1,8 @@
 /**
  * Recursive depth-first search function to reduce nested object data into one flattened object.
  * Nested keys are joined with '[]' inside strings.
- *
  * @param {Object} obj
  * @param {string|void} keyPrefix
- *
  * @return Object
  */
 export default function flattenObject(obj: Object, keyPrefix?: string): Object {
