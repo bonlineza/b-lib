@@ -1,6 +1,6 @@
 /**
  * Creates closure for delaying function
- * @param delay {number} the number of milliseconds to delay the function call
+ * @param {number} delay the number of milliseconds to delay the function call
  * @returns {Function} function to perform debouncing with delay
  */
 export default function debounced(delay) {
