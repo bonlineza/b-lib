@@ -4,7 +4,7 @@
  * @param {number} fromIndex: index of array item that is going to move
  * @param {number} toIndex: Designated position in array for which the element
  * is shifted to
- * @return array
+ * @returns array
  */
 export default function moveItemInArray(array, fromIndex, toIndex) {
   if (fromIndex === toIndex) return array;

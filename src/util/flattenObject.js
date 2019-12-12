@@ -3,7 +3,7 @@
  * Nested keys are joined with '[]' inside strings.
  * @param {Object} obj
  * @param {string|void} keyPrefix
- * @return Object
+ * @returns Object
  */
 export default function flattenObject(obj: Object, keyPrefix?: string): Object {
   return Object.keys(obj).reduce((flattened: Object, key: string) => {
