@@ -1,7 +1,5 @@
 /**
- * Shifts element array to designated position in array. fromIndex
- * is the chosen array element and toIndex is the array position for
- * you want the element to go
+ * Shifts element array to designated position in array.
  * @param {array} array: array for which items will be shifted
  * @param {number} fromIndex: index of array item that is going to move
  * @param {number} toIndex: Designated position in array for which the element
