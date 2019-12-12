@@ -1,8 +1,7 @@
 /**
- * Function that accepts object as parameter and checks whether
- * Object is empty or not
- * @param {object} obj: the object that is checked to see whether it has
- * any keys
+ * Determines whether the object is empty by checking whether the length
+ * of key for that object is false
+ * @param {Object} obj: object that is checked
  * @return boolean
  */
 export default (obj = {}) => !Object.keys(obj).length;
