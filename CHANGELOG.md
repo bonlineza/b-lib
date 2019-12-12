@@ -1,5 +1,12 @@
 
 ## Changelog
+### 2.1.2
+- Added missing `initialize.js` from `DateRangePicker` to the `npm tarball`
+- Moved `react-dom-factories` back to the normal package dependencies
+
+### 2.1.1
+- Added missing `init.js` and `functions.js` to the `files` list in the `package.json`
+
 ### 2.1.0
 - Added new `Functions` to bundle: {
   `debounced`,
