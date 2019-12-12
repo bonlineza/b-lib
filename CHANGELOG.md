@@ -1,5 +1,17 @@
 
 ## Changelog
+### 2.1.0
+- Added new `Functions` to bundle: {
+  `debounced`,
+  `hasValue`,
+  `isObjectEmpty`,
+  `moveItemInArray`,
+  `snakeCaseToTitleCase`,
+  `toTitleCase`,
+  `replaceUnderscoreWithSpace`,
+  `removeWhiteSpaces`,
+}
+- Greatly improved Functions documentation according to JSDoc spec
 
 ### 2.0.0
 - BREAKING: `Functions` are now bundled separately and can be imported via: `import { parseDate } from @bonlineza/b-lib/functions`
