@@ -8,7 +8,7 @@ const EmailTest = new RegExp(`^${user}@(${domain}|(\\[(${ipv4}|${ipv6})\\]))$`);
  * Checks if the given string matches good known Email validation patterns
  * @param {string} value the string to be tested against acceptable
  * email formatting rules
- * @returns {boolean} result of the evaluated condition
+ * @returns {boolean} result of the evaluation
  */
 export default function validateEmail(value) {
   return EmailTest.test(value);

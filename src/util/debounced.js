@@ -1,8 +1,7 @@
 /**
- * Ensures a function is only run only once every delay
+ * Creates closure for delaying function
  * @param delay {number} the number of milliseconds to delay the function call
- * @returns {Function} function that clears timer if true and set a new timeOut
- * for timer
+ * @returns {Function} function to perform debouncing with delay
  */
 export default function debounced(delay) {
   let timer = null;

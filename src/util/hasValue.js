@@ -1,7 +1,6 @@
 /**
  * Checks if a value is not null, undefined or an empty string
- * string
- * @param {any} value: value to be checked
- * @returns {boolean} result of the evaluated condition
+ * @param {any} value: value checked
+ * @returns {boolean} result of the evaluation
  */
 export default value => value !== null && value !== undefined && value !== '';
