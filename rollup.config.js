@@ -2,14 +2,12 @@ import babel from 'rollup-plugin-babel';
 import sass from 'rollup-plugin-sass';
 import postcss from 'postcss';
 import fs from 'fs';
-
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
 
-const sassOptions = {
-  output(styles) {
-    fs.writeFileSync('./build/bundle.css', styles);
-  },
+const functions = require('./scripts/functions');
+
+const basicSassOptions = {
   processor: css =>
     postcss([
       autoprefixer({
@@ -21,6 +19,21 @@ const sassOptions = {
       .then(result => result.css),
 };
 
+// Component Sass Options
+const componentSassOptions = () => ({
+  ...basicSassOptions,
+  output: () => null,
+});
+
+// Bundle Sass options
+const bundleSassOptions = {
+  ...basicSassOptions,
+  output(styles) {
+    fs.writeFileSync('./build/bundle.css', styles);
+  },
+};
+
+// Named Globals
 const globalsConfig = {
   react: 'React',
   'prop-types': 'PropTypes',
@@ -35,6 +48,7 @@ const globalsConfig = {
   moment: 'moment',
 };
 
+// External dependencies
 const externalsConfig = [
   'b-lib',
   'react',
@@ -52,6 +66,7 @@ const externalsConfig = [
   'react-dropzone',
 ];
 
+// Babel config used for Bundle generation
 const customBabelConfig = {
   babelrc: false,
   presets: [
@@ -90,12 +105,49 @@ const customBabelConfig = {
   exclude: /node_modules/,
 };
 
+const basicConfig = {
+  input: './src/functions.js',
+  output: {
+    file: './build/functions.js',
+    name: 'functions',
+    format: 'umd',
+    globals: globalsConfig,
+  },
+  plugins: [babel(customBabelConfig)],
+  external: externalsConfig,
+};
+
+const { resolveIndexForComponent, ReadEachComponent } = functions;
+
+function generateComponentConfigs() {
+  const allComponentConfigs = [];
+  ReadEachComponent(folderName => {
+    const indexFilePath = resolveIndexForComponent(folderName);
+    allComponentConfigs.push({
+      ...basicConfig,
+      input: indexFilePath,
+      output: {
+        ...basicConfig.output,
+        file: `./${folderName}.js`,
+        name: folderName,
+      },
+      plugins: [...basicConfig.plugins, sass(componentSassOptions(folderName))],
+    });
+  });
+  return allComponentConfigs;
+}
+
+// Bundling Configurations
 export default [
+  // Component Configs
+  ...generateComponentConfigs(),
+
+  // Functions bundle
   {
     input: './src/functions.js',
     output: {
       file: './build/functions.js',
-      name: 'blib',
+      name: 'functions',
       format: 'umd',
       globals: globalsConfig,
     },
@@ -103,6 +155,7 @@ export default [
     external: externalsConfig,
   },
 
+  // Main bundle
   {
     input: './src/index.js',
     output: {
@@ -111,7 +164,7 @@ export default [
       format: 'umd',
       globals: globalsConfig,
     },
-    plugins: [babel(customBabelConfig), sass(sassOptions)],
+    plugins: [babel(customBabelConfig), sass(bundleSassOptions)],
     external: externalsConfig,
   },
 ];

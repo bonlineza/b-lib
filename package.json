@@ -19,8 +19,9 @@
   "main": "build/bundle.js",
   "files": [
     "build/*",
-    "init.js",
-    "functions.js",
+    "*.js",
+    "!rollup.config.js",
+    "!webpack.config.base.js",
     "src/components/DateRangePicker/initialize.js"
   ],
   "dependencies": {
