@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Context from './context';
 import Filter from '../Filter/index.js';
 import Header from './components/Header.js';
 import Body from './components/Body.js';
@@ -104,42 +105,6 @@ type PropsShape = SimpleListPropsShape & {
   updateQuery: Function,
 };
 
-// TODO: this is outdated....
-// before i flesh this out...
-export type SimpleListContextShape = {
-  updateQuery: Function,
-  name: string,
-  initial_sort: string,
-  sortString: string, // not sure what the difference is here...
-};
-
-export const SimpleListContext = React.createContext({
-  name: '',
-  headings: [],
-  sortString: '',
-  initial_sort: '',
-  onItemClick: null,
-  updateQuery: null,
-  onSort: null,
-  subFilter: null,
-  pageData: {
-    currentPage: 0,
-    lastPage: 0,
-    perPage: 0,
-  },
-  sectionData: {
-    sections: null,
-    sectionTarget: null,
-    sectionTitleKeys: null,
-  },
-  childrenRenderer: null,
-  allowClick: false,
-  data: [],
-  initialLoad: false,
-  isLoading: false,
-  searchValue: '',
-});
-
 /**
  * SimpleList provides a structure to display/sort/search/filter long lists of tabulated ajax data
  */
@@ -244,7 +209,7 @@ class SimpleList extends React.Component<PropsShape> {
       SectionsComponent,
     } = this.props;
     return (
-      <SimpleListContext.Provider
+      <Context.Provider
         value={{
           name,
           headings,
@@ -291,7 +256,7 @@ class SimpleList extends React.Component<PropsShape> {
               ))}
 
             {enableSearch ? (
-              <FilterComponent // TODO: add a context-wrapped Filter component
+              <FilterComponent
                 callback={this.searchData}
                 addFilter={addFilter || undefined}
                 filterTitle={filterTitle}
@@ -316,7 +281,7 @@ class SimpleList extends React.Component<PropsShape> {
             {sections === true ? <SectionsComponent /> : <BodyComponent />}
           </div>
         </div>
-      </SimpleListContext.Provider>
+      </Context.Provider>
     );
   }
 }

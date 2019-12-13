@@ -12,12 +12,11 @@ import EllipsisLoader from './components/EllipsisLoader/index';
 import Map from './components/Map/index';
 import MobileSideMenu from './components/MobileSideMenu/index';
 import Overlay from './components/Overlay/index';
-import PageReady, {
-  Context as PageReadyContext,
-} from './components/PageReady/index';
+import PageReady, { PageReadyContext } from './components/PageReady/index';
 import Paginator from './components/Paginator/index';
 import PDFPreview from './components/PDFPreview/index';
-import SimpleList, { SimpleListContext } from './components/SimpleList/index';
+import SimpleList from './components/SimpleList/index';
+import SimpleListContext from './components/SimpleList/context';
 import SimpleListSections from './components/SimpleList/components/Sections';
 import SimpleListHeader from './components/SimpleList/components/Header.js';
 import SimpleListBody from './components/SimpleList/components/Body.js';

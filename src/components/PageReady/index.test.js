@@ -4,7 +4,7 @@ import moxios from 'moxios';
 import axios from 'axios';
 import 'test-util/setup';
 import defaultRequest from './request';
-import PageReady, { Context } from './index';
+import PageReady, { PageReadyContext } from './index';
 
 describe('Page Ready', () => {
   beforeEach(() => {
@@ -77,7 +77,7 @@ describe('Page Ready', () => {
         getRequestInstance={() =>
           getAxiosRequestInstance('https://fake.test/name/1')
         }>
-        <Context.Consumer>
+        <PageReadyContext.Consumer>
           {({
             data: {
               data: { names },
@@ -91,7 +91,7 @@ describe('Page Ready', () => {
               ))}
             </Fragment>
           )}
-        </Context.Consumer>
+        </PageReadyContext.Consumer>
       </PageReady>,
     );
 

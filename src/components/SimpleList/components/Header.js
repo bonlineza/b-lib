@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import GetSvg from '../../GetSvg';
-import { SimpleListContext } from '../index';
+import SimpleListContext from '../context';
 
 type HeaderItem = {
   name: string,
@@ -38,44 +37,6 @@ function parseSort(sortParam: string): Array<Object> {
       }) || []
     : [];
 }
-
-// TODO!
-// Note: Going forward - SimpleList will accept Header, Body, etc... as props, this will allow more custom rendering behaviours, as Header, Body, Paginator, Filter can be Project specific components on their own
-
-// note project will implement a AllianzHeader, which will define it's own Sort Renderer
-// const AllianzSortRenderer = (active = false, type = 'asc') => {
-//   return (
-//     <div>
-//       {(active === true && type === 'asc' && (
-//         <div className="simple-list__header__item__aside">
-//           <GetSvg svg="sort_up" wrapperClass="u-fill--base-dkst" />
-//           <GetSvg svg="sort_down" wrapperClass="u-fill--base-lt" />
-//         </div>
-//       )) ||
-//         (active === true && type === 'desc' && (
-//           <div className="simple-list__header__item__aside">
-//             <GetSvg svg="sort_up" wrapperClass="u-fill--base-lt" />
-//             <GetSvg svg="sort_down" wrapperClass="u-fill--base-dkst" />
-//           </div>
-//         )) ||
-//         (active === false && (
-//           <div className="simple-list__header__item__aside">
-//             <GetSvg svg="sort_up" wrapperClass="u-fill--base-lt" />
-//             <GetSvg svg="sort_down" wrapperClass="u-fill--base-lt" />
-//           </div>
-//         )) ||
-//         null}
-//     </div>
-//   );
-// };
-
-// Exmple Project strucute
-
-// AllianzHeader
-// Header{SortComponent=AllianzSortComponent}
-
-// AllianzList
-// SimpleList{header=AllianzHeader}
 
 const Header = ({ SortComponent = null }) => {
   const { headings, onSort, sortString, name, initial_sort } = useContext(

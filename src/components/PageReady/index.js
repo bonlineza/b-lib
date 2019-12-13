@@ -20,7 +20,7 @@ type PropShape = {
   errorMessageInterpreter?: Function,
 };
 
-export const Context = React.createContext({ data: null });
+export const PageReadyContext = React.createContext({ data: null });
 
 /**
  * PageReady is a component that triggers a request promise and manages it's state based on the promise state
@@ -116,9 +116,9 @@ class PageReady extends React.Component<PropShape> {
 
   render() {
     return (
-      <Context.Provider value={{ data: this.state.data }}>
+      <PageReadyContext.Provider value={{ data: this.state.data }}>
         <div className="page-ready">{this.getPageReadyContent()}</div>
-      </Context.Provider>
+      </PageReadyContext.Provider>
     );
   }
 }

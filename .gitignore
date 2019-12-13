@@ -2,7 +2,10 @@
 
 # Dont commit built files to Repo
 *.js
-# Only include required repo files
+
+# But include all source files and scripts
+!/src/**/*.js
+!/scripts/**/*.js
 !init.js
 !webpack.config.base.js
 
