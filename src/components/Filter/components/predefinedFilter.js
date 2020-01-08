@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 type OptionShape = {
   text: string,
@@ -6,8 +6,6 @@ type OptionShape = {
 };
 
 type PredefinedFilterProps = {
-  dropdownRef: any,
-  onToggle: Function,
   options: OptionShape[],
   onSelect: Function,
   baseClass?: string,
@@ -15,19 +13,44 @@ type PredefinedFilterProps = {
 };
 
 const PredefinedFilter = ({
-  dropdownRef,
-  onToggle,
   options,
   onSelect,
   baseClass,
   filterButtonContent,
 }: PredefinedFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const listenerAction = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
+  const killListener = useCallback(
+    (): any => document.removeEventListener('click', listenerAction),
+    [listenerAction],
+  );
+
+  const startListener = useCallback(
+    (): any => document.addEventListener('click', listenerAction),
+    [listenerAction],
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      startListener();
+    } else {
+      killListener();
+    }
+    return () => killListener();
+  }, [isOpen, startListener, killListener]);
+
+  const toggleFilter = (flag: boolean) => {
+    setIsOpen(flag);
+  };
 
   const triggerToggle = e => {
     if (e) e.preventDefault();
-    onToggle(isOpen);
-    setIsOpen(!isOpen);
+    toggleFilter(!isOpen);
   };
 
   const filterSelected = (event: Event, value: string) => {
@@ -39,8 +62,8 @@ const PredefinedFilter = ({
   return (
     <div
       className={`${baseClass}--predefined
-    ${isOpen ? 'is-open' : ''}
-  `}>
+      ${isOpen ? 'is-open' : ''}
+    `}>
       <div className={`${baseClass}__filter-btn-container`}>
         <button
           type="button"

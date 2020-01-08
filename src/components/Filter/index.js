@@ -156,20 +156,6 @@ class Filter extends React.Component<PropsType> {
     this.props.groupSelectionCB(selection.value);
   };
 
-  toggleFilter = (isOpen: boolean) => {
-    if (isOpen) {
-      this.startListener();
-    } else {
-      this.killListener();
-    }
-  };
-
-  killListener = (): any =>
-    document.removeEventListener('click', this.listenerAction);
-
-  startListener = (): any =>
-    document.addEventListener('click', this.listenerAction);
-
   clearInput = (e: Object): any => {
     e.preventDefault();
     return this.handleChange(e, '');
@@ -188,23 +174,6 @@ class Filter extends React.Component<PropsType> {
       }, 300);
     }
     return { start, end };
-  };
-
-  listenerAction = (event: Object) => {
-    if (
-      this.reactDropdown.current &&
-      !this.reactDropdown.current.contains(event.target)
-    ) {
-      this.toggleFilter();
-    }
-
-    if (!this.reactDropdown) {
-      this.killListener();
-    }
-  };
-
-  componentWillUnmount = () => {
-    this.killListener();
   };
 
   handlePropogation(data: string): boolean {
