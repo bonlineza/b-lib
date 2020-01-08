@@ -43,10 +43,10 @@ const PredefinedFilter = ({
   useEffect(() => {
     if (isOpen) {
       startListener();
-    } else {
-      killListener();
     }
-    return () => killListener();
+    return () => {
+      killListener();
+    };
   }, [isOpen, startListener, killListener]);
 
   const filterSelected = (event: Event, value: string) => {
