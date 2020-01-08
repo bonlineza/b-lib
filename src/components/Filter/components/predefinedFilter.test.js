@@ -53,15 +53,6 @@ describe('PredefinedFilter', () => {
   });
 
   describe('behaviour', () => {
-    it('clicking button will trigger onToggle', () => {
-      const onToggle = jest.fn();
-      wrapper.setProps({ onToggle });
-      const filterButton = wrapper.find(
-        `.${defaultProps.baseClass}__filter-btn`,
-      );
-      filterButton.simulate('click');
-      expect(onToggle).toHaveBeenCalled();
-    });
     it('clicking option will trigger onSelect', () => {
       const onSelect = jest.fn();
       wrapper.setProps({ onSelect });
