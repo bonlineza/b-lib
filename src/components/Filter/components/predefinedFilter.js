@@ -21,9 +21,14 @@ const PredefinedFilter = ({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const listenerAction = useCallback(() => {
-    setIsOpen(false);
-  }, [setIsOpen]);
+  const listenerAction = useCallback(
+    event => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    },
+    [setIsOpen],
+  );
 
   const killListener = useCallback(
     (): any => document.removeEventListener('click', listenerAction),
@@ -44,19 +49,10 @@ const PredefinedFilter = ({
     return () => killListener();
   }, [isOpen, startListener, killListener]);
 
-  const toggleFilter = (flag: boolean) => {
-    setIsOpen(flag);
-  };
-
-  const triggerToggle = e => {
-    if (e) e.preventDefault();
-    toggleFilter(!isOpen);
-  };
-
   const filterSelected = (event: Event, value: string) => {
     event.preventDefault();
     onSelect(value);
-    triggerToggle();
+    setIsOpen(false);
   };
 
   return (
@@ -67,13 +63,12 @@ const PredefinedFilter = ({
       <div className={`${baseClass}__filter-btn-container`}>
         <button
           type="button"
-          ref={dropdownRef}
           className={`${baseClass}__filter-btn`}
-          onClick={e => triggerToggle(e)}>
+          onClick={() => setIsOpen(!isOpen)}>
           {filterButtonContent()}
         </button>
       </div>
-      <div className={`${baseClass}__filter-collapsable`}>
+      <div ref={dropdownRef} className={`${baseClass}__filter-collapsable`}>
         {options.map((v: { text: string, value: string }, vk: number) => (
           <div className={`${baseClass}__filter-collapsable__item`} key={vk}>
             <button
