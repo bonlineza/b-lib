@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 type OptionShape = {
   text: string,
@@ -6,8 +6,6 @@ type OptionShape = {
 };
 
 type PredefinedFilterProps = {
-  dropdownRef: any,
-  onToggle: Function,
   options: OptionShape[],
   onSelect: Function,
   baseClass?: string,
@@ -15,42 +13,62 @@ type PredefinedFilterProps = {
 };
 
 const PredefinedFilter = ({
-  dropdownRef,
-  onToggle,
   options,
   onSelect,
   baseClass,
   filterButtonContent,
 }: PredefinedFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  const triggerToggle = e => {
-    if (e) e.preventDefault();
-    onToggle(isOpen);
-    setIsOpen(!isOpen);
-  };
+  const listenerAction = useCallback(
+    event => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    },
+    [setIsOpen],
+  );
+
+  const killListener = useCallback(
+    (): any => document.removeEventListener('click', listenerAction),
+    [listenerAction],
+  );
+
+  const startListener = useCallback(
+    (): any => document.addEventListener('click', listenerAction),
+    [listenerAction],
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      startListener();
+    }
+    return () => {
+      killListener();
+    };
+  }, [isOpen, startListener, killListener]);
 
   const filterSelected = (event: Event, value: string) => {
     event.preventDefault();
     onSelect(value);
-    triggerToggle();
+    setIsOpen(false);
   };
 
   return (
     <div
       className={`${baseClass}--predefined
-    ${isOpen ? 'is-open' : ''}
-  `}>
+      ${isOpen ? 'is-open' : ''}
+    `}>
       <div className={`${baseClass}__filter-btn-container`}>
         <button
           type="button"
-          ref={dropdownRef}
           className={`${baseClass}__filter-btn`}
-          onClick={e => triggerToggle(e)}>
+          onClick={() => setIsOpen(!isOpen)}>
           {filterButtonContent()}
         </button>
       </div>
-      <div className={`${baseClass}__filter-collapsable`}>
+      <div ref={dropdownRef} className={`${baseClass}__filter-collapsable`}>
         {options.map((v: { text: string, value: string }, vk: number) => (
           <div className={`${baseClass}__filter-collapsable__item`} key={vk}>
             <button
