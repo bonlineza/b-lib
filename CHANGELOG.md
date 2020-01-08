@@ -1,5 +1,8 @@
 
 ## Changelog
+### 2.1.4
+- Fix: `PredefinedFilter` now correctly hides when clicking outside of the component
+
 ### 2.1.3
 - Fix: Added missing `initialize.js` from `DateRangePicker` to the `npm tarball`
 
