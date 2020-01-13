@@ -19,8 +19,9 @@
   "main": "build/bundle.js",
   "files": [
     "build/*",
-    "init.js",
-    "functions.js",
+    "*.js",
+    "!rollup.config.js",
+    "!webpack.config.base.js",
     "src/components/DateRangePicker/initialize.js"
   ],
   "dependencies": {
@@ -61,6 +62,7 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-flow": "^7.0.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/react": "^5.0.10",
     "autoprefixer": "^9.6.1",

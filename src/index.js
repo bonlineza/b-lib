@@ -1,41 +1,40 @@
 import { SingleDatePicker } from 'react-dates';
 
-import ActionBar from './components/ActionBar/index';
-import AsideSlide from './components/AsideSlide/index';
-import ButtonGroup from './components/ButtonGroup/index';
-import DateRangePicker from './components/DateRangePicker/index';
-import DropOptions from './components/DropOptions/index';
-import DocumentUploader from './components/DocumentUploader/index';
-import Filter from './components/Filter/index';
+import ActionBar from './components/ActionBar';
+import AsideSlide from './components/AsideSlide';
+import ButtonGroup from './components/ButtonGroup';
+import DateRangePicker from './components/DateRangePicker';
+import DropOptions from './components/DropOptions';
+import DocumentUploader from './components/DocumentUploader';
+import Filter from './components/Filter';
 import PredefinedFilter from './components/Filter/components/predefinedFilter.js';
-import EllipsisLoader from './components/EllipsisLoader/index';
-import Map from './components/Map/index';
-import MobileSideMenu from './components/MobileSideMenu/index';
-import Overlay from './components/Overlay/index';
-import PageReady, {
-  Context as PageReadyContext,
-} from './components/PageReady/index';
-import Paginator from './components/Paginator/index';
-import PDFPreview from './components/PDFPreview/index';
-import SimpleList, { SimpleListContext } from './components/SimpleList/index';
+import EllipsisLoader from './components/EllipsisLoader';
+import Map from './components/Map';
+import MobileSideMenu from './components/MobileSideMenu';
+import Overlay from './components/Overlay';
+import PageReady, { PageReadyContext } from './components/PageReady';
+import Paginator from './components/Paginator';
+import PDFPreview from './components/PDFPreview';
+import SimpleList from './components/SimpleList';
+import SimpleListContext from './components/SimpleList/context';
 import SimpleListSections from './components/SimpleList/components/Sections';
 import SimpleListHeader from './components/SimpleList/components/Header.js';
 import SimpleListBody from './components/SimpleList/components/Body.js';
 import SimpleListItem from './components/SimpleList/components/SimpleItem.js';
-import SimpleSelect from './components/SimpleSelect/index';
-import SelectRows from './components/SelectRows/index';
-import SimplePopup from './components/SimplePopup/index';
-import SwitchView from './components/SwitchView/index';
-import ToolTip from './components/ToolTip/index';
+import SimpleSelect from './components/SimpleSelect';
+import SelectRows from './components/SelectRows';
+import SimplePopup from './components/SimplePopup';
+import SwitchView from './components/SwitchView';
+import ToolTip from './components/ToolTip';
 import { wrapTooltip } from './components/ToolTip/wrapTooltip.js';
-import UntilReady from './components/UntilReady/index';
-import WYSIWYG from './components/WYSIWYG/index';
-import MultiLineSelect from './components/MultiLineSelect/index';
-import CategoryList from './components/CategoryList/index';
-import HorizontalProgressBar from './components/HorizontalProgressBar/index';
+import UntilReady from './components/UntilReady';
+import WYSIWYG from './components/WYSIWYG';
+import MultiLineSelect from './components/MultiLineSelect';
+import CategoryList from './components/CategoryList';
+import HorizontalProgressBar from './components/HorizontalProgressBar';
 
-export type { SimpleListPropsShape } from './components/SimpleList/index';
-export type { DocumentUploaderProps } from './components/DocumentUploader/index';
+export type { SimpleListPropsShape } from './components/SimpleList';
+export type { DocumentUploaderProps } from './components/DocumentUploader';
 
 export {
   ActionBar,

@@ -2,7 +2,7 @@ import React from 'react';
 import 'test-util/setup';
 import { mount } from 'enzyme';
 import Header from './Header';
-import { SimpleListContext } from '../index';
+import SimpleListContext from '../context';
 
 const DefaultHeadings = [
   {

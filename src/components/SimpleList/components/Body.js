@@ -1,7 +1,7 @@
 import React, { useContext, Fragment } from 'react';
 import Paginator from '../../Paginator/index.js';
 import SimpleListItem from './SimpleItem.js';
-import { SimpleListContext } from '../index';
+import SimpleListContext from '../context';
 import ButtonOrDiv from './ButtonOrDiv';
 
 const Body = ({

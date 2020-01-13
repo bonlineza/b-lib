@@ -1,5 +1,14 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# Dont commit built files to Repo
+*.js
+
+# But include all source files and scripts
+!/src/**/*.js
+!/scripts/**/*.js
+!init.js
+!webpack.config.base.js
+
 # dependencies
 /node_modules
 
