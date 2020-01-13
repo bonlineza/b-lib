@@ -6,6 +6,7 @@
 # But include all source files and scripts
 !/src/**/*.js
 !/scripts/**/*.js
+!/stories/**/*.js
 !init.js
 !webpack.config.base.js
 
