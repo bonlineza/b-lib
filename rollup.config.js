@@ -1,3 +1,4 @@
+import resolve from '@rollup/plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import sass from 'rollup-plugin-sass';
 import postcss from 'postcss';
@@ -113,7 +114,7 @@ const basicConfig = {
     format: 'umd',
     globals: globalsConfig,
   },
-  plugins: [babel(customBabelConfig)],
+  plugins: [resolve(), babel(customBabelConfig)],
   external: externalsConfig,
 };
 
@@ -151,7 +152,7 @@ export default [
       format: 'umd',
       globals: globalsConfig,
     },
-    plugins: [babel(customBabelConfig)],
+    plugins: [resolve(), babel(customBabelConfig)],
     external: externalsConfig,
   },
 
@@ -164,7 +165,7 @@ export default [
       format: 'umd',
       globals: globalsConfig,
     },
-    plugins: [babel(customBabelConfig), sass(bundleSassOptions)],
+    plugins: [resolve(), babel(customBabelConfig), sass(bundleSassOptions)],
     external: externalsConfig,
   },
 ];
