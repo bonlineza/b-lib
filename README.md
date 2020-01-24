@@ -37,6 +37,15 @@
    - SimpleItem 
    - SimpleListContext 
 
+### Example Import:
+
+```js
+// via full bundle - leads to bigger app sizes
+import { ActionBar } from '@bonlineza/b-lib';
+// or with tree shaking for slimmer app buundle sizes
+import ActionBar from '@bonlineza/b-lib/ActionBar';
+```
+
 ## Functions in this Library
 - constrainSearch
 - debounced

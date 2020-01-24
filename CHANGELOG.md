@@ -1,5 +1,9 @@
 
 ## Changelog
+### 2.1.5
+- Fix: Component build files are now available in NPM repo
+  - now we can import a component via code `import ActionBar from '@bonlineza/b-lib/ActionBar`
+
 ### 2.1.4
 - Fix: `PredefinedFilter` now correctly hides when clicking outside of the component
 
