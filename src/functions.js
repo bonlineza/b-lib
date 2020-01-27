@@ -1,6 +1,7 @@
 import constrainSearch, {
   sanitizeInputForConstraints,
 } from './util/constrainable';
+import { usePrevious } from './util/usePrevious';
 import { getMoment, parseDate } from './util/dates';
 import flattenObject from './util/flattenObject';
 import getTokenFromStorage from './util/getToken';
@@ -43,4 +44,5 @@ export {
   toTitleCase,
   replaceUnderscoreWithSpace,
   removeWhiteSpaces,
+  usePrevious,
 };
