@@ -1,6 +1,6 @@
 {
   "name": "@bonlineza/b-lib",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook -s ./public",
     "clean": "rimraf ./build/*.*",

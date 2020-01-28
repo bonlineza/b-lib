@@ -1,5 +1,8 @@
 
 ## Changelog
+### 2.2.0
+- Add `usePrevious` function hook - [more info](https://usehooks.com/usePrevious/)
+
 ### 2.1.5
 - Fix: Component build files are now available in NPM repo
   - now we can import a component via code `import ActionBar from '@bonlineza/b-lib/ActionBar`
