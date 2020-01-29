@@ -64,66 +64,57 @@ import ActionBar from '@bonlineza/b-lib/ActionBar';
 - smoothScrollTo,
 - snakeCaseTitleCase
 - stringOccurances
+- usePrevious (Hook)
 - toTitleCase
 - validateEmail
 - validatePhone
 - validateWebsite
 
-
-## Setup
-1. `yarn` - install dependencies
-2. `yarn start` - To open Storybook
-
-### Advanced
-- define the Maps API key and run storybook using this command: `STORYBOOK_MAPS_API_KEY=[you long api key] yarn start` - see: (https://storybook.js.org/docs/configurations/env-vars/) for more info
-
 ## Commands
+- `yarn` - install npm dependencies
+- `yarn start` - Open Storybook
+- `yarn docs` - run both lint and tests
+- `yarn build` - generate built js files
+- `yarn build --watch` - build and watch files
 - `yarn test` - run both lint and tests
 - `yarn lint` - run linter only
 - `yarn jest --watch` - watch tests (reccomended)
 
-## Build Package
-- this is useful when you need to test a build locally
-
-```sh
-yarn build
-```
-or
-```sh
-yarn build --watch
-```
+### Advanced
+- define the Maps API key and run storybook using this command: `STORYBOOK_MAPS_API_KEY=[your long api key] yarn start` - see: (https://storybook.js.org/docs/configurations/env-vars/) for more info
 
 ## Testing your local Changes in other Projects
 ### tl;dr
 1. Checkout your Fork of this Repo
 2. Run this in the fork root folder: `yarn link`
-3. Run this in the root folder of the project you would like to use this module: `yarn link b-lib`
+3. Run this in the root folder of the project you would like to use this module: `yarn link @bonlineza/b-lib`
 
 You will now be able to import this module like any normal npm module like so:
 
-```javascript
-import { SimplePopup } from 'b-lib';
+```js
+import { SimplePopup } from '@bonlineza/b-lib';
 ```
 
-## When Done with Dev on your Project
-1. Ensure the PR was merged and master was re-deployed
-2. install module like so: `yarn add https://github.com/bonlineza/b-lib#newtag --force`
-3. Ensure all project tests pass as before
-
-Read more here: [https://yarnpkg.com/lang/en/docs/cli/link/]
-
 ## Publish Package
-- after testing is complete and it's ready for other projects to consume
+- after testing is complete and your changes have been merged to master in this Library
 
 ### Prerequisites
-- An account on NPMJS.com
-- Account is added to the Bonlineza Org
+- Your personal account on `NPMJS.com`
+- Your Account is added to the `Bonlineza Org` - see: https://www.npmjs.com/org/bonlineza
 
-```sh
-yarn run build:publish
-``` 
+### Steps:
+1. checkout/pull latest UPSTREAM `master` and run...
+2. `yarn test`
+3. `yarn build`
+4. Update your `Package.json` version info
+5. Update you `CHANGELOG.MD` and `README.MD` file with relevant info for your new version
+6. `yarn login`
+7. `npm publish --dry-run` - to confirm that your files will be packaged into the npm repo
+8. `npm publish` - commit the published files to the npm repo
+9. `yarn docs` - generates all documentation
+10. `yarn build:storybook` - ensure static stybook site is uptodate
+11. `Commit` and `TAG` this commit with the Tag name the same as the package version number to UPSTREAM `master`
 
-*Note: you will be prompted to login with your username/email/password and for the new version number at the CLI
 
 ## Testing Changes in Projects (alternative Method)
 ### tl;dr
