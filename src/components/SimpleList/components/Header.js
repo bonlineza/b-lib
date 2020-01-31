@@ -39,12 +39,11 @@ function parseSort(sortParam: string): Array<Object> {
 }
 
 const Header = ({ SortComponent = null }) => {
-  const { headings, onSort, sortString, name, initial_sort } = useContext(
-    SimpleListContext,
-  );
+  const { headings, onSort, sortString, name } = useContext(SimpleListContext);
   const [columns, setColumns] = useState(
-    getNewColumnHeadings(headings, parseSort(initial_sort)),
+    getNewColumnHeadings(headings, parseSort(sortString)),
   );
+
   useEffect(() => {
     setColumns(getNewColumnHeadings(headings, parseSort(sortString)));
   }, [headings, sortString]);
