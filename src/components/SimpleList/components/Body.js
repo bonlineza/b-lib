@@ -36,6 +36,7 @@ const Body = ({
                 {headings.map((col: Object, ck: number): React$Element<*> => (
                   <SimpleItemComponent
                     key={`${ck}`}
+                    row={v}
                     text={v[col.name]}
                     flex={`${(1 / headings.length) * 100}%`}
                     align={col.align}

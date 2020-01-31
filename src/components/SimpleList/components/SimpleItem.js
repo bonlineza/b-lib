@@ -1,5 +1,13 @@
 import React from 'react';
 
+type Formatter = (itemValue: any) => any;
+
+type ItemRenderer = (
+  itemValue: any,
+  columnName: string,
+  rowData: Object,
+) => any;
+
 type SimpleListItemShape = {
   text?: string | number | Array<*>,
   flex: string,
@@ -7,17 +15,23 @@ type SimpleListItemShape = {
   column: string,
   itemClass?: string,
   customFormatter?: Function,
-  customRenderer?: Function,
+  customRenderer?: ItemRenderer,
 };
 
-const getItem = (column, item, row, formatter, renderer) => {
+const getItem = (
+  columnName: string,
+  itemValue: any,
+  rowData: Object,
+  formatter: Formatter,
+  renderer: ItemRenderer,
+) => {
   if (renderer) {
-    return renderer(column, row);
+    return renderer(itemValue, rowData, columnName);
   }
   if (formatter) {
-    return formatter(item);
+    return formatter(itemValue);
   }
-  return item;
+  return itemValue;
 };
 
 const SimpleListItem = ({

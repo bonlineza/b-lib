@@ -42,7 +42,7 @@ describe('SimpleItem - Body', () => {
     });
     it('uses a customRenderer when supplied', () => {
       const expectedRenderId = `item-${defaultProps.column}`;
-      const customRenderer = (column, row) => (
+      const customRenderer = (item, row, column) => (
         <div id={`item-${column}`}>{row[column]}</div>
       );
       wrapper.setProps({ customRenderer });
