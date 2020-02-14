@@ -29,7 +29,7 @@ const getItem = (
     return renderer(itemValue, rowData, columnName);
   }
   if (formatter) {
-    return formatter(itemValue);
+    return formatter(itemValue, rowData, columnName);
   }
   return itemValue;
 };
