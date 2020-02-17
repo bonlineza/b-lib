@@ -21,6 +21,7 @@ import SimpleListSections from './components/SimpleList/components/Sections';
 import SimpleListHeader from './components/SimpleList/components/Header.js';
 import SimpleListBody from './components/SimpleList/components/Body.js';
 import SimpleListItem from './components/SimpleList/components/SimpleItem.js';
+import ButtonOrDiv from './components/SimpleList/components/ButtonOrDiv.js';
 import SimpleSelect from './components/SimpleSelect';
 import SelectRows from './components/SelectRows';
 import SimplePopup from './components/SimplePopup';
@@ -40,6 +41,7 @@ export {
   ActionBar,
   AsideSlide,
   ButtonGroup,
+  ButtonOrDiv,
   DateRangePicker,
   DropOptions,
   DocumentUploader,

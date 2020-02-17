@@ -1,5 +1,10 @@
 
 ## Changelog
+### 3.0.0
+- BREAKING: Function signature for SimpleList->headings->`customFormatter`/`customRenderer` changed to `(itemValue, rowData, columnName)`
+  - When Upgrading: Be sure to update all your usages of `customFormatter`/`customRenderer` to the new arguments
+- Export `DivOrButton` Component
+
 ### 2.2.0
 - Add `usePrevious` function hook - [more info](https://usehooks.com/usePrevious/)
 
