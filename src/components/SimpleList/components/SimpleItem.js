@@ -1,12 +1,13 @@
 import React from 'react';
 
-type Formatter = (itemValue: any) => any;
-
 type ItemRenderer = (
   itemValue: any,
   columnName: string,
   rowData: Object,
+  rowIndex: number,
 ) => any;
+
+type Formatter = ItemRenderer;
 
 type SimpleListItemShape = {
   text?: string | number | Array<*>,
@@ -16,6 +17,7 @@ type SimpleListItemShape = {
   itemClass?: string,
   customFormatter?: Function,
   customRenderer?: ItemRenderer,
+  rowIndex: number,
 };
 
 const getItem = (
@@ -24,12 +26,13 @@ const getItem = (
   rowData: Object,
   formatter: Formatter,
   renderer: ItemRenderer,
+  rowIndex: number,
 ) => {
   if (renderer) {
-    return renderer(itemValue, rowData, columnName);
+    return renderer(itemValue, rowData, columnName, rowIndex);
   }
   if (formatter) {
-    return formatter(itemValue, rowData, columnName);
+    return formatter(itemValue, rowData, columnName, rowIndex);
   }
   return itemValue;
 };
@@ -40,6 +43,7 @@ const SimpleListItem = ({
   flex,
   align,
   column,
+  rowIndex,
   itemClass,
   customFormatter,
   customRenderer,
@@ -52,7 +56,7 @@ const SimpleListItem = ({
       maxWidth: flex,
       flexBasis: flex,
     }}>
-    {getItem(column, text, row, customFormatter, customRenderer)}
+    {getItem(column, text, row, customFormatter, customRenderer, rowIndex)}
   </span>
 );
 

@@ -36,9 +36,10 @@ const Body = ({
                 {headings.map((col: Object, ck: number): React$Element<*> => (
                   <SimpleItemComponent
                     key={`${ck}`}
+                    rowIndex={vk}
                     row={v}
                     text={v[col.name]}
-                    flex={`${(1 / headings.length) * 100}%`}
+                    flex={`${col.flex || (1 / headings.length) * 100}%`}
                     align={col.align}
                     column={col.name}
                     itemClass="simple-list__body__row__item"
