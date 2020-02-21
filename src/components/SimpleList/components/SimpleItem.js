@@ -4,7 +4,6 @@ type ItemRenderer = (
   itemValue: any,
   columnName: string,
   rowData: Object,
-  rowIndex: number,
 ) => any;
 
 type Formatter = ItemRenderer;
@@ -17,7 +16,6 @@ type SimpleListItemShape = {
   itemClass?: string,
   customFormatter?: Function,
   customRenderer?: ItemRenderer,
-  rowIndex: number,
 };
 
 const getItem = (
@@ -26,13 +24,12 @@ const getItem = (
   rowData: Object,
   formatter: Formatter,
   renderer: ItemRenderer,
-  rowIndex: number,
 ) => {
   if (renderer) {
-    return renderer(itemValue, rowData, columnName, rowIndex);
+    return renderer(itemValue, rowData, columnName);
   }
   if (formatter) {
-    return formatter(itemValue, rowData, columnName, rowIndex);
+    return formatter(itemValue, rowData, columnName);
   }
   return itemValue;
 };
@@ -43,7 +40,6 @@ const SimpleListItem = ({
   flex,
   align,
   column,
-  rowIndex,
   itemClass,
   customFormatter,
   customRenderer,
@@ -56,7 +52,7 @@ const SimpleListItem = ({
       maxWidth: flex,
       flexBasis: flex,
     }}>
-    {getItem(column, text, row, customFormatter, customRenderer, rowIndex)}
+    {getItem(column, text, row, customFormatter, customRenderer)}
   </span>
 );
 
