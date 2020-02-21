@@ -1,12 +1,12 @@
 import React from 'react';
 
-type Formatter = (itemValue: any) => any;
-
 type ItemRenderer = (
   itemValue: any,
   columnName: string,
   rowData: Object,
 ) => any;
+
+type Formatter = ItemRenderer;
 
 type SimpleListItemShape = {
   text?: string | number | Array<*>,

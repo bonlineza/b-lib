@@ -31,7 +31,8 @@ const ButtonOrDiv = ({
     </button>
   ) : (
     <div
-      className={`${baseClass}${index % 2 ? '--bgc-alt' : ''} disable-hover`}>
+      data-qe-id={identifier}
+      className={`${baseClass}${index % 2 ? '--bgc-alt' : ''}`}>
       {children}
     </div>
   );

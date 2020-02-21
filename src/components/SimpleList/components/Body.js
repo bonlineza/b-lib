@@ -5,6 +5,7 @@ import SimpleListContext from '../context';
 import ButtonOrDiv from './ButtonOrDiv';
 
 const Body = ({
+  SimpleRowComponent = ButtonOrDiv,
   SimpleItemComponent = SimpleListItem,
   PaginatorComponent = Paginator,
 }) => {
@@ -26,7 +27,7 @@ const Body = ({
         {typeof childrenRenderer === 'function'
           ? childrenRenderer(data)
           : data.map((v: Object, vk: number): React$Element<*> => (
-              <ButtonOrDiv
+              <SimpleRowComponent
                 key={vk}
                 allowClick={allowClick}
                 index={vk}
@@ -38,7 +39,7 @@ const Body = ({
                     key={`${ck}`}
                     row={v}
                     text={v[col.name]}
-                    flex={`${(1 / headings.length) * 100}%`}
+                    flex={`${col.flex || (1 / headings.length) * 100}%`}
                     align={col.align}
                     column={col.name}
                     itemClass="simple-list__body__row__item"
@@ -46,7 +47,7 @@ const Body = ({
                     customRenderer={col.customRenderer || null}
                   />
                 ))}
-              </ButtonOrDiv>
+              </SimpleRowComponent>
             ))}
       </div>
 
