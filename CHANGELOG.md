@@ -1,5 +1,11 @@
 
 ## Changelog
+### 3.1.0
+- Add `SimpleRowComponent` property to `SimpleList->Body` enabling a Custom Row renderer to be passed
+- `SimpleItem` now uses the `flex` property by default from the passed in `headings` config
+- `ButtonOrDiv` now generates the `data-qe-id` for both clickable and non-clickable modes
+- Removed the className `disable-hover` from `ButtonOrDiv` as this name is too explicit and the behaviour is not included with the component  
+
 ### 3.0.0
 - BREAKING: Function signature for SimpleList->headings->`customFormatter`/`customRenderer` changed to `(itemValue, rowData, columnName)`
   - When Upgrading: Be sure to update all your usages of `customFormatter`/`customRenderer` to the new arguments
