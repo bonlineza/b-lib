@@ -171,3 +171,8 @@ git clone git@github.com:{author}/b-lib --branch {branch-name}
   `validatePhone`,
   `validateWebsite`,
 }
+
+### 0.1.24
+- Filter: fix error in logic for `forceValue` by adding `forceValue` to state, setting state `value` 
+to `props.initialText` and updating condition
+ for getDerivedStateFromProps.
