@@ -75,8 +75,11 @@ class Filter extends React.Component<PropsType> {
   timerDp: any;
 
   static getDerivedStateFromProps(props, state) {
-    if (state.value !== props.forceValue && props.forceValue) {
-      return { isEmpty: !props.forceValue, value: props.forceValue };
+    if (props.forceValue !== state.forceValue) {
+      return {
+        value: props.forceValue,
+        forceValue: props.forceValue,
+      };
     }
     return null;
   }
@@ -110,7 +113,8 @@ class Filter extends React.Component<PropsType> {
   handleChange = (event?: Object, setValue?: string) => {
     const value = setValue !== undefined ? setValue : event.target.value;
     this.setState({
-      value,
+      value: this.props.initialText,
+      forceValue: this.props.forceValue,
       isEmpty: !value,
     });
     this.handlePropogation(value);
