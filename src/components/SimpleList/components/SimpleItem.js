@@ -9,7 +9,7 @@ type ItemRenderer = (
 type Formatter = ItemRenderer;
 
 type SimpleListItemShape = {
-  text?: string | number | Array<*>,
+  text?: string | number | Array<*> | Object | undefined,
   flex: string,
   align?: string,
   column: string,

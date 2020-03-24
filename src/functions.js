@@ -6,15 +6,16 @@ import { getMoment, parseDate } from './util/dates';
 import flattenObject from './util/flattenObject';
 import getTokenFromStorage from './util/getToken';
 import hasOwn from './util/hasOwn.func';
+import hasValue from './util/hasValue';
 import smoothScrollTo, { scrollToSelector } from './util/smoothScrollTo';
 import stringOccurances from './util/stringOccurances';
 import validateEmail from './util/validateEmail';
 import validatePhone from './util/validatePhone';
 import validateWebsite from './util/validateWebsite';
 import debounced from './util/debounced';
-import hasValue from './util/hasValue';
 import isObjectEmpty from './util/isObjectEmpty';
 import moveItemInArray from './util/moveItemInArray';
+import removeKeyFromObject from './util/removeKeyFromObject';
 import {
   snakeCaseToTitleCase,
   toTitleCase,
@@ -40,6 +41,7 @@ export {
   hasValue,
   isObjectEmpty,
   moveItemInArray,
+  removeKeyFromObject,
   snakeCaseToTitleCase,
   toTitleCase,
   replaceUnderscoreWithSpace,

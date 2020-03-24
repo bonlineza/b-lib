@@ -3,4 +3,9 @@
  * @param {any} value: value checked
  * @returns {boolean} result of the evaluation
  */
-export default value => value !== null && value !== undefined && value !== '';
+export default value => {
+  if (Array.isArray(value)) {
+    return !!value.length;
+  }
+  return value !== null && value !== undefined && value !== '';
+};
