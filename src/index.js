@@ -7,6 +7,7 @@ import DateRangePicker from './components/DateRangePicker';
 import DropOptions from './components/DropOptions';
 import DocumentUploader from './components/DocumentUploader';
 import Filter from './components/Filter';
+import If from './components/If';
 import PredefinedFilter from './components/Filter/components/predefinedFilter.js';
 import EllipsisLoader from './components/EllipsisLoader';
 import Map from './components/Map';
@@ -15,6 +16,7 @@ import Overlay from './components/Overlay';
 import PageReady, { PageReadyContext } from './components/PageReady';
 import Paginator from './components/Paginator';
 import PDFPreview from './components/PDFPreview';
+import SimpleErrorBoundary from './components/SimpleErrorBoundary';
 import SimpleList from './components/SimpleList';
 import SimpleListContext from './components/SimpleList/context';
 import SimpleListSections from './components/SimpleList/components/Sections';
@@ -47,6 +49,7 @@ export {
   DocumentUploader,
   EllipsisLoader,
   Filter,
+  If,
   PredefinedFilter,
   Map,
   MobileSideMenu,
@@ -56,6 +59,7 @@ export {
   Paginator,
   PDFPreview,
   SelectRows,
+  SimpleErrorBoundary,
   SimpleList,
   SimpleListContext,
   SimpleListSections,
