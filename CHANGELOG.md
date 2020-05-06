@@ -1,5 +1,12 @@
 
 ## Changelog
+### 3.2.0
+- Add `If` component that conditionally renders children based on `condition` prop truthyness
+- Add `SimpleErrorBoundary` component that catches thrown errors in child components
+- Add `removeKeyFromObject` function that simply removes a key from a given object - returning the new object
+- Updated the `hasValue` function that now correctly supports `Array` objects
+- Fixed a warning from `SimpleItem` about the `text` property being passed invalid types
+
 ### 3.1.0
 - Add `SimpleRowComponent` property to `SimpleList->Body` enabling a Custom Row renderer to be passed
 - `SimpleItem` now uses the `flex` property by default from the passed in `headings` config
