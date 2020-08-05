@@ -1,12 +1,12 @@
 {
   "name": "@bonlineza/b-lib",
-  "version": "3.2.0",
+  "version": "3.2.1-rc0",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook -s ./public",
     "clean": "rimraf ./build/*.*",
-    "build": "yarn run clean && ./node_modules/.bin/rollup -c",
+    "build": "npm run clean && ./node_modules/.bin/rollup -c",
     "build:storybook": "build-storybook -c .storybook -o docs/storybook",
-    "build:publish": "yarn run clean && yarn run test && yarn run build && yarn run docs && yarn login && yarn publish",
+    "build:publish": "npm run clean && npm run test && npm run build && npm run docs && npm login && npm publish",
     "lint": "eslint ./src",
     "jest": "jest --env=jsdom",
     "test": "run-s lint jest",
@@ -22,7 +22,8 @@
     "*.js",
     "!rollup.config.js",
     "!webpack.config.base.js",
-    "src/components/DateRangePicker/initialize.js"
+    "src/components/DateRangePicker/initialize.js",
+    "package-lock.json"
   ],
   "dependencies": {
     "google-map-react": "1.1.4",
@@ -32,7 +33,7 @@
     "react-dates": "https://github.com/bonlineza/react-dates#v16.0.1-showBeforeTodayDifferently-lib",
     "react-dom-factories": "^1.0.2",
     "react-dropzone": "^4.2.1",
-    "react-pdf-js": "https://github.com/robguy21/react-pdf-js#v4.1.0",
+    "react-pdf-js": "git+https://github.com/robguy21/react-pdf-js.git#2b53bf3cca9b8cbbe8cb2ee967cbdd13a0056449",
     "react-selectize": "^3.0.1",
     "react-transition-group": "^1.1.2"
   },
@@ -132,7 +133,7 @@
     "collectCoverage": true
   },
   "peerDependencies": {
-    "react": "~16.8.1",
-    "react-dom": "~16.8.1"
+    "react": "^16",
+    "react-dom": "^16"
   }
 }
