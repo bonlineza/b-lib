@@ -1,5 +1,10 @@
 
 ## Changelog
+### 3.2.1
+- Fix `react-pdf-js` library from failing to import when using NPM to install
+- Add `package-lock.json` for NPM
+- Update PeerDependencies to allow any latest version of React 16 to be used
+
 ### 3.2.0
 - Add `If` component that conditionally renders children based on `condition` prop truthyness
 - Add `SimpleErrorBoundary` component that catches thrown errors in child components

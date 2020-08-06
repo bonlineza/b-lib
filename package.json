@@ -1,6 +1,6 @@
 {
   "name": "@bonlineza/b-lib",
-  "version": "3.2.1-rc0",
+  "version": "3.2.1",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook -s ./public",
     "clean": "rimraf ./build/*.*",
@@ -22,8 +22,7 @@
     "*.js",
     "!rollup.config.js",
     "!webpack.config.base.js",
-    "src/components/DateRangePicker/initialize.js",
-    "package-lock.json"
+    "src/components/DateRangePicker/initialize.js"
   ],
   "dependencies": {
     "google-map-react": "1.1.4",
