@@ -1,9 +1,6 @@
-import { SingleDatePicker } from 'react-dates';
-
 import ActionBar from './components/ActionBar';
 import AsideSlide from './components/AsideSlide';
 import ButtonGroup from './components/ButtonGroup';
-import DateRangePicker from './components/DateRangePicker';
 import DropOptions from './components/DropOptions';
 import DocumentUploader from './components/DocumentUploader';
 import Filter from './components/Filter';
@@ -44,7 +41,6 @@ export {
   AsideSlide,
   ButtonGroup,
   ButtonOrDiv,
-  DateRangePicker,
   DropOptions,
   DocumentUploader,
   EllipsisLoader,
@@ -68,7 +64,6 @@ export {
   SimpleListItem,
   SimpleSelect,
   SimplePopup,
-  SingleDatePicker,
   SwitchView,
   ToolTip,
   wrapTooltip,

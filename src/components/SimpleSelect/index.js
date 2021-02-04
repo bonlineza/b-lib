@@ -24,7 +24,8 @@ type PropShapes = {
 };
 
 /**
- * SimpleSelect is an implementation of 'reat-selectize' - providing a few defaults and a common interface
+ * SimpleSelect is an implementation of 'react-selectize' - providing a few defaults and a common interface
+ * @deprecated please replace this for a more up-to-date component
  */
 const SimpleSelect = ({
   onChange,

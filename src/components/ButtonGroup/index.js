@@ -37,6 +37,12 @@ type StateShape = {
  * ButtonGroup is a wrapper that transforms given buttons into a small set of buttons with a dropdown menu based on the configuration given
  */
 class ButtonGroup extends React.Component<PropsType, StateShape> {
+  isFirstFlag = false;
+
+  defaultProps: DefaultPropsType;
+
+  reactDropdown: HTMLElement;
+
   static defaultProps = {
     baseClass: 'button-group',
     children: [],
@@ -46,12 +52,6 @@ class ButtonGroup extends React.Component<PropsType, StateShape> {
     disableButtons: false,
     toggleButtonContents: <span>Menu</span>,
   };
-
-  isFirstFlag = false;
-
-  defaultProps: DefaultPropsType;
-
-  reactDropdown: HTMLElement;
 
   constructor(props: PropsType) {
     super(props);

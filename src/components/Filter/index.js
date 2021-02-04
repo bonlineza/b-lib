@@ -1,5 +1,4 @@
 import React from 'react';
-import DateRangePicker from '../DateRangePicker/index';
 import SimpleSelect from '../SimpleSelect/index';
 import PredefinedFilter from './components/predefinedFilter';
 import './scss/Filter.scss';
@@ -78,6 +77,16 @@ type StateType = {
  * GroupSelection components commonly used to drill down data lists
  */
 class Filter extends React.Component<PropsType> {
+  defaultProps: DefaultPropsType;
+
+  timer = null;
+
+  state: StateType;
+
+  reactDropdown: HTMLElement;
+
+  timerDp: any;
+
   static defaultProps = {
     baseClass: 'list-filter',
     predefined: [],
@@ -94,18 +103,8 @@ class Filter extends React.Component<PropsType> {
     addFilter: null,
     groupSelectionCB: () => false,
     PredefinedFilterComponent: PredefinedFilter,
-    DateRangePickerComponent: DateRangePicker,
+    DateRangePickerComponent: null,
   };
-
-  defaultProps: DefaultPropsType;
-
-  timer = null;
-
-  state: StateType;
-
-  reactDropdown: HTMLElement;
-
-  timerDp: any;
 
   static getDerivedStateFromProps(props, state) {
     if (state.value !== props.forceValue && props.forceValue) {
