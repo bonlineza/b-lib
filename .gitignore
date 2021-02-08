@@ -9,6 +9,7 @@
 !/stories/**/*.js
 !init.js
 !webpack.config.base.js
+!docs/storybook/**/*.js
 
 # dependencies
 /node_modules
