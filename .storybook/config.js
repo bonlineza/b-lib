@@ -1,7 +1,7 @@
 import { configure, addDecorator } from '@storybook/react';
 import moment from 'moment';
 import 'react-dates/initialize';
-import 'react-dates/css/storybook.scss';
+// import 'react-dates/css/storybook.scss'; // cannot find this file @todo: fix this
 
 import { addReadme } from 'storybook-readme';
 
