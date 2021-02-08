@@ -2,13 +2,9 @@ import React from 'react';
 import './scss/HorizontalProgressBar.scss';
 
 type PropsShape = {
-  /**
-   * Whole number out of 100 which sets how full you want the bar to be
-   */
+  /** Whole number out of 100 which sets how full you want the bar to be */
   progressPercentage?: number,
-  /**
-   * Number that sets the milliseconds taken to start the transition
-   */
+  /** Number that sets the milliseconds taken to start the transition */
   transitionTimeout?: number,
 };
 

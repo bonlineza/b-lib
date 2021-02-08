@@ -16,12 +16,16 @@ function processIndexFile(folderName) {
       return;
     }
     const documentationPath = `${outputPath}/${folderName}.md`;
-    const doc = reactDocgen.parse(content);
-    const md = docsToMarkdown(doc, folderName);
-    console.log('Writing: ', documentationPath);
-    fs.writeFile(documentationPath, md, err => {
-      if (err) throw err;
-    });
+    try {
+      const doc = reactDocgen.parse(content);
+      const md = docsToMarkdown(doc, folderName);
+      console.log('Writing: ', documentationPath);
+      fs.writeFile(documentationPath, md, err => {
+        if (err) throw err;
+      });
+    } catch (e) {
+      console.error('Error Parsing: ', documentationPath);
+    }
   });
 }
 

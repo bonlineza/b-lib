@@ -1,11 +1,17 @@
 import React from 'react';
 
 type PropType = {
+  /** The error message that gets thrown */
   errorMessage?: string,
+  /** a function that can trigger an error log in the system */
   errorLogger?: Function,
+  /** show the error message flag */
   showMessageOnError?: boolean,
 };
 
+/**
+ * SimpleErrorBoundary a simple wrapper for pobbible brittle components
+ */
 class SimpleErrorBoundary extends React.Component {
   constructor(props: PropType) {
     super(props);
