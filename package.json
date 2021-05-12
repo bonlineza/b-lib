@@ -100,7 +100,7 @@
     "moxios": "^0.4.0",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.1",
-    "postcss": "^7.0.17",
+    "postcss": "^8.2.10",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.0",
