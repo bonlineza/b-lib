@@ -1,0 +1,20 @@
+# PREREQUISITES:
+# stop any existing local Web Host (ie: Apache on Mac)
+# stop any existing Postgres DB
+# Adapt this Compose file to your specific needs
+
+version: '2'
+services:
+  app:
+    build:
+      context: ./docker
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www:cached
+      - ${HOME}/.yarn/cache:/yarn
+      - ${HOME}/.yarn:/.yarn
+      - ${HOME}/.cache:/.cache
+      - ${HOME}/.npm:/.npm
+    environment:
+      - "YARN_CACHE_FOLDER=/yarn"
