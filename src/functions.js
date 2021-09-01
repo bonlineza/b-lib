@@ -1,3 +1,4 @@
+import errorObjectToString from './util/errorObjectToString';
 import constrainSearch, {
   sanitizeInputForConstraints,
 } from './util/constrainable';
@@ -47,4 +48,5 @@ export {
   replaceUnderscoreWithSpace,
   removeWhiteSpaces,
   usePrevious,
+  errorObjectToString,
 };
