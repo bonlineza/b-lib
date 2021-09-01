@@ -1,5 +1,8 @@
 
 ## Changelog
+
+### 3.2.2
+- Add `errorObjectToString` function that returns object as a string
 ### 3.2.1
 - Fix `react-pdf-js` library from failing to import when using NPM to install
 - Add `package-lock.json` for NPM

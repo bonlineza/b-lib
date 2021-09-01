@@ -69,6 +69,7 @@ import ActionBar from '@bonlineza/b-lib/ActionBar';
 - validateEmail
 - validatePhone
 - validateWebsite
+- errorObjectToString
 
 ## Commands
 - `yarn` - install npm dependencies
