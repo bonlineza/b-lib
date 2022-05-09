@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  clone:
+    runs-on: self-hosted
+    env:
+      working-directory: ${{github.sha}}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: ${{env.working-directory}}
+
+  test:
+    needs: clone
+    runs-on: self-hosted
+    env:
+      working-directory: ${{github.sha}}
+
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install Yarn dependencies
+        run: yarn install
+        working-directory: ${{env.working-directory}}
+
+      - name: Run Yarn Lint
+        run: yarn lint
+        working-directory: ${{env.working-directory}}
+
+      - name: Run Yarn Build
+        run: yarn build
+        working-directory: ${{env.working-directory}}
+
+      - name: Run Jest
+        run: yarn jest
+        working-directory: ${{env.working-directory}}
