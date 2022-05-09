@@ -49,6 +49,8 @@ type PropsShape = {
  * this is highly recommended for all you Popup uses
  */
 class SimplePopup extends React.Component<PropsShape> {
+  listener: any;
+
   static defaultProps = {
     isOpen: false,
     baseClass: 'simple-popup',
@@ -63,8 +65,6 @@ class SimplePopup extends React.Component<PropsShape> {
     onClose: () => false,
     cannotOutsideClickClose: false,
   };
-
-  listener: any;
 
   componentWillReceiveProps(nextProps: PropsShape) {
     if (!this.props.isOpen && nextProps.isOpen) {
