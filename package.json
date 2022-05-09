@@ -27,7 +27,7 @@
   "dependencies": {
     "google-map-react": "1.1.4",
     "lodash": "^4.17.0",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "numeral": "^2.0.6",
     "react-dates": "https://github.com/bonlineza/react-dates#v16.0.1-showBeforeTodayDifferently-lib",
     "react-dom-factories": "^1.0.2",
