@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   setup:
-    runs-on: self-hosted
+    runs-on: general
     env:
       working-directory: ${{github.sha}}
 
@@ -19,7 +19,7 @@ jobs:
 
   yarn-install:
     needs: setup
-    runs-on: self-hosted
+    runs-on: general
     env:
       working-directory: ${{github.sha}}
 
@@ -34,7 +34,7 @@ jobs:
 
   yarn-lint:
     needs: [setup, yarn-install]
-    runs-on: self-hosted
+    runs-on: general
     env:
       working-directory: ${{github.sha}}
 
@@ -45,7 +45,7 @@ jobs:
 
   yarn-build:
     needs: [setup, yarn-install]
-    runs-on: self-hosted
+    runs-on: general
     env:
       working-directory: ${{github.sha}}
 
@@ -56,7 +56,7 @@ jobs:
 
   yarn-test:
     needs: [setup, yarn-install, yarn-build]
-    runs-on: self-hosted
+    runs-on: general
     env:
       working-directory: ${{github.sha}}
 
@@ -68,7 +68,7 @@ jobs:
   cleanup:
     if: always()
     needs: [setup, yarn-install, yarn-lint, yarn-build, yarn-test]
-    runs-on: self-hosted
+    runs-on: general
     env:
       working-directory: ${{github.sha}}
 
