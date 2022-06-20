@@ -5,6 +5,7 @@
 
 # But include all source files and scripts
 !/src/**/*.js
+!/.storybook/main.js
 !/scripts/**/*.js
 !/stories/**/*.js
 !init.js
