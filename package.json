@@ -32,7 +32,6 @@
     "react-dates": "https://github.com/bonlineza/react-dates#v16.0.1-showBeforeTodayDifferently-lib",
     "react-dom-factories": "^1.0.2",
     "react-dropzone": "^4.2.1",
-    "react-pdf-js": "git+https://github.com/robguy21/react-pdf-js.git#2b53bf3cca9b8cbbe8cb2ee967cbdd13a0056449",
     "react-selectize": "^3.0.1",
     "react-transition-group": "^1.1.2"
   },
@@ -125,8 +124,7 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less|sass|scss|postcss)$": "identity-obj-proxy",
-      "../Preview/ControlItem": "<rootDir>/__mocks__/fileMock.js",
-      "react-pdf-js": "<rootDir>/__mocks__/react-pdf-js.js"
+      "../Preview/ControlItem": "<rootDir>/__mocks__/fileMock.js"
     },
     "collectCoverage": true
   },

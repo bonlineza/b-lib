@@ -15,7 +15,6 @@ import MobileSideMenu from './components/MobileSideMenu';
 import Overlay from './components/Overlay';
 import PageReady, { PageReadyContext } from './components/PageReady';
 import Paginator from './components/Paginator';
-import PDFPreview from './components/PDFPreview';
 import SimpleErrorBoundary from './components/SimpleErrorBoundary';
 import SimpleList from './components/SimpleList';
 import SimpleListContext from './components/SimpleList/context';
@@ -57,7 +56,6 @@ export {
   PageReady,
   PageReadyContext,
   Paginator,
-  PDFPreview,
   SelectRows,
   SimpleErrorBoundary,
   SimpleList,
