@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  clone:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install Yarn dependencies
+        run: yarn install
+
+      - name: Run Yarn Lint
+        run: yarn lint
+
+      - name: Run Yarn Build
+        run: yarn build
+
+      - name: Run Jest
+        run: yarn jest
