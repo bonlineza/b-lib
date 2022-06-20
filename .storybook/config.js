@@ -23,7 +23,6 @@ function loadStories() {
   require('../stories/Overlay.js');
   require('../stories/Paginator.js');
   require('../stories/PageReady.js');
-  require('../stories/PDFPreview.js');
   require('../stories/SelectRows.js');
   require('../stories/SimplePopup.js');
   require('../stories/EllipsisLoader/index.js');
