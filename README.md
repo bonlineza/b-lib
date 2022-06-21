@@ -21,7 +21,6 @@
 - Overlay
 - PageReady
 - Paginator
-- PDFPreview
 - SimplePopup
 - SwitchView
 - ToolTip
