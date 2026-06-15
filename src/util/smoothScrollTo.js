@@ -56,6 +56,7 @@ const smoothScrollTo = (elm, duration) => {
 
 // detect support for the behavior property in ScrollOptions
 const supportsNativeSmoothScroll =
+  typeof document !== 'undefined' &&
   'scrollBehavior' in document.documentElement.style;
 
 /**

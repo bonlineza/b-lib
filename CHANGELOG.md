@@ -1,6 +1,9 @@
 
 ## Changelog
 
+### 4.0.1
+- Guard `supportsNativeSmoothScroll` detection in `smoothScrollTo` against `document` being undefined, fixing a crash during server-side rendering (e.g. Next.js / React 19 SSR)
+
 ### 4.0.0
 - upgrade react to react 17.0.2
 - upgrade storybook to 6.5.9
